@@ -13,7 +13,7 @@ export const OutputTable = ({ data }:any) => {
         <Table>
             <TableCaption>Daily fitness chart</TableCaption>
             <TableHeader>
-                <TableRow>
+                <TableRow className="font-bold">
                     <TableHead className="w-[100px]">Date</TableHead>
                     <TableHead>Kcal</TableHead>
                     <TableHead>Fat</TableHead>

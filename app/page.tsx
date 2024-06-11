@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { OutputTable } from "@/components/custom/OutputTable";
 import { FormDrawer } from "@/components/custom/FormDrawer";
+import { LoginButton } from "@/components/custom/LoginButtons";
 import prisma from "@/lib/prisma";
 
 export default async function Home() {
@@ -14,10 +15,10 @@ export default async function Home() {
   console.log(dailyLogs)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>Fitness Journal</h1>
+    <main className="flex min-h-screen flex-col items-center justify-around p-24">
       <OutputTable data={dailyLogs} />
       <FormDrawer />
+      <LoginButton />
     </main>
   );
 }
