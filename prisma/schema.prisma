@@ -42,3 +42,15 @@ model UserPreferences {
   tCarbs    Int    @default(0)
   tCalories Int    @default(0)
 }
+
+model Training {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  exercise    String
+  weight      Int
+  tenByThree  Boolean
+  sevenByFive Boolean
+  fiveBySeven Boolean
+  user        String
+
+  @@unique([exercise, user, weight])
+}

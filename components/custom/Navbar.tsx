@@ -67,7 +67,7 @@ const NavMenu = () => {
           <NavigationMenuTrigger className="text-lg bg-slate-100">Journals</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/" name="Diet Journal" />
-            <NavMenuLink href="/journals/food" name="Training Journal" />
+            <NavMenuLink href="/journals/training" name="Training Journal" />
             <NavMenuLink href="/journals/measurements" name="Measurements Journal" />
           </NavigationMenuContent>
         </NavigationMenuItem>
