@@ -29,7 +29,7 @@ import {
 export const FormDrawer = () => {
     return (
         <Drawer>
-            <DrawerTrigger className="text-xl border-4 p-12 hover:rounded-2xl hover:text-white hover:bg-black duration-200">Add Record</DrawerTrigger>
+            <DrawerTrigger className="text-xl border-4 px-12 py-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200">Add Record</DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader>
                 <DrawerTitle>Add a new record to the table</DrawerTitle>
@@ -137,5 +137,5 @@ const DatePicker = ({name}:any) => {
           </PopoverContent>
           <input type="hidden" name={name} value={date ? date.toISOString() : ''} />
         </Popover>
-      )
+    )
 }

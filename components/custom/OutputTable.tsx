@@ -40,8 +40,8 @@ export const OutputTable = ({ data }:any) => {
                         <TableCell className="bg-lime-400">{record.fat}</TableCell>
                         <TableCell className="bg-lime-400">{record.protein}</TableCell>
                         <TableCell className="bg-lime-400">{record.carbs}</TableCell>
-                        <TableCell className='bg-cyan-400'>{record.abs}</TableCell>
-                        <TableCell className='bg-cyan-400'>{record.cardio}</TableCell>
+                        <TableCell className='bg-cyan-400'>{record.abs ? 'yes' : 'no'}</TableCell>
+                        <TableCell className='bg-cyan-400'>{record.cardio ? 'yes' : 'no'}</TableCell>
                         <TableCell className='bg-cyan-400'>{record.training}</TableCell>
                         <TableCell className="bg-red-400">{record.tFat}</TableCell>
                         <TableCell className="bg-red-400">{record.tProtein}</TableCell>
