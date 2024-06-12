@@ -16,7 +16,7 @@ export default async function Home() {
 
   const dailyLogs = await prisma.dailyLog.findMany({
     orderBy: {
-      date: 'asc'
+      date: 'desc'
     },
     where: {
       user: session?.user?.email as string
@@ -32,8 +32,8 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <OutputTable data={dailyLogs} />
       <FormDrawer preferences={preferences} />
+      <OutputTable data={dailyLogs} />
     </main>
   );
 }

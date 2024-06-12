@@ -74,3 +74,7 @@
       @apply bg-background text-foreground;
     }
   }
+
+  main {
+    @apply bg-[#f2f2f2] text-card-foreground;
+  }

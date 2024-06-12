@@ -5,7 +5,6 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { UserPreference } from "@/components/custom/UserPreferences";
 import { updateTargetFat, updateTargetProtein, updateTargetCarbs, updateTargetCalories } from "@/lib/db";
-import { getUserPreferences } from "@/lib/db";
 
 export default async function Home() {
 

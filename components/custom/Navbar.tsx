@@ -58,6 +58,12 @@ const NavMenu = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
+          <NavigationMenuTrigger className="text-lg bg-slate-100">Tools</NavigationMenuTrigger>
+          <NavigationMenuContent className="min-w-[400px]">
+            <NavMenuLink href="/tools/bmr" name="BMR Calculator" />
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
           <NavigationMenuTrigger className="text-lg bg-slate-100">Journals</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/" name="Diet Journal" />
