@@ -31,5 +31,14 @@ model DailyLog {
   notes     String
   user      String
 
-  @@unique([date, user])
+  @@unique([date, user]) // This is a composite unique constraint (this makes sure that a user cant create a new log for the same day)
+}
+
+model UserPreferences {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  user      String @unique
+  tFat      Int    @default(0)
+  tProtein  Int    @default(0)
+  tCarbs    Int    @default(0)
+  tCalories Int    @default(0)
 }

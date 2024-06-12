@@ -26,7 +26,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-export const FormDrawer = () => {
+export const FormDrawer = ({ preferences }:any) => {
     return (
         <Drawer>
             <DrawerTrigger className="text-xl border-4 px-12 py-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200">Add Record</DrawerTrigger>
@@ -36,7 +36,7 @@ export const FormDrawer = () => {
                 <DrawerDescription>This action cannot be undone currently.</DrawerDescription>
                 </DrawerHeader>
                 <DrawerFooter>
-                <Form />
+                <Form preferences={preferences} />
                 <DrawerClose>
                     <Button variant="outline">Cancel</Button>
                 </DrawerClose>
@@ -46,7 +46,7 @@ export const FormDrawer = () => {
     )
 }
 
-const Form = () => {
+const Form = ({ preferences }:any) => {
     return (
         <form action={createRecord} className="grid grid-cols-4 gap-2">
             <div className="grid grid-cols-1">
@@ -83,19 +83,19 @@ const Form = () => {
             </div>
             <div>
                 <Label>Target Fat</Label>
-                <Input name="tFat" type="number" defaultValue={0} />
+                <Input name="tFat" type="number" defaultValue={preferences.tFat} />
             </div>
             <div>
                 <Label>Target Protein</Label>
-                <Input name="tProtein" type="number" defaultValue={0} />
+                <Input name="tProtein" type="number" defaultValue={preferences.tProtein} />
             </div>
             <div>
                 <Label>Target Carbs</Label>
-                <Input name="tCarbs" type="number" defaultValue={0} />
+                <Input name="tCarbs" type="number" defaultValue={preferences.tCarbs} />
             </div>
             <div>
                 <Label>Target Calories</Label>
-                <Input name="tCalories" type="number" defaultValue={0} />
+                <Input name="tCalories" type="number" defaultValue={preferences.tCalories} />
             </div>
             <div>
                 <Label>Weight</Label>

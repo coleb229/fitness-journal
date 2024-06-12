@@ -29,7 +29,8 @@ const UserDropdown = ({ user }:any) => {
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem><a href="/profile" className="hover:text-slate-500">Profile</a></DropdownMenuItem>
+          <DropdownMenuItem><a href="/user" className="hover:text-slate-500">Profile</a></DropdownMenuItem>
+          <DropdownMenuItem><a href="/api/auth/signout" className="hover:text-slate-500">Logout</a></DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

@@ -1,11 +1,11 @@
 'use server'
 import { OutputTable } from "@/components/custom/OutputTable";
 import { FormDrawer } from "@/components/custom/FormDrawer";
-import { LogoutButton } from "@/components/custom/LoginButtons";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { getUserPreferences } from "@/lib/db";
 
 export default async function Home() {
 
@@ -24,11 +24,16 @@ export default async function Home() {
   })
   console.log(dailyLogs)
 
+  const preferences = await prisma.userPreferences.findUnique({
+    where: {
+      user: session?.user?.email as string
+    }
+  })
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-around p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <OutputTable data={dailyLogs} />
-      <FormDrawer />
-      <LogoutButton />
+      <FormDrawer preferences={preferences} />
     </main>
   );
 }
