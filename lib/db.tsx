@@ -25,17 +25,6 @@ export const createRecord = async (formData: any) => {
         const notes = formData.get('notes');
 
         // Check if a record already exists for the given date
-        const existingRecord = await prisma.dailyLog.findUnique({
-            where: {
-                date,
-                user: email as string,
-            },
-        });
-
-        if (existingRecord) {
-            console.log(`Record for date ${date} already exists.`);
-            return { message: 'Record already exists for the given date.' };
-        }
 
         // Create a new record if no existing record is found
         const record = await prisma.dailyLog.create({
