@@ -15,7 +15,7 @@ datasource db {
 
 model DailyLog {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  date      DateTime @unique @default(now())
+  date      DateTime @default(now())
   calories  Int
   fat       Int
   protein   Int
@@ -30,4 +30,6 @@ model DailyLog {
   weight    Float
   notes     String
   user      String
+
+  @@unique([date, user])
 }

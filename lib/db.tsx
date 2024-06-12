@@ -28,6 +28,7 @@ export const createRecord = async (formData: any) => {
         const existingRecord = await prisma.dailyLog.findUnique({
             where: {
                 date,
+                user: email as string,
             },
         });
 
