@@ -47,9 +47,9 @@ model Training {
   id          String  @id @default(auto()) @map("_id") @db.ObjectId
   exercise    String
   weight      Int
-  tenByThree  Boolean
-  sevenByFive Boolean
-  fiveBySeven Boolean
+  tenByThree  Boolean @default(false)
+  sevenByFive Boolean @default(false)
+  fiveBySeven Boolean @default(false)
   user        String
 
   @@unique([exercise, user, weight])

@@ -54,6 +54,32 @@ export const createRecord = async (formData: any) => {
     }
 };
 
+export const createTrainingRow = async (formData:any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        // Extract form data and convert to appropriate types
+        const exercise = formData.get('exercise');
+        const weight = parseInt(formData.get('weight'));
+
+        const record = await prisma.training.create({
+            data: {
+                exercise,
+                weight,
+                user: email as string,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record created successfully.', record };
+    } catch (error) {
+        console.error('Error creating record:', error);
+        return { message: 'Error creating record.' };
+    }
+};
+
 export const updateTargetFat = async (formData: any) => {
     try {
         const session = await getServerSession(authOptions);
@@ -162,4 +188,70 @@ export const getUserPreferences = async () => {
         }
     })
     return userPreferences;
+}
+
+export const toggleTenByThree = async (formData: any) => {
+    try {
+        const completed = formData.get('tenByThree') === 'true' ? true : false;
+        const record = await prisma.training.update({
+            where: {
+                id: formData.get('id'),
+            },
+            data: {
+                tenByThree: !completed,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record updated successfully.', record };
+    } catch (error) {
+        console.error('Error updating record:', error);
+        return { message: 'Error updating record.' };
+    }
+}
+
+export const toggleSevenByFive = async (formData: any) => {
+    try {
+        const completed = formData.get('sevenByFive') === 'true' ? true : false;
+        const record = await prisma.training.update({
+            where: {
+                id: formData.get('id'),
+            },
+            data: {
+                sevenByFive: !completed,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record updated successfully.', record };
+    } catch (error) {
+        console.error('Error updating record:', error);
+        return { message: 'Error updating record.' };
+    }
+}
+
+export const toggleFiveBySeven = async (formData: any) => {
+    try {
+        const completed = formData.get('fiveBySeven') === 'true' ? true : false;
+        const record = await prisma.training.update({
+            where: {
+                id: formData.get('id'),
+            },
+            data: {
+                fiveBySeven: !completed,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record updated successfully.', record };
+    } catch (error) {
+        console.error('Error updating record:', error);
+        return { message: 'Error updating record.' };
+    }
 }
