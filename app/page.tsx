@@ -1,10 +1,8 @@
 'use server'
-import Image from "next/image";
 import { OutputTable } from "@/components/custom/OutputTable";
 import { FormDrawer } from "@/components/custom/FormDrawer";
 import { LogoutButton } from "@/components/custom/LoginButtons";
 import prisma from "@/lib/prisma";
-import { useEffect } from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -19,6 +17,9 @@ export default async function Home() {
   const dailyLogs = await prisma.dailyLog.findMany({
     orderBy: {
       date: 'asc'
+    },
+    where: {
+      user: session?.user?.email as string
     }
   })
   console.log(dailyLogs)
