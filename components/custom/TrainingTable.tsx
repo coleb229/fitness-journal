@@ -24,6 +24,8 @@ import {
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySeven } from "@/lib/db"
+import { IoCheckmarkOutline } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 
 export const TrainingTable = ({ session, exercise, data }:any) => {
   return (
@@ -49,8 +51,8 @@ export const TrainingTable = ({ session, exercise, data }:any) => {
                   <form action={toggleTenByThree}>
                     <input type="text" hidden value={row.id} name="id" />
                     <input type="text" hidden value={row.tenByThree} name="tenByThree" />
-                    <button type="submit">
-                      {row.tenByThree ? 'x' : 'o'}
+                    <button type="submit" className="flex">
+                      {row.tenByThree ? <IoCheckmarkOutline className="text-green-600" /> : <RxCross1 className="text-red-600" />}
                     </button>  
                   </form>
                 </TableCell>
@@ -58,8 +60,8 @@ export const TrainingTable = ({ session, exercise, data }:any) => {
                   <form action={toggleSevenByFive}>
                     <input type="text" hidden value={row.id} name="id" />
                     <input type="text" hidden value={row.sevenByFive} name="sevenByFive" />
-                    <button type="submit">
-                      {row.sevenByFive ? 'x' : 'o'}
+                    <button type="submit" className="flex">
+                      {row.sevenByFive ? <IoCheckmarkOutline className="text-green-600" /> : <RxCross1 className="text-red-600" />}
                     </button>  
                   </form>  
                 </TableCell>
@@ -67,8 +69,8 @@ export const TrainingTable = ({ session, exercise, data }:any) => {
                   <form action={toggleFiveBySeven}>
                     <input type="text" hidden value={row.id} name="id" />
                     <input type="text" hidden value={row.fiveBySeven} name="fiveBySeven" />
-                    <button type="submit">
-                      {row.fiveBySeven ? 'x' : 'o'}
+                    <button type="submit" className="flex">
+                      {row.fiveBySeven ? <IoCheckmarkOutline className="text-green-600" /> : <RxCross1 className="text-red-600" />}
                     </button>  
                   </form>
                 </TableCell>
