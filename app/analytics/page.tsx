@@ -1,10 +1,9 @@
 'use server'
-import { OutputTable } from "@/components/custom/OutputTable";
-import { FormDrawer } from "@/components/custom/FormDrawer";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { LineGraph } from "@/components/custom/LineGraph";
 
 export default async function Home() {
 
@@ -14,28 +13,10 @@ export default async function Home() {
     redirect('/api/auth/signin')
   }
 
-  if(!await prisma.userPreferences.findUnique({
-    where: {
-      user: user as string
-    }
-  })) {
-    await prisma.userPreferences.create({
-      data: {
-        user: user as string
-      }
-    })
-  }
-
   const dailyLogs = await prisma.dailyLog.findMany({
     orderBy: {
-      date: 'desc'
+      date: 'asc'
     },
-    where: {
-      user: session?.user?.email as string
-    }
-  })
-
-  const preferences = await prisma.userPreferences.findUnique({
     where: {
       user: session?.user?.email as string
     }
@@ -43,8 +24,10 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <FormDrawer preferences={preferences} />
-      <OutputTable data={dailyLogs} />
+        <h1 className="text-4xl">Weight Progress</h1>
+      <div className="h-[400px] w-[800px]">
+        <LineGraph data={dailyLogs} />
+      </div>
     </main>
   );
 }

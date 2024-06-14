@@ -75,7 +75,7 @@ export const LineGraph = ({ data }:any) => {
 
 // Helper function to transform data
 const transformData = (rawData:any) => {
-    const measurements = ['calories', 'fat', 'protein', 'carbs', 'weight'];
+    const measurements = ['weight'];
 
     const transformedData = measurements.map(measurement => ({
         id: measurement,
