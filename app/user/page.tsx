@@ -9,21 +9,8 @@ import { updateTargetFat, updateTargetProtein, updateTargetCarbs, updateTargetCa
 export default async function Home() {
 
   const session = await getServerSession(authOptions);
-  const user = session?.user?.email;
   if(!session) {
     redirect('/api/auth/signin')
-  }
-
-  if(!await prisma.userPreferences.findUnique({
-    where: {
-      user: user as string
-    }
-  })) {
-    await prisma.userPreferences.create({
-      data: {
-        user: user as string
-      }
-    })
   }
 
   const preferences = await prisma.userPreferences.findUnique({
