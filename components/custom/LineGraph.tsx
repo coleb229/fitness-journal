@@ -299,7 +299,7 @@ const transformWeightData = (rawData:any) => {
     const transformedData = measurements.map(measurement => ({
         id: measurement,
         data: rawData.map((entry: { [x: string]: any; date: string | number | Date; }) => ({
-            x: new Date(entry.date).toISOString().split('T')[0], // Extracting just the date part
+            x: new Date(entry.date).toISOString().split('T')[0],
             y: entry[measurement]
         }))
     }));
@@ -313,7 +313,7 @@ const transformFatData = (rawData:any) => {
     const transformedData = measurements.map(measurement => ({
         id: measurement,
         data: rawData.map((entry: { [x: string]: any; date: string | number | Date; }) => ({
-            x: new Date(entry.date).toISOString().split('T')[0], // Extracting just the date part
+            x: new Date(entry.date).toISOString().split('T')[0],
             y: entry[measurement]
         }))
     }));
@@ -327,7 +327,7 @@ const transformProteinData = (rawData:any) => {
     const transformedData = measurements.map(measurement => ({
         id: measurement,
         data: rawData.map((entry: { [x: string]: any; date: string | number | Date; }) => ({
-            x: new Date(entry.date).toISOString().split('T')[0], // Extracting just the date part
+            x: new Date(entry.date).toISOString().split('T')[0],
             y: entry[measurement]
         }))
     }));
@@ -341,7 +341,7 @@ const transformCarbData = (rawData:any) => {
     const transformedData = measurements.map(measurement => ({
         id: measurement,
         data: rawData.map((entry: { [x: string]: any; date: string | number | Date; }) => ({
-            x: new Date(entry.date).toISOString().split('T')[0], // Extracting just the date part
+            x: new Date(entry.date).toISOString().split('T')[0],
             y: entry[measurement]
         }))
     }));
