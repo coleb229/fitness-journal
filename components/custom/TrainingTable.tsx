@@ -27,11 +27,11 @@ import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySev
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 
-export const TrainingTable = ({ session, exercise, data }:any) => {
+export const TrainingTable = ({ session, exercise, data, title }:any) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{exercise}</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>

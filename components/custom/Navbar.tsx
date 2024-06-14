@@ -44,7 +44,7 @@ const NavMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-lg bg-slate-100">Analytics</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/analytics" name="Daily Logs" />
+            <NavMenuLink href="/analytics" name="Data Visualization" />
             <NavMenuLink href="/analytics/weekly" name="Weekly Logs" />
             <NavMenuLink href="/analytics/monthly" name="Monthly Logs" />
           </NavigationMenuContent>

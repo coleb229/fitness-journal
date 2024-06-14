@@ -5,7 +5,7 @@ import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { getUserPreferences } from "@/lib/db";
+import { LineGraph } from "@/components/custom/LineGraph";
 
 export default async function Home() {
 
@@ -35,7 +35,6 @@ export default async function Home() {
       user: session?.user?.email as string
     }
   })
-  console.log(dailyLogs)
 
   const preferences = await prisma.userPreferences.findUnique({
     where: {
@@ -47,6 +46,9 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <FormDrawer preferences={preferences} />
       <OutputTable data={dailyLogs} />
+      <div className="h-[400px] w-[800px]">
+        <LineGraph data={dailyLogs} />
+      </div>
     </main>
   );
 }

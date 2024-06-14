@@ -58,12 +58,12 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="grid grid-cols-3 gap-6">
-        <TrainingTable exercise='benchPress' session={user} data={benchPressData} />
-        <TrainingTable exercise='overheadPress' session={user} data={overheadPressData} />
-        <TrainingTable exercise='deadlift' session={user} data={deadliftData} />
-        <TrainingTable exercise='pullup' session={user} data={pullupData} />
-        <TrainingTable exercise='squat' session={user} data={squatData} />
-        <TrainingTable exercise='curl' session={user} data={curlData} />
+        <TrainingTable exercise='benchPress' session={user} data={benchPressData} title='Bench Press' />
+        <TrainingTable exercise='overheadPress' session={user} data={overheadPressData} title='Overhead Press' />
+        <TrainingTable exercise='deadlift' session={user} data={deadliftData} title='Deadlift' />
+        <TrainingTable exercise='pullup' session={user} data={pullupData} title='Pullup' />
+        <TrainingTable exercise='squat' session={user} data={squatData} title='Squat' />
+        <TrainingTable exercise='curl' session={user} data={curlData} title='Curl' />
       </div>
     </main>
   );
