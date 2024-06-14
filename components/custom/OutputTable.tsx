@@ -6,7 +6,9 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-  } from "@/components/ui/table"
+} from "@/components/ui/table"
+import { FaLongArrowAltUp } from "react-icons/fa";
+import { FaLongArrowAltDown } from "react-icons/fa";
 
 export const OutputTable = ({ data }:any) => {
     return (
@@ -36,10 +38,26 @@ export const OutputTable = ({ data }:any) => {
                     record.date = record.date.toDateString(),
                     <TableRow key={record.id}>
                         <TableCell className="bg-slate-600 text-white">{record.date.toString()}</TableCell>
-                        <TableCell className="bg-lime-400">{record.calories}</TableCell>
-                        <TableCell className="bg-lime-400">{record.fat}</TableCell>
-                        <TableCell className="bg-lime-400">{record.protein}</TableCell>
-                        <TableCell className="bg-lime-400">{record.carbs}</TableCell>
+                        <TableCell className="bg-lime-400">
+                            <div className="flex">
+                                {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                            </div>
+                        </TableCell>
+                        <TableCell className="bg-lime-400">
+                            <div className="flex">
+                                {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                            </div>
+                        </TableCell>
+                        <TableCell className="bg-lime-400">
+                            <div className="flex">
+                                {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                            </div>
+                        </TableCell>
+                        <TableCell className="bg-lime-400">
+                            <div className="flex">
+                                {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                            </div>
+                        </TableCell>
                         <TableCell className='bg-cyan-400'>{record.abs ? 'yes' : 'no'}</TableCell>
                         <TableCell className='bg-cyan-400'>{record.cardio ? 'yes' : 'no'}</TableCell>
                         <TableCell className='bg-cyan-400'>{record.training}</TableCell>
