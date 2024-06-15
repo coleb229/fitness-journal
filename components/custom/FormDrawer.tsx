@@ -48,7 +48,7 @@ export const FormDrawer = ({ preferences }:any) => {
 
 const Form = ({ preferences }:any) => {
     return (
-        <form action={createRecord} className="grid grid-cols-4 gap-2">
+        <form action={createRecord} className="grid grid-cols-1 lg:grid-cols-4 gap-2">
             <div className="grid grid-cols-1">
                 <Label>Date</Label>
                 <DatePicker name='date' />
