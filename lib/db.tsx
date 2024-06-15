@@ -54,6 +54,24 @@ export const createRecord = async (formData: any) => {
     }
 };
 
+export const deleteRecord = async (formData:any) => {
+    try {
+        const record = await prisma.dailyLog.delete({
+            where: {
+                id: formData.get('id'),
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/');
+
+        return { message: 'Record deleted successfully.', record };
+    } catch (error) {
+        console.error('Error deleting record:', error);
+        return { message: 'Error deleting record.' };
+    }
+};
+
 export const createTrainingRow = async (formData:any) => {
     try {
         const session = await getServerSession(authOptions);
