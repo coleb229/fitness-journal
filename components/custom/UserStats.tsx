@@ -2,19 +2,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export const UserStats = ({ data }: any) => {
     return (
-        <Tabs defaultValue="account" className="w-[400px]">
-            <TabsList>
+        <Tabs defaultValue="account" className="">
+            <TabsList className="w-full">
                 <TabsTrigger value="diet">Diet Stats</TabsTrigger>
                 <TabsTrigger value="training">Training Stats</TabsTrigger>
             </TabsList>
-            <TabsContent value="diet">
+            <TabsContent value="diet" className="px-20 py-4">
                 <p>Total Records: {data.dietData.length}</p>
                 <p>Days met calorie target: {getDaysMetCalorieTarget(data)}</p>
                 <p>Days met fat target: {getDaysMetFatTarget(data)}</p>
                 <p>Days met protein target: {getDaysMetProteinTarget(data)}</p>
                 <p>Days met carbs target: {getDaysMetCarbsTarget(data)}</p>
             </TabsContent>
-            <TabsContent value="training">
+            <TabsContent value="training" className="px-6 py-4">
                 <p>Total Records: {data.trainingData.length}</p>
                 <p>Bench Press weight improvements: {getBenchPressWeightImprovements(data)}</p>
                 <p>Bench Press rep range improvements: {getBenchPressRepRangeImprovements(data)}</p>

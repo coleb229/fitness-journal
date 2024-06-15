@@ -34,7 +34,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="absolute top-20 left-20">
+      <div className="absolute top-20 left-20 bg-white rounded-lg w-[400px]">
         <UserStats data={{dietData, trainingData}} />
       </div>
       <h1>Profile</h1>
