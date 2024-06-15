@@ -28,13 +28,13 @@ export default async function Home() {
       <GraphCollapsible title="Weight Progress">
         <WeightLineGraph data={dailyLogs} key='weight' />
       </GraphCollapsible>
-      <GraphCollapsible title="Fat Progress">
+      <GraphCollapsible title="Fat Intake">
         <FatLineGraph data={dailyLogs} key='weight' />
       </GraphCollapsible>
-      <GraphCollapsible title="Protein Progress">
+      <GraphCollapsible title="Protein Intake">
         <ProteinLineGraph data={dailyLogs} key='weight' />
       </GraphCollapsible>
-      <GraphCollapsible title="Carbs Progress">
+      <GraphCollapsible title="Carbs Intake">
         <CarbsLineGraph data={dailyLogs} key='weight' />
       </GraphCollapsible>
     </main>

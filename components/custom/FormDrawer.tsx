@@ -33,9 +33,9 @@ export const FormDrawer = ({ preferences }:any) => {
             <DrawerContent>
                 <DrawerHeader>
                 <DrawerTitle>Add a new record to the table</DrawerTitle>
-                <DrawerDescription>This action cannot be undone currently.</DrawerDescription>
+                <DrawerDescription>You can set your preferences for target macros/calories from the user profile page</DrawerDescription>
                 </DrawerHeader>
-                <DrawerFooter>
+                <DrawerFooter className="overflow-auto max-h-screen">
                 <Form preferences={preferences} />
                 <DrawerClose>
                     <Button variant="outline">Cancel</Button>
@@ -48,8 +48,8 @@ export const FormDrawer = ({ preferences }:any) => {
 
 const Form = ({ preferences }:any) => {
     return (
-        <form action={createRecord} className="grid grid-cols-1 lg:grid-cols-4 gap-2">
-            <div className="grid grid-cols-1">
+        <form action={createRecord} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px]">
+            <div className="grid grid-cols-1 lg:col-span-4 mx-auto lg:py-10">
                 <Label>Date</Label>
                 <DatePicker name='date' />
             </div>
@@ -81,6 +81,7 @@ const Form = ({ preferences }:any) => {
                 <Label>Cardio</Label>
                 <Checkbox name="cardio" />
             </div>
+            {/*}
             <div>
                 <Label>Target Fat</Label>
                 <Input name="tFat" type="number" defaultValue={preferences.tFat} />
@@ -97,15 +98,20 @@ const Form = ({ preferences }:any) => {
                 <Label>Target Calories</Label>
                 <Input name="tCalories" type="number" defaultValue={preferences.tCalories} />
             </div>
-            <div>
+            */}
+            <input type="text" hidden name="tFat" value={preferences.tFat} />
+            <input type="text" hidden name="tProtein" value={preferences.tProtein} />
+            <input type="text" hidden name="tCarbs" value={preferences.tCarbs} />
+            <input type="text" hidden name="tCalories" value={preferences.tCalories} />
+            <div className="lg:col-span-2">
                 <Label>Weight</Label>
                 <Input name="weight" type="number" defaultValue={0} />
             </div>
-            <div>
+            <div className="lg:col-span-2">
                 <Label>Notes</Label>
                 <Input name="notes" />
             </div>
-            <Button className="my-auto">Submit</Button>
+            <Button className="my-auto lg:col-span-4 lg:my-4">Submit</Button>
         </form>
     )
 }
