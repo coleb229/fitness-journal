@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { UserPreference } from "@/components/custom/UserPreferences";
+import { UserPreference, UpdateGoal } from "@/components/custom/UserPreferences";
 import { updateTargetFat, updateTargetProtein, updateTargetCarbs, updateTargetCalories } from "@/lib/db";
 import { UserStats } from "@/components/custom/UserStats";
 
@@ -35,13 +35,14 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="absolute top-20 left-20 bg-white rounded-lg w-[400px]">
-        <UserStats data={{dietData, trainingData}} />
+        <UserStats data={{dietData, trainingData}} preference={preferences?.goal} />
       </div>
       <h1>Profile</h1>
-      <UserPreference action={updateTargetFat} label="Target Fat" target="tFat" preferences={preferences?.tFat} />
-      <UserPreference action={updateTargetProtein} label="Target Protein" target="tProtein" preferences={preferences?.tProtein} />
-      <UserPreference action={updateTargetCarbs} label="Target Carbs" target="tCarbs" preferences={preferences?.tCarbs} />
-      <UserPreference action={updateTargetCalories} label="Target Calories" target="tCalories" preferences={preferences?.tCalories} />
+      <UpdateGoal />
+      <UserPreference action={updateTargetFat} label="Target Fat" target="tFat" preferences={preferences?.tFat} type='number' />
+      <UserPreference action={updateTargetProtein} label="Target Protein" target="tProtein" preferences={preferences?.tProtein} type='number' />
+      <UserPreference action={updateTargetCarbs} label="Target Carbs" target="tCarbs" preferences={preferences?.tCarbs} type='number' />
+      <UserPreference action={updateTargetCalories} label="Target Calories" target="tCalories" preferences={preferences?.tCalories} type='number' />
     </main>
   );
 }

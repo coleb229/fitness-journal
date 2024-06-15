@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-export const UserStats = ({ data }: any) => {
+export const UserStats = ({ data, preference }: any) => {
     return (
         <Tabs defaultValue="account" className="">
             <TabsList className="w-full">
@@ -9,7 +9,7 @@ export const UserStats = ({ data }: any) => {
             </TabsList>
             <TabsContent value="diet" className="px-20 py-4">
                 <p>Total Records: {data.dietData.length}</p>
-                <p>Days met calorie target: {getDaysMetCalorieTarget(data)}</p>
+                <p>Days met calorie target: {getDaysMetCalorieTarget(data, preference)}</p>
                 <p>Days met fat target: {getDaysMetFatTarget(data)}</p>
                 <p>Days met protein target: {getDaysMetProteinTarget(data)}</p>
                 <p>Days met carbs target: {getDaysMetCarbsTarget(data)}</p>
@@ -201,13 +201,33 @@ const getCurlRepRangeImprovements = (data:any) => {
     return improvements;
 }
 
-const getDaysMetCalorieTarget = (data:any) => {
+const getDaysMetCalorieTarget = (data:any, preference:any) => {
     let count = 0;
-    data.dietData.forEach((record:any) => {
-        if(record.calories <= record.tCalories) {
-            count++;
-        }
-    })
+    switch(preference) {
+        case 'maintain':
+            data.dietData.forEach((record:any) => {
+                if(record.calories === record.tCalories) {
+                    count++;
+                }
+            })
+            break;
+        case 'gain':
+            data.dietData.forEach((record:any) => {
+                if(record.calories >= record.tCalories) {
+                    count++;
+                }
+            })
+            break;
+        case 'lose':
+            data.dietData.forEach((record:any) => {
+                if(record.calories <= record.tCalories) {
+                    count++;
+                }
+            })
+            break;
+        default:
+            break;
+    }
     return count;
 }
 

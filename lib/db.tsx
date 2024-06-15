@@ -273,3 +273,26 @@ export const toggleFiveBySeven = async (formData: any) => {
         return { message: 'Error updating record.' };
     }
 }
+
+export const updateGoal = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const record = await prisma.userPreferences.update({
+            where: {
+               user: email as string,
+            },
+            data: {
+                goal: formData.get('goal'),
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/user');
+
+        return { message: 'Record updated successfully.', record };
+    } catch (error) {
+        console.error('Error updating record:', error);
+        return { message: 'Error updating record.' };
+    }
+}

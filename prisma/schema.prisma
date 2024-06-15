@@ -41,6 +41,7 @@ model UserPreferences {
   tProtein  Int    @default(0)
   tCarbs    Int    @default(0)
   tCalories Int    @default(0)
+  goal      String @default("maintain")
 }
 
 model Training {
