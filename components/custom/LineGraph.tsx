@@ -23,9 +23,9 @@ export const WeightLineGraph = ({ data }:any) => {
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -30,
                 legend: 'Date',
-                legendOffset: 36,
+                legendOffset: 45,
                 legendPosition: 'middle'
             }}
             axisLeft={{
@@ -96,9 +96,9 @@ export const FatLineGraph = ({ data }:any) => {
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -30,
                 legend: 'Date',
-                legendOffset: 36,
+                legendOffset: 45,
                 legendPosition: 'middle'
             }}
             axisLeft={{
@@ -169,9 +169,9 @@ export const ProteinLineGraph = ({ data }:any) => {
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -30,
                 legend: 'Date',
-                legendOffset: 36,
+                legendOffset: 45,
                 legendPosition: 'middle'
             }}
             axisLeft={{
@@ -242,9 +242,9 @@ export const CarbsLineGraph = ({ data }:any) => {
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -30,
                 legend: 'Date',
-                legendOffset: 36,
+                legendOffset: 45,
                 legendPosition: 'middle'
             }}
             axisLeft={{
