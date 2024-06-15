@@ -25,10 +25,18 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col p-24">
-      <GraphCollapsible title="Weight Progress" children={<WeightLineGraph data={dailyLogs} key='weight' />} />
-      <GraphCollapsible title="Fat Progress" children={<FatLineGraph data={dailyLogs} key='weight' />} />
-      <GraphCollapsible title="Protein Progress" children={<ProteinLineGraph data={dailyLogs} key='weight' />} />
-      <GraphCollapsible title="Carbs Progress" children={<CarbsLineGraph data={dailyLogs} key='weight' />} />
+      <GraphCollapsible title="Weight Progress">
+        <WeightLineGraph data={dailyLogs} key='weight' />
+      </GraphCollapsible>
+      <GraphCollapsible title="Fat Progress">
+        <FatLineGraph data={dailyLogs} key='weight' />
+      </GraphCollapsible>
+      <GraphCollapsible title="Protein Progress">
+        <ProteinLineGraph data={dailyLogs} key='weight' />
+      </GraphCollapsible>
+      <GraphCollapsible title="Carbs Progress">
+        <CarbsLineGraph data={dailyLogs} key='weight' />
+      </GraphCollapsible>
     </main>
   );
 }
