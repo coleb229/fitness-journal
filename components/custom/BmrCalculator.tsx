@@ -23,7 +23,7 @@ export const BmrCalculator = () => {
   };
 
   return (
-    <div className='bg-white px-6 py-2 rounded-lg shadow-lg'>
+    <div className='bg-white px-6 py-4 rounded-lg shadow-2xl'>
       <h1 className='font-bold text-right'>BMR: {bmr}</h1>
       <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
         <div>
@@ -31,12 +31,17 @@ export const BmrCalculator = () => {
           <Input name="age" type="number" onChange={(e) => setAge(parseInt(e.target.value))} />
         </div>
         <div>
-          <Label>Feet</Label>
-          <Input name="feet" type="number" onChange={(e) => setFeet(parseInt(e.target.value))} />
-        </div>
-        <div>
-          <Label>Inches</Label>
-          <Input name="inches" type="number" onChange={(e) => setInches(parseInt(e.target.value))} />
+          <Label>Height</Label>
+          <div className='grid grid-cols-2 gap-1'>
+            <div>
+              <Label className='font-light'>Feet</Label>
+              <Input name="feet" type="number" onChange={(e) => setFeet(parseInt(e.target.value))} />
+            </div>
+            <div>
+              <Label className='font-light'>Inches</Label>
+              <Input name="inches" type="number" onChange={(e) => setInches(parseInt(e.target.value))} />
+            </div>
+          </div>
         </div>
         <div>
           <Label>Weight</Label>
