@@ -45,22 +45,13 @@ const NavMenu = () => {
           <NavigationMenuTrigger className="text-lg bg-slate-100">Analytics</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/analytics" name="Data Visualization" />
-            <NavMenuLink href="/analytics/weekly" name="Weekly Logs" />
-            <NavMenuLink href="/analytics/monthly" name="Monthly Logs" />
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Social</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-lg bg-slate-100">Tools</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/social" name="Friends" />
-            <NavMenuLink href="/social/requests" name="Friend Requests" />
-            <NavMenuLink href="/social/messages" name="Messages" />
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Calculators</NavigationMenuTrigger>
-          <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/calculators/bmr" name="BMR Calculator" />
+            <NavMenuLink href="/tool/bmr" name="BMR Calculator" />
+            <NavMenuLink href="/tool/workout-planner" name="Workout Planner" />
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>

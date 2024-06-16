@@ -82,14 +82,18 @@ export const TrainingTable = ({ session, exercise, data, title }:any) => {
           <DialogTrigger className="font-bold ml-auto mr-4 my-4 text-xl px-4 py-2 border hover:bg-black hover:rounded-lg hover:text-white hover:scale-125 duration-200">+</DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{exercise}</DialogTitle>
+              <DialogTitle className="mb-4">{title}</DialogTitle>
               <DialogDescription>
                 <form action={createTrainingRow} className="flex">
-                  <Label>Weight</Label>
-                  <Input name="weight" type="number" />
+                  <div>
+                    <Label>Weight</Label>
+                    <div className="flex">
+                      <Input name="weight" type="number" />
+                      <Button type="submit">Submit</Button>
+                    </div>
+                  </div>
                   <input type="text" hidden value={exercise} id="exercise" name="exercise" />
                   <input type="text" hidden defaultValue={session} name="user" />
-                  <Button type="submit">Submit</Button>
                 </form>
               </DialogDescription>
             </DialogHeader>
