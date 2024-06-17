@@ -34,6 +34,7 @@ export const AddGoal = () => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="lose">Lose weight</SelectItem>
+                  <SelectItem value="gain">Gain weight</SelectItem>
                 </SelectContent>
                 <Label htmlFor="target">Target</Label>
                 <Input type="number" name="target" id="target" />
