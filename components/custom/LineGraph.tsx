@@ -32,7 +32,7 @@ export const WeightLineGraph = ({ data }:any) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Value',
+                legend: 'Weight (lbs)',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}
@@ -105,7 +105,7 @@ export const FatLineGraph = ({ data }:any) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Value',
+                legend: 'Fat (grams)',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}
@@ -178,7 +178,7 @@ export const ProteinLineGraph = ({ data }:any) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Value',
+                legend: 'Protein (grams)',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}
@@ -251,7 +251,7 @@ export const CarbsLineGraph = ({ data }:any) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: 'Value',
+                legend: 'Carbs (grams)',
                 legendOffset: -40,
                 legendPosition: 'middle'
             }}

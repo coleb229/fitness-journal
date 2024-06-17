@@ -1,10 +1,9 @@
 'use server'
-import { OutputTable } from "@/components/custom/OutputTable";
-import { FormDrawer } from "@/components/custom/FormDrawer";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { GraphCarousel } from "@/components/custom/Carousel";
 
 export default async function Home() {
 
@@ -28,14 +27,8 @@ export default async function Home() {
 
   const dailyLogs = await prisma.dailyLog.findMany({
     orderBy: {
-      date: 'desc'
+      date: 'asc'
     },
-    where: {
-      user: session?.user?.email as string
-    }
-  })
-
-  const preferences = await prisma.userPreferences.findUnique({
     where: {
       user: session?.user?.email as string
     }
@@ -43,9 +36,17 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      In Progress
-      - add goals w/ progress tracker
-      - create user dashboard
+      <div className="w-full grid grid-cols-2">
+        <GraphCarousel data={dailyLogs} />
+        <div>
+          <p className="text-center py-20">
+            Goals Section
+          </p>
+        </div>
+      </div>
+      <p className="font-bold">In Progress</p>
+      <p>- add goals w/ progress tracker</p>
+      <p>- create user dashboard</p>
     </main>
   );
 }
