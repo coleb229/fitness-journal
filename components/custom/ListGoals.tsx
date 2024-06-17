@@ -35,8 +35,7 @@ const Goal = ({ goal, dailyLogs }:any) => {
   return (
     <li className="w-full border rounded shadow-lg bg-white px-6 my-2">
       <p className="p-2 font-semibold text-cyan-500 italic">
-        {goal.goal === 'lose' ? 'Lose Weight' : 'Gain Weight'}
-        Drop down to {goal.target} lbs
+        {goal.goal === 'lose' ? 'Drop down to ' + goal.target + ' lbs' : 'Bulk up to ' + goal.target + ' lbs'}
       </p>
       <p className="text-right">{percentage.toFixed(2) + '%'}</p>
       <div className="flex items-center">
