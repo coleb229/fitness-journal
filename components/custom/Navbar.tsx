@@ -10,12 +10,14 @@ import {
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import Link from "next/link"
 
 export const Navbar = ({ user }:any) => {
   return (
     <div className="flex justify-between items-center bg-slate-100 px-10 fixed top-0 w-screen shadow-md z-50">
       <NavMenu />
       <UserDropdown user={user} />
+      <Link href='/'>Home</Link>
     </div> 
   )
 }
@@ -57,7 +59,7 @@ const NavMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-lg bg-slate-100">Journals</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/" name="Diet Journal" />
+            <NavMenuLink href="/journals/diet" name="Diet Journal" />
             <NavMenuLink href="/journals/training" name="Training Journal" />
             <NavMenuLink href="/journals/measurements" name="Measurements Journal" />
           </NavigationMenuContent>

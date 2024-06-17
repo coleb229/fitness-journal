@@ -43,9 +43,8 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      In Progress
-      - add goals w/ progress tracker
-      - create user dashboard
+      <FormDrawer preferences={preferences} />
+      <OutputTable data={dailyLogs} />
     </main>
   );
 }
