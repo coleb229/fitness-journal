@@ -9,8 +9,8 @@ import { WeightLineGraph, FatLineGraph, ProteinLineGraph, CarbsLineGraph } from 
 
 export const GraphCarousel = ({ data }:any) => {
     return (
-        <Carousel>
-            <CarouselContent className="w-[800px] h-[400px]">
+        <Carousel className="bg-white rounded-lg shadow-2xl pb-2">
+            <CarouselContent className="w-[900px] h-[400px]">
                 <CarouselItem>
                     <WeightLineGraph data={data} key='weight' />
                 </CarouselItem>

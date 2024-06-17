@@ -45,7 +45,7 @@ export const createRecord = async (formData: any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Record created successfully.', record };
     } catch (error) {
@@ -63,7 +63,7 @@ export const deleteRecord = async (formData:any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Record deleted successfully.', record };
     } catch (error) {
@@ -114,7 +114,7 @@ export const updateTargetFat = async (formData: any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Target fat updated successfully.', userPreference };
     } catch (error) {
@@ -139,7 +139,7 @@ export const updateTargetProtein = async (formData: any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Target protein updated successfully.', userPreference };
     } catch (error) {
@@ -164,7 +164,7 @@ export const updateTargetCarbs = async (formData: any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Target carbs updated successfully.', userPreference };
     } catch (error) {
@@ -189,7 +189,7 @@ export const updateTargetCalories = async (formData: any) => {
         });
 
         // Revalidate the path to ensure the cache is updated
-        revalidatePath('/');
+        revalidatePath('/journals/diet');
 
         return { message: 'Target calories updated successfully.', userPreference };
     } catch (error) {
@@ -294,5 +294,30 @@ export const updateGoal = async (formData: any) => {
     } catch (error) {
         console.error('Error updating record:', error);
         return { message: 'Error updating record.' };
+    }
+}
+
+export const addGoal = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const goal = formData.get('goal');
+        const target = parseInt(formData.get('target'));
+
+        const record = await prisma.goal.create({
+            data: {
+                goal,
+                target,
+                user: email as string,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/');
+
+        return { message: 'Record created successfully.', record };
+    } catch (error) {
+        console.error('Error creating record:', error);
+        return { message: 'Error creating record.' };
     }
 }

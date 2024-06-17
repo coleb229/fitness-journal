@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { GraphCarousel } from "@/components/custom/Carousel";
+import { AddGoal } from "@/components/custom/AddGoal";
+import { ListGoals } from "@/components/custom/ListGoals";
 
 export default async function Home() {
 
@@ -34,14 +36,24 @@ export default async function Home() {
     }
   })
 
+  const goals = await prisma.goal.findMany({
+    where: {
+      user: session?.user?.email as string
+    }
+  })
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="w-full grid grid-cols-2">
-        <GraphCarousel data={dailyLogs} />
         <div>
-          <p className="text-center py-20">
-            Goals Section
-          </p>
+          <GraphCarousel data={dailyLogs} />
+        </div>
+        <div className="mx-20">
+          <div className="flex items-center justify-center border-b-2 mb-2">
+            <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
+            <AddGoal />
+          </div>
+          <ListGoals goals={goals} dailyLogs={dailyLogs} />
         </div>
       </div>
       <p className="font-bold">In Progress</p>
