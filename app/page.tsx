@@ -56,9 +56,7 @@ export default async function Home() {
           <ListGoals goals={goals} dailyLogs={dailyLogs} />
         </div>
       </div>
-      <p className="font-bold">In Progress</p>
-      <p>- add goals w/ progress tracker</p>
-      <p>- create user dashboard</p>
+      <p className="font-bold py-4">In Progress</p>
     </main>
   );
 }
