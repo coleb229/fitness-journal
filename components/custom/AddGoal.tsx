@@ -38,6 +38,11 @@ export const AddGoal = () => {
                       <SelectItem value="lose">Lose weight</SelectItem>
                       <SelectItem value="gain">Gain weight</SelectItem>
                       <SelectItem value="bench">Bench weight</SelectItem>
+                      <SelectItem value="overheadPress">Overhead Press weight</SelectItem>
+                      <SelectItem value="deadlift">Deadlift weight</SelectItem>
+                      <SelectItem value="pullup">Pullup weight</SelectItem>
+                      <SelectItem value="squat">Squat weight</SelectItem>
+                      <SelectItem value="curl">Curl weight</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
