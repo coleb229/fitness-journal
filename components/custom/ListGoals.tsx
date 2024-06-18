@@ -1,4 +1,6 @@
 import { Progress } from "@/components/ui/progress"
+import { DeleteDataButton } from "./DeleteDataButton"
+import { deleteGoal } from "@/lib/db"
 
 export const ListGoals = ({ goals, dailyLogs, training }:any) => {
 
@@ -91,9 +93,12 @@ const Goal = ({ goal, dailyLogs, training }:any) => {
 
   return (
     <li className="w-full border rounded shadow-lg bg-white px-6 my-2">
-      <p className="p-2 font-semibold text-cyan-500 italic">
-        {header}
-      </p>
+      <div className="flex justify-between">
+        <p className="p-2 font-semibold text-cyan-500 italic">
+          {header}
+        </p>
+        <DeleteDataButton id={goal.id} action={deleteGoal} />
+      </div>
       <p className="text-right">{percentage.toFixed(2) + '%'}</p>
       <div className="flex items-center mb-4">
         <p className="pr-2">{start}</p>

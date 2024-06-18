@@ -10,6 +10,7 @@ import {
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import { DeleteDataButton } from "./DeleteDataButton";
+import { deleteRecord } from "@/lib/db";
 
 export const OutputTable = ({ data }:any) => {
     return (
@@ -69,7 +70,7 @@ export const OutputTable = ({ data }:any) => {
                         <TableCell className="bg-violet-400 pl-2 pr-0">{record.weight}</TableCell>
                         <TableCell className="bg-purple-600 text-white pl-2 pr-0">{record.notes}</TableCell>
                         <TableCell>
-                            <DeleteDataButton id={record.id} />
+                            <DeleteDataButton id={record.id} action={deleteRecord} />
                         </TableCell>
                     </TableRow>
                 ))}

@@ -9,12 +9,11 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { deleteRecord } from "@/lib/db"
 
-export const DeleteDataButton = ({ id }:any) => {
+export const DeleteDataButton = ({ id, action }:any) => {
     return (
         <AlertDialog>
-            <AlertDialogTrigger>Delete</AlertDialogTrigger>
+            <AlertDialogTrigger className="hover:text-red-400">Delete</AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -24,7 +23,7 @@ export const DeleteDataButton = ({ id }:any) => {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <form action={deleteRecord}>
+                <form action={action}>
                     <input type="hidden" name="id" value={id} />
                     <AlertDialogAction type="submit">Continue</AlertDialogAction>
                 </form>

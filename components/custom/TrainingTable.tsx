@@ -23,9 +23,10 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
-import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySeven } from "@/lib/db"
+import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySeven, deleteTrainingRow } from "@/lib/db"
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
+import { DeleteDataButton } from "./DeleteDataButton"
 
 export const TrainingTable = ({ session, exercise, data, title }:any) => {
   return (
@@ -73,6 +74,9 @@ export const TrainingTable = ({ session, exercise, data, title }:any) => {
                       {row.fiveBySeven ? <IoCheckmarkOutline className="text-green-600" /> : <RxCross1 className="text-red-600" />}
                     </button>  
                   </form>
+                </TableCell>
+                <TableCell className="bg-blue-900 text-white">
+                  <DeleteDataButton id={row.id} action={deleteTrainingRow} />
                 </TableCell>
               </TableRow>
             ))}
