@@ -3,7 +3,6 @@ import { DeleteDataButton } from "./DeleteDataButton"
 import { deleteGoal } from "@/lib/db"
 
 export const ListGoals = ({ goals, dailyLogs, training }:any) => {
-
   return (
     <div>
       <ul>
