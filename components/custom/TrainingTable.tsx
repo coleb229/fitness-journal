@@ -30,7 +30,7 @@ import { DeleteDataButton } from "./DeleteDataButton"
 
 export const TrainingTable = ({ session, exercise, data, title }:any) => {
   return (
-    <Card>
+    <Card className="shadow-2xl">
       <CardHeader>
         <CardTitle>{title}</CardTitle>
       </CardHeader>
