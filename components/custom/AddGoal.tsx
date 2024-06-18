@@ -27,19 +27,26 @@ export const AddGoal = () => {
           <DialogTitle>What goal are we setting?</DialogTitle>
           <DialogDescription>
             <form action={addGoal}>
-              <Label htmlFor="goal">Goal</Label>
-              <Select name="goal">
-                <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Select Goal" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="lose">Lose weight</SelectItem>
-                  <SelectItem value="gain">Gain weight</SelectItem>
-                </SelectContent>
-                <Label htmlFor="target">Target</Label>
-                <Input type="number" name="target" id="target" />
-              </Select>
-              <Button type="submit" className="bg-black text-white">Submit</Button>
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                <div>
+                  <Label htmlFor="goal">Goal</Label>
+                  <Select name="goal">
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Select Goal" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="lose">Lose weight</SelectItem>
+                      <SelectItem value="gain">Gain weight</SelectItem>
+                      <SelectItem value="bench">Bench weight</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="target">Target</Label>
+                  <Input type="number" name="target" id="target" />
+                </div>
+              </div>
+              <Button type="submit" className="bg-black text-white ml-auto">Submit</Button>
             </form>
           </DialogDescription>
         </DialogHeader>

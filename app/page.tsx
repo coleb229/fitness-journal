@@ -42,6 +42,15 @@ export default async function Home() {
     }
   })
 
+  const training = await prisma.training.findMany({
+    where: {
+      user: session?.user?.email as string,
+    },
+    orderBy: {
+      weight: 'asc'
+    }
+  })
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="w-full grid grid-cols-2">
@@ -53,7 +62,7 @@ export default async function Home() {
             <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
             <AddGoal />
           </div>
-          <ListGoals goals={goals} dailyLogs={dailyLogs} />
+          <ListGoals goals={goals} dailyLogs={dailyLogs} training={training} />
         </div>
       </div>
       <p className="font-bold py-4">In Progress</p>
