@@ -18,7 +18,14 @@ import {
 import { Button } from "@/components/ui/button"
 import { addGoal } from "@/lib/db"
 
-export const AddGoal = () => {
+export const AddGoal = ({ dailyLogs, training }:any) => {
+  const benchCheck = training.filter((t:any) => t.exercise === 'benchPress')
+  const overheadPressCheck = training.filter((t:any) => t.exercise === 'overheadPress')
+  const deadliftCheck = training.filter((t:any) => t.exercise === 'deadlift')
+  const pullupCheck = training.filter((t:any) => t.exercise === 'pullup')
+  const squatCheck = training.filter((t:any) => t.exercise === 'squat')
+  const curlCheck = training.filter((t:any) => t.exercise === 'curl')
+
   return (
     <Dialog>
       <DialogTrigger className="font-bold bg-white mr-4 my-4 text-xl px-4 py-2 border hover:bg-black hover:rounded-lg hover:text-white hover:scale-125 duration-200">+</DialogTrigger>
@@ -35,14 +42,14 @@ export const AddGoal = () => {
                       <SelectValue placeholder="Select Goal" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="lose">Lose weight</SelectItem>
-                      <SelectItem value="gain">Gain weight</SelectItem>
-                      <SelectItem value="bench">Bench weight</SelectItem>
-                      <SelectItem value="overheadPress">Overhead Press weight</SelectItem>
-                      <SelectItem value="deadlift">Deadlift weight</SelectItem>
-                      <SelectItem value="pullup">Pullup weight</SelectItem>
-                      <SelectItem value="squat">Squat weight</SelectItem>
-                      <SelectItem value="curl">Curl weight</SelectItem>
+                      {dailyLogs.length === 0 ? null : <SelectItem value="lose">Lose weight</SelectItem>}
+                      {dailyLogs.length === 0 ? null : <SelectItem value="gain">Gain weight</SelectItem>}
+                      {benchCheck.length === 0 ? null : <SelectItem value="bench">Bench weight</SelectItem>}
+                      {overheadPressCheck.length === 0 ? null : <SelectItem value="overheadPress">Overhead Press weight</SelectItem>}
+                      {deadliftCheck.length === 0 ? null : <SelectItem value="deadlift">Deadlift weight</SelectItem>}
+                      {pullupCheck.length === 0 ? null : <SelectItem value="pullup">Pullup weight</SelectItem>}
+                      {squatCheck.length === 0 ? null : <SelectItem value="squat">Squat weight</SelectItem>}
+                      {curlCheck.length === 0 ? null : <SelectItem value="curl">Curl weight</SelectItem>}
                     </SelectContent>
                   </Select>
                 </div>

@@ -70,7 +70,7 @@ export default async function Home() {
         <div className="px-20 h-[400px] overflow-auto">
           <div className="flex items-center justify-center border-b-2 mb-2">
             <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
-            {dailyLogs.length === 0 || training.length === 0 ? <p className="text-red-500">You need to add a daily log and a training log before you can add a goal</p> : <AddGoal />}
+            {dailyLogs.length === 0 && training.length === 0 ? <p className="text-red-500">You need to add a daily log and a training log before you can add a goal</p> : <AddGoal dailyLogs={dailyLogs} training={training} />}
           </div>
           <ListGoals goals={goals} dailyLogs={dailyLogs} training={training} />
         </div>

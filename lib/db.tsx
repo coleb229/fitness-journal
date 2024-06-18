@@ -340,22 +340,18 @@ export const addGoal = async (formData: any) => {
         const goal = formData.get('goal');
         const target = parseInt(formData.get('target'));
 
-        if (await prisma.dailyLog.findFirst({where: {user: email as string}}) && await prisma.training.findFirst({where: {user: email as string}})) {
-            const record = await prisma.goal.create({
-                data: {
-                    goal,
-                    target,
-                    user: email as string,
-                },
-            });
+        const record = await prisma.goal.create({
+            data: {
+                goal,
+                target,
+                user: email as string,
+            },
+        });
 
-            // Revalidate the path to ensure the cache is updated
-            revalidatePath('/');
-    
-            return { message: 'Record created successfully.', record };
-        } else {
-            return { message: 'Please log a diet and training record first.' };
-        }
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/');
+
+        return { message: 'Record created successfully.', record };
 
     } catch (error) {
         console.error('Error creating record:', error);
