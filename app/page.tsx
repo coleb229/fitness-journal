@@ -57,7 +57,7 @@ export default async function Home() {
         <div>
           <GraphCarousel data={dailyLogs} />
         </div>
-        <div className="mx-20">
+        <div className="mx-20 h-[400px] overflow-auto">
           <div className="flex items-center justify-center border-b-2 mb-2">
             <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
             <AddGoal />
