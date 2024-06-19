@@ -17,20 +17,25 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import Image from "next/image"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 export const WorkoutGuide = ({ data }:any) => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger className="hover:shadow-xl">
         <WorkoutGuideCard data={data} />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            {data.instructions.map((instruction:any, index:number) => (
-              <p key={index}>{instruction}</p>
-            ))}
+            <Image src={`/images/workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} />
+            <ol>
+              {data.instructions.map((instruction:any, index:number) => (
+                <li key={index}>{instruction}</li>
+              ))}
+            </ol>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -44,13 +49,13 @@ export const WorkoutGuide = ({ data }:any) => {
 
 const WorkoutGuideCard = ({ data }:any) => {
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
         <CardTitle>{data.title}</CardTitle>
         <CardDescription>Targets the {data.target}</CardDescription>
       </CardHeader>
-      <CardContent>
-        <p>image placeholder</p>
+      <CardContent className="flex justify-center items-center">
+        <Image src={`/images/workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} />
       </CardContent>
     </Card>
   )

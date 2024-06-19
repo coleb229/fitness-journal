@@ -4,6 +4,7 @@ export const workouts = [
   {
     id: 1,
     title: "Bench Press",
+    name: "benchPress",
     description: "This is a beginner workout guide",
     instructions: [
       "Lay on the bench",
@@ -16,6 +17,7 @@ export const workouts = [
   {
     id: 2,
     title: "Deadlift",
+    name: "deadlift",
     description: "This is a beginner workout guide",
     instructions: [
       "Stand with feet shoulder width apart",
@@ -27,6 +29,7 @@ export const workouts = [
   {
     id: 3,
     title: "Squat",
+    name: "squat",
     description: "This is a beginner workout guide",
     instructions: [
       "Stand with feet shoulder width apart",
@@ -38,6 +41,7 @@ export const workouts = [
   {
     id: 4,
     title: "Overhead Press",
+    name: "overheadPress",
     description: "This is a beginner workout guide",
     instructions: [
       "Stand with feet shoulder width apart",
@@ -48,6 +52,7 @@ export const workouts = [
   {
     id: 5,
     title: "Pullup",
+    name: "pullup",
     description: "This is a beginner workout guide",
     instructions: [
       "Hang from the bar",
@@ -58,6 +63,7 @@ export const workouts = [
   {
     id: 6,
     title: "Curl",
+    name: "curl",
     description: "This is a beginner workout guide",
     instructions: [
       "Stand with feet shoulder width apart",
@@ -68,6 +74,7 @@ export const workouts = [
   {
     id: 7,
     title: "Dips",
+    name: "dips",
     description: "This is a beginner workout guide",
     instructions: [
       "Hang from the bar",
@@ -79,6 +86,7 @@ export const workouts = [
   {
     id: 8,
     title: "Leg Press",
+    name: "legPress",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the leg press machine",
@@ -89,6 +97,7 @@ export const workouts = [
   {
     id: 9,
     title: "Leg Curl",
+    name: "legCurl",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the leg curl machine",
@@ -99,6 +108,7 @@ export const workouts = [
   {
     id: 10,
     title: "Leg Extension",
+    name: "legExtension",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the leg extension machine",
@@ -109,6 +119,7 @@ export const workouts = [
   {
     id: 11,
     title: "Lat Pulldown",
+    name: "latPulldown",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the lat pulldown machine",
@@ -119,6 +130,7 @@ export const workouts = [
   {
     id: 12,
     title: "Seated Row",
+    name: "seatedRow",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the row machine",
@@ -129,6 +141,7 @@ export const workouts = [
   {
     id: 13,
     title: "Chest Press",
+    name: "chestPress",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the chest press machine",
@@ -138,17 +151,19 @@ export const workouts = [
   },
   {
     id: 14,
-    title: "Shoulder Press",
+    title: "Shoulder Fly",
+    name: "shoulderFly",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the shoulder press machine",
-      "Push the weight above your head"
+      "Grab the dumbbells",
+      "Extend your arms to a flying pose"
     ],
     target: "delts",
   },
   {
     id: 15,
     title: "Tricep Extension",
+    name: "tricepExtension",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the tricep extension machine",
@@ -158,10 +173,11 @@ export const workouts = [
   },
   {
     id: 16,
-    title: "Bicep Curl",
+    title: "Preacher Curl",
+    name: "preacherCurl",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the bicep curl machine",
+      "Sit on the preacher curl machine",
       "Curl the weight up"
     ],
     target: "biceps",
@@ -169,6 +185,7 @@ export const workouts = [
   {
     id: 17,
     title: "Leg Raise",
+    name: "legRaise",
     description: "This is a beginner workout guide",
     instructions: [
       "Hang from the bar",
@@ -179,6 +196,7 @@ export const workouts = [
   {
     id: 18,
     title: "Crunch",
+    name: "crunch",
     description: "This is a beginner workout guide",
     instructions: [
       "Lay on the floor",
@@ -189,6 +207,7 @@ export const workouts = [
   {
     id: 19,
     title: "Russian Twist",
+    name: "russianTwist",
     description: "This is a beginner workout guide",
     instructions: [
       "Sit on the floor",
@@ -199,6 +218,7 @@ export const workouts = [
   {
     id: 20,
     title: "Plank",
+    name: "plank",
     description: "This is a beginner workout guide",
     instructions: [
       "Lay on the floor",
@@ -209,6 +229,7 @@ export const workouts = [
   {
     id: 21,
     title: "Side Plank",
+    name: "sidePlank",
     description: "This is a beginner workout guide",
     instructions: [
       "Lay on the floor",
@@ -218,12 +239,13 @@ export const workouts = [
   },
   {
     id: 22,
-    title: "Back Extension",
+    title: "Chest Fly",
+    name: "chestFly",
     description: "This is a beginner workout guide",
     instructions: [
-      "Lay on the back extension machine",
-      "Extend your back",
+      "Sit on the chest fly machine",
+      "Extend your arms"
     ],
-    target: "back",
+    target: "chest",
   },
 ]
