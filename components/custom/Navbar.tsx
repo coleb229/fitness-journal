@@ -53,6 +53,8 @@ const NavMenu = () => {
           <NavigationMenuTrigger className="text-lg bg-slate-100">Tools</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/tool/bmr" name="BMR Calculator" />
+            <NavMenuLink href="/tool/macros" name="Macros Calculator" />
+            <NavMenuLink href="/tool/workout-guides" name="Workout Guides" />
             <NavMenuLink href="/tool/workout-planner" name="Workout Planner" />
           </NavigationMenuContent>
         </NavigationMenuItem>
