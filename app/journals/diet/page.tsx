@@ -47,7 +47,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <FormDrawer preferences={preferences} />
-      <OutputTable data={dailyLogs} />
+      <OutputTable data={dailyLogs} targets={preferences} />
     </main>
   );
 }

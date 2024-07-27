@@ -12,7 +12,7 @@ import { FaLongArrowAltDown } from "react-icons/fa";
 import { DeleteDataButton } from "./DeleteDataButton";
 import { deleteRecord } from "@/lib/db";
 
-export const OutputTable = ({ data }:any) => {
+export const OutputTable = ({ data, targets }:any) => {
     return (
         <Table>
             <TableCaption>Daily fitness chart</TableCaption>
@@ -26,10 +26,22 @@ export const OutputTable = ({ data }:any) => {
                     <TableHead className="text-white pl-2 pr-0">Abs</TableHead>
                     <TableHead className="text-white pl-2 pr-0">Cardio</TableHead>
                     <TableHead className="text-white pl-2 pr-0">Training</TableHead>
-                    <TableHead className="text-white pl-2 pr-0">Target Fat</TableHead>
-                    <TableHead className="text-white pl-2 pr-0">Target Protein</TableHead>
-                    <TableHead className="text-white pl-2 pr-0">Target Carbs</TableHead>
-                    <TableHead className="text-white pl-2 pr-0">Target Kcal</TableHead>
+                    <TableHead className="text-white pl-2 pr-0">
+                        Target Fat
+                        <p className="text-sm font-normal text-center text-red-500">{targets.tFat}</p>
+                    </TableHead>
+                    <TableHead className="text-white pl-2 pr-0">
+                        Target Protein
+                        <p className="text-sm font-normal text-center text-red-500">{targets.tProtein}</p>
+                    </TableHead>
+                    <TableHead className="text-white pl-2 pr-0">
+                        Target Carbs
+                        <p className="text-sm font-normal text-center text-red-500">{targets.tCarbs}</p>
+                    </TableHead>
+                    <TableHead className="text-white pl-2 pr-0">
+                        Target Kcal
+                        <p className="text-sm font-normal text-center text-red-500">{targets.tCalories}</p>
+                    </TableHead>
                     <TableHead className="text-white pl-2 pr-0">Body Weight</TableHead>
                     <TableHead className="text-white pl-2 pr-0">Notes</TableHead>
                 </TableRow>
