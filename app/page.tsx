@@ -7,13 +7,16 @@ import { GraphCarousel } from "@/components/custom/Carousel";
 import { AddGoal } from "@/components/custom/AddGoal";
 import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
+import { tester } from "./data/tester";
 
 export default async function Home() {
 
   const session = await getServerSession(authOptions);
-  const user = session?.user?.email;
+  let user
   if(!session) {
-    redirect('/api/auth/signin')
+    user = tester.email
+  } else {
+    user = session?.user?.email
   }
 
   if(!await prisma.userPreferences.findUnique({
@@ -51,6 +54,8 @@ export default async function Home() {
       weight: 'asc'
     }
   })
+
+  console.log(session)
 
   const notifications = []
 
