@@ -3,13 +3,16 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { BmrCalculator } from "@/components/custom/BmrCalculator";
+import { tester } from "@/app/data/tester";
 
 export default async function Home() {
 
   const session = await getServerSession(authOptions);
-  const user = session?.user?.email;
+  let user
   if(!session) {
-    redirect('/api/auth/signin')
+    user = tester.email
+  } else {
+    user = session?.user?.email
   }
 
   return (

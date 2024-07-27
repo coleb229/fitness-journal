@@ -7,29 +7,33 @@ import { UserPreference, UpdateGoal } from "@/components/custom/UserPreferences"
 import { updateTargetFat, updateTargetProtein, updateTargetCarbs, updateTargetCalories } from "@/lib/db";
 import { UserStats } from "@/components/custom/UserStats";
 import { TooltipComponent } from "@/components/custom/Tooltip";
+import { tester } from "../data/tester";
 
 export default async function Home() {
 
   const session = await getServerSession(authOptions);
+  let user
   if(!session) {
-    redirect('/api/auth/signin')
+    user = tester.email
+  } else {
+    user = session?.user?.email
   }
 
   const preferences = await prisma.userPreferences.findUnique({
     where: {
-      user: session?.user?.email as string
+      user: user as string
     }
   })
 
   const dietData = await prisma.dailyLog.findMany({
     where: {
-      user: session?.user?.email as string
+      user: user as string
     }
   })
 
   const trainingData = await prisma.training.findMany({
     where: {
-      user: session?.user?.email as string
+      user: user as string
     }
   })
 

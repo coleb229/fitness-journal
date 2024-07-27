@@ -5,13 +5,16 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { WeightLineGraph, FatLineGraph, ProteinLineGraph, CarbsLineGraph } from "@/components/custom/LineGraph";
 import { GraphCollapsible } from "@/components/custom/GraphCollapsible";
+import { tester } from "@/app/data/tester";
 
 export default async function Home() {
 
   const session = await getServerSession(authOptions);
-  const user = session?.user?.email;
+  let user
   if(!session) {
-    redirect('/api/auth/signin')
+    user = tester.email
+  } else {
+    user = session?.user?.email
   }
 
   const dailyLogs = await prisma.dailyLog.findMany({

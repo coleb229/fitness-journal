@@ -25,7 +25,7 @@ export const Navbar = ({ user }:any) => {
 const UserDropdown = ({ user }:any) => {
   return (
     <div className="flex">
-      <h1 className="text-lg">Hello {user} </h1>
+      <h1 className="text-lg">Hello {user === undefined ? 'Tester' : user} </h1>
       <DropdownMenu>
         <DropdownMenuTrigger><b className="text-xl ml-2">↴</b></DropdownMenuTrigger>
         <DropdownMenuContent>
