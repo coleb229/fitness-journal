@@ -7,7 +7,12 @@ import { authOptions } from "@/lib/auth"
 export const createRecord = async (formData: any) => {
     try {
         const session = await getServerSession(authOptions);
-        const email = session?.user?.email;
+        let email
+        if(!session) {
+            email = 'test@test.com'
+        } else {
+            email = session?.user?.email
+        }
         // Extract form data and convert to appropriate types
         const date = formData.get('date');
         const calories = parseInt(formData.get('calories'));

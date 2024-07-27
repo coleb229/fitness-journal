@@ -32,7 +32,7 @@ const UserDropdown = ({ user }:any) => {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem><a href="/user" className="hover:text-slate-500">Profile</a></DropdownMenuItem>
-          <DropdownMenuItem><a href="/api/auth/signout" className="hover:text-slate-500">Logout</a></DropdownMenuItem>
+          {user === undefined ? <DropdownMenuItem><a href="/api/auth/signin" className="hover:text-slate-500">Login</a></DropdownMenuItem> : <DropdownMenuItem><a href="/api/auth/signout" className="hover:text-slate-500">Logout</a></DropdownMenuItem>}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
