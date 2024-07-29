@@ -45,21 +45,21 @@ const Goal = ({ goal, dailyLogs, training }:any) => {
         target = goal.target - start
         break
       case 'bench':
-        header = 'Bench ' + goal.target + ' lbs'
+        header = 'Bench ' + goal.target + ' lbs 10x3'
         start = bench[0].weight
         end = bench[bench.length - 1].weight
         progress = end - start
         target = goal.target - start
         break
       case 'overheadPress':
-        header = 'Overhead Press ' + goal.target + ' lbs'
+        header = 'Overhead Press ' + goal.target + ' lbs 10x3'
         start = overheadPress[0].weight
         end = overheadPress[overheadPress.length - 1].weight
         progress = end - start
         target = goal.target - start
         break
       case 'deadlift':
-        header = 'Deadlift ' + goal.target + ' lbs'
+        header = 'Deadlift ' + goal.target + ' lbs 10x3'
         start = deadlift[0].weight
         end = deadlift[deadlift.length - 1].weight
         progress = end - start
@@ -73,14 +73,14 @@ const Goal = ({ goal, dailyLogs, training }:any) => {
         target = goal.target - start
         break
       case 'squat':
-        header = 'Squat ' + goal.target + ' lbs'
+        header = 'Squat ' + goal.target + ' lbs 10x3'
         start = squat[0].weight
         end = squat[squat.length - 1].weight
         progress = end - start
         target = goal.target - start
         break
       case 'curl':
-        header = 'Curl ' + goal.target + ' lbs'
+        header = 'Curl ' + goal.target + ' lbs 10x3'
         start = curl[0].weight
         end = curl[curl.length - 1].weight
         progress = end - start
