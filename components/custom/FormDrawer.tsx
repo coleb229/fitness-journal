@@ -105,7 +105,7 @@ const Form = ({ preferences }:any) => {
             <input type="text" hidden name="tCalories" value={preferences.tCalories} />
             <div className="lg:col-span-2">
                 <Label>Weight</Label>
-                <Input name="weight" type="number" defaultValue={0} />
+                <Input name="weight" type="decimal" defaultValue={0} />
             </div>
             <div className="lg:col-span-2">
                 <Label>Notes</Label>
