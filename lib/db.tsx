@@ -26,7 +26,7 @@ export const createRecord = async (formData: any) => {
         const tProtein = parseInt(formData.get('tProtein'));
         const tCarbs = parseInt(formData.get('tCarbs'));
         const tCalories = parseInt(formData.get('tCalories'));
-        const weight = parseInt(formData.get('weight'));
+        const weight = parseFloat(formData.get('weight'));
         const notes = formData.get('notes');
 
         const record = await prisma.dailyLog.create({
