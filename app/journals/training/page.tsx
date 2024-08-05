@@ -58,6 +58,8 @@ export default async function Home() {
     }
   });
 
+  //need to add a way to swap between different exercises and store them in user preferences
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="grid grid-cols-3 gap-6">
