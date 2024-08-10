@@ -8,6 +8,7 @@ import { AddGoal } from "@/components/custom/AddGoal";
 import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
+import { getUserPreferences } from "@/lib/db";
 
 export default async function Home() {
 
@@ -55,7 +56,16 @@ export default async function Home() {
     }
   })
 
+  const goal = await prisma.goal.findMany({
+    where: {
+      user: session?.user?.email as string,
+      goal: 'lose'
+    }
+  })
+  const weightGoal = goal[0]?.target
+
   console.log(session)
+  console.log(weightGoal)
 
   const notifications = []
 
@@ -70,7 +80,7 @@ export default async function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <div className="w-full grid grid-cols-2">
         <div>
-          <GraphCarousel data={dailyLogs} />
+          <GraphCarousel data={dailyLogs} goal={weightGoal} />
         </div>
         <div className="px-20 h-[400px] overflow-auto">
           <div className="flex items-center justify-center border-b-2 mb-2">

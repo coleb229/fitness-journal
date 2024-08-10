@@ -61,4 +61,6 @@ model Goal {
   user   String
   goal   String
   target Int
+
+  @@unique([user, goal])
 }
