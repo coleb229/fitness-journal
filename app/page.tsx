@@ -9,6 +9,7 @@ import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
 import { getUserPreferences } from "@/lib/db";
+import { start } from "repl";
 
 export default async function Home() {
 
@@ -63,10 +64,24 @@ export default async function Home() {
     }
   })
   const weightGoal = goal[0]?.target
+/*
+  const calculateWeightLossRate = () => {
+    let startDate = dailyLogs[0].date.toDateString()
+    let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
+    startDate = startDate.split(' ').slice(1, 4).join(' ')
+    endDate = endDate.split(' ').slice(1, 4).join(' ')
+    const startWeight = dailyLogs[0].weight
+    const endWeight = dailyLogs[dailyLogs.length - 1].weight
 
-  console.log(session)
-  console.log(weightGoal)
+    const days = Math.floor((parseInt(endDate) - parseInt(startDate)) / 86400000)
+    const weightLoss = startWeight - endWeight
+    const weightLossRate = weightLoss / days
 
+    return weightLossRate
+  }
+  console.log(calculateWeightLossRate())
+  const weightLossRate = calculateWeightLossRate()
+*/
   const notifications = []
 
   if(dailyLogs.length === 0) {

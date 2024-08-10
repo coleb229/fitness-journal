@@ -14,7 +14,7 @@ export const ListGoals = ({ goals, dailyLogs, training }:any) => {
   )
 }
 
-const Goal = ({ goal, dailyLogs, training }:any) => {
+const Goal = ({ goal, dailyLogs, training, rate }:any) => {
 
     let start = dailyLogs[0].weight
     let end = dailyLogs[dailyLogs.length - 1].weight
@@ -98,6 +98,7 @@ const Goal = ({ goal, dailyLogs, training }:any) => {
         </p>
         <DeleteDataButton id={goal.id} action={deleteGoal} />
       </div>
+      <p>{rate}</p>
       <p className="text-right">{percentage.toFixed(2) + '%'}</p>
       <div className="flex items-center mb-4">
         <p className="pr-2">{start}</p>

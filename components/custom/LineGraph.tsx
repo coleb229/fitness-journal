@@ -1,7 +1,7 @@
 'use client'
 import { ResponsiveLine } from '@nivo/line'
 
-export const WeightLineGraph = ({ data, goal }:any) => {
+export const WeightLineGraph = ({ data, goal, rate }:any) => {
 
     const formattedData = transformWeightData(data);
     const goalWeight = goal.target;

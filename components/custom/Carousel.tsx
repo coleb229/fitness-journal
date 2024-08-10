@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel"
 import { WeightLineGraph, FatLineGraph, ProteinLineGraph, CarbsLineGraph } from "./LineGraph"
 
-export const GraphCarousel = ({ data, goal }:any) => {
+export const GraphCarousel = ({ data, goal, rate }:any) => {
     if(data.length === 0) {
         return (
             <div>
