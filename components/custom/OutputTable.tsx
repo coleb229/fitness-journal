@@ -7,12 +7,20 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"  
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import { DeleteDataButton } from "./DeleteDataButton";
 import { deleteRecord } from "@/lib/db";
 
-export const OutputTable = ({ data, targets }:any) => {
+export const OutputTable = ({ data, targets, actions }:any) => {
     return (
         <Table>
             <TableCaption>Daily fitness chart</TableCaption>
@@ -53,24 +61,32 @@ export const OutputTable = ({ data, targets }:any) => {
                     <TableRow key={record.id}>
                         <TableCell className="bg-slate-600 text-white pl-2 pr-0">{record.date.toString()}</TableCell>
                         <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <div className="flex">
-                                {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                            </div>
+                            <EditButton id={record.id} action={actions.editCalories} value='calories' defaultVal={record.calories}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                </div>
+                            </EditButton>
                         </TableCell>
                         <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <div className="flex">
-                                {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                            </div>
+                            <EditButton id={record.id} action={actions.editFat} value='fat' defaultVal={record.fat}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                </div>
+                            </EditButton>
                         </TableCell>
                         <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <div className="flex">
-                                {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                            </div>
+                            <EditButton id={record.id} action={actions.editProtein} value='protein' defaultVal={record.protein}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                </div>
+                            </EditButton>
                         </TableCell>
                         <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <div className="flex">
-                                {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                            </div>
+                            <EditButton id={record.id} action={actions.editCarbs} value='carbs' defaultVal={record.carbs}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                </div>
+                            </EditButton>
                         </TableCell>
                         <TableCell className='bg-cyan-400 pl-2 pr-0'>{record.abs ? 'yes' : 'no'}</TableCell>
                         <TableCell className='bg-cyan-400 pl-2 pr-0'>{record.cardio ? 'yes' : 'no'}</TableCell>
@@ -88,5 +104,27 @@ export const OutputTable = ({ data, targets }:any) => {
                 ))}
             </TableBody>
         </Table>
+    )
+}
+
+const EditButton = ({ id, action, children, value, defaultVal }:any) => {
+    return (
+        <Dialog>
+            <DialogTrigger className="w-full">
+                {children}
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                <DialogTitle>Edit Data</DialogTitle>
+                <DialogDescription>
+                    <form action={action}>
+                        <input type="hidden" name="id" value={id} />
+                        <input type="text" name={value} defaultValue={defaultVal} />
+                        <button type="submit">Submit</button>
+                    </form>
+                </DialogDescription>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
     )
 }

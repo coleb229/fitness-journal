@@ -17,7 +17,7 @@ export const Navbar = ({ user }:any) => {
     <div className="flex justify-between items-center bg-slate-100 px-10 fixed top-0 w-screen shadow-md z-50">
       <NavMenu />
       <UserDropdown user={user} />
-      <Link href='/'>Home</Link>
+      <Link href='/' className="text-xl hover:scale-110 duration-100">Home</Link>
     </div> 
   )
 }

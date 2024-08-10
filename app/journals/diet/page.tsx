@@ -44,10 +44,61 @@ export default async function Home() {
     }
   })
 
+  const actions = {
+    editCalories: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          calories: parseInt(formData.get('calories'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editFat: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          fat: parseInt(formData.get('fat'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editProtein: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          protein: parseInt(formData.get('protein'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editCarbs: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          carbs: parseInt(formData.get('carbs'))
+        }
+      })
+      redirect('/journals/diet')
+    }
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <FormDrawer preferences={preferences} />
-      <OutputTable data={dailyLogs} targets={preferences} />
+      <OutputTable data={dailyLogs} targets={preferences} actions={actions} />
     </main>
   );
 }
