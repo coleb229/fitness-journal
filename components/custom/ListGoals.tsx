@@ -2,12 +2,12 @@ import { Progress } from "@/components/ui/progress"
 import { DeleteDataButton } from "./DeleteDataButton"
 import { deleteGoal } from "@/lib/db"
 
-export const ListGoals = ({ goals, dailyLogs, training }:any) => {
+export const ListGoals = ({ goals, dailyLogs, training, rate }:any) => {
   return (
     <div>
       <ul>
         {goals.map((goal:any) => (
-          <Goal key={goal.id} goal={goal} dailyLogs={dailyLogs} training={training} />
+          <Goal key={goal.id} goal={goal} dailyLogs={dailyLogs} training={training} rate={rate} />
         ))}
       </ul>
     </div>
@@ -21,6 +21,7 @@ const Goal = ({ goal, dailyLogs, training, rate }:any) => {
     let progress = start - end
     let target = start - goal.target
     let header = ''
+    let weightLossRate = ''
 
     const bench = training.filter((t:any) => t.exercise === 'benchPress')
     const overheadPress = training.filter((t:any) => t.exercise === 'overheadPress')
@@ -96,9 +97,9 @@ const Goal = ({ goal, dailyLogs, training, rate }:any) => {
         <p className="p-2 font-semibold text-cyan-500 italic">
           {header}
         </p>
+        {goal.goal === 'lose' && rate !== '' ? <p className="p-2 font-semibold text-red-500 italic">{rate} lbs/week</p> : null}
         <DeleteDataButton id={goal.id} action={deleteGoal} />
       </div>
-      <p>{rate}</p>
       <p className="text-right">{percentage.toFixed(2) + '%'}</p>
       <div className="flex items-center mb-4">
         <p className="pr-2">{start}</p>
