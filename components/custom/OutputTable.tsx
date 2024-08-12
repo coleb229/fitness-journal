@@ -19,6 +19,9 @@ import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import { DeleteDataButton } from "./DeleteDataButton";
 import { deleteRecord } from "@/lib/db";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+
 
 export const OutputTable = ({ data, targets, actions }:any) => {
     return (
@@ -117,10 +120,11 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
                 <DialogHeader>
                 <DialogTitle>Edit Data</DialogTitle>
                 <DialogDescription>
-                    <form action={action}>
+                    <form action={action} className="mt-4">
                         <input type="hidden" name="id" value={id} />
-                        <input type="text" name={value} defaultValue={defaultVal} />
-                        <button type="submit">Submit</button>
+                        <Label htmlFor={value} className="">Change Value:</Label>
+                        <Input type="text" name={value} defaultValue={defaultVal} className="border-[1px]" />
+                        <button type="submit" className="text-center text-white bg-black w-3/4 ml-auto py-2 my-2 hover:rounded-lg duration-150">Submit</button>
                     </form>
                 </DialogDescription>
                 </DialogHeader>
