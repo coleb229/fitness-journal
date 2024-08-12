@@ -68,8 +68,8 @@ export default async function Home() {
 //   !!! NEED TO CONVERT DATE STRING TO A NUMBER VALUE TO CALCULATE WEIGHT LOSS RATE !!!
 //   done
   const calculateWeightLossRate = () => {
-    // formats end date string to a number value
-
+    const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    // formats start date string to a number value
     let startDate = dailyLogs[0].date.toDateString()
     let startDateMonth = startDate.slice(4, 7)
     switch(startDateMonth) {
