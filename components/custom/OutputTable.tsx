@@ -143,7 +143,7 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                                 </div>
                             </EditButton>
                         </TableCell>
-                        <TableCell>
+                        <TableCell className="hover:text-white hover:bg-black hover:rounded-r-xl duration-150">
                             <DeleteDataButton id={record.id} action={deleteRecord} />
                         </TableCell>
                     </TableRow>
