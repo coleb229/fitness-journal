@@ -1,3 +1,4 @@
+'use client'
 import {
     Table,
     TableBody,
@@ -15,18 +16,30 @@ import {
     DialogTitle,
     DialogTrigger,
   } from "@/components/ui/dialog"  
+  import {
+    Pagination,
+    PaginationContent,
+    PaginationEllipsis,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+  } from "@/components/ui/pagination"  
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import { DeleteDataButton } from "./DeleteDataButton";
 import { deleteRecord } from "@/lib/db";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useSearchParams } from "next/navigation";
 
 
-export const OutputTable = ({ data, targets, actions }:any) => {
+export const OutputTable = ({ data, targets, actions, fullData }:any) => {
     return (
         <Table>
-            <TableCaption>Daily fitness chart</TableCaption>
+            <TableCaption>
+                <PaginationControls />
+            </TableCaption>
             <TableHeader>
                 <TableRow className="text-md bg-slate-600 hover:bg-slate-600">
                     <TableHead className="text-white pl-2 pr-0">Date</TableHead>
@@ -130,5 +143,33 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
                 </DialogHeader>
             </DialogContent>
         </Dialog>
+    )
+}
+
+const PaginationControls = ({}) => {
+
+    const searchParams = useSearchParams()
+
+    const page = searchParams.get('page') ?? '1'
+    const per_page = searchParams.get('per_page') ?? '10'
+    return (
+        <Pagination>
+            <PaginationContent>
+                <PaginationItem>
+                <PaginationPrevious href={`/journals/diet/?page=${Number(page) - 1}&per_page=${per_page}`} />
+                </PaginationItem>
+                <PaginationItem>
+                <PaginationLink href="/journals/diet/#">
+                    {page}
+                </PaginationLink>
+                </PaginationItem>
+                <PaginationItem>
+                <PaginationEllipsis />
+                </PaginationItem>
+                <PaginationItem>
+                <PaginationNext href={`/journals/diet/?page=${Number(page) + 1}&per_page=${per_page}`} />
+                </PaginationItem>
+            </PaginationContent>
+        </Pagination>
     )
 }

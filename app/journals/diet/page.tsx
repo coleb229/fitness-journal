@@ -7,7 +7,11 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { tester } from "@/app/data/tester";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
 
   const session = await getServerSession(authOptions);
   let user
@@ -37,6 +41,14 @@ export default async function Home() {
       user: user as string
     }
   })
+
+  const page = searchParams['page'] ?? '1'
+  const per_page = searchParams['per_page'] ?? '10'
+
+  const start = (Number(page) - 1) * Number(per_page)
+  const end = start + Number(per_page)
+
+  const entries = dailyLogs.slice(start, end)
 
   const preferences = await prisma.userPreferences.findUnique({
     where: {
@@ -98,7 +110,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <FormDrawer preferences={preferences} />
-      <OutputTable data={dailyLogs} targets={preferences} actions={actions} />
+      <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} />
     </main>
   );
 }
