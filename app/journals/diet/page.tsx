@@ -42,6 +42,8 @@ export default async function Home({
     }
   })
 
+
+  // !!!PAGINATION!!!
   const page = searchParams['page'] ?? '1'
   const per_page = searchParams['per_page'] ?? '10'
 
@@ -104,7 +106,77 @@ export default async function Home({
         }
       })
       redirect('/journals/diet')
-    }
+    },
+    toggleAbs: async (formData:any) => {
+      'use server'
+      const log = await prisma.dailyLog.findUnique({
+        where: {
+          id: formData.get('id')
+        }
+      })
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          abs: log?.abs === true ? false : true
+        }
+      })
+      redirect('/journals/diet')
+    },
+    toggleCardio: async (formData:any) => {
+      'use server'
+      const log = await prisma.dailyLog.findUnique({
+        where: {
+          id: formData.get('id')
+        }
+      })
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          cardio: log?.cardio === true ? false : true
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editTraining: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          training: formData.get('training')
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editBodyWeight: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          weight: parseFloat(formData.get('weight'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editNotes: async (formData:any) => {
+      'use server'
+      await prisma.dailyLog.update({
+        where: {
+          id: formData.get('id')
+        },
+        data: {
+          notes: formData.get('notes')
+        }
+      })
+      redirect('/journals/diet')
+    },
   }
 
   return (

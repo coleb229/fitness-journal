@@ -104,15 +104,45 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                                 </div>
                             </EditButton>
                         </TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>{record.abs ? 'yes' : 'no'}</TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>{record.cardio ? 'yes' : 'no'}</TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>{record.training}</TableCell>
+                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                            <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.abs ? 'yes' : 'no'}
+                                </div>
+                            </ToggleButton>
+                        </TableCell>
+                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                            <ToggleButton id={record.id} action={actions.toggleCardio} value={record.cardio ? 'yes' : 'no'} defaultVal={record.cardio}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.cardio ? 'yes' : 'no'}
+                                </div>
+                            </ToggleButton>
+                        </TableCell>
+                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                            <EditButton id={record.id} action={actions.editTraining} value='training' defaultVal={record.training}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.training}
+                                </div>
+                            </EditButton>
+                        </TableCell>
                         <TableCell className="bg-red-400 pl-2 pr-0">{record.tFat}</TableCell>
                         <TableCell className="bg-red-400 pl-2 pr-0">{record.tProtein}</TableCell>
                         <TableCell className="bg-red-400 pl-2 pr-0">{record.tCarbs}</TableCell>
                         <TableCell className="bg-red-400 pl-2 pr-0">{record.tCalories}</TableCell>
-                        <TableCell className="bg-violet-400 pl-2 pr-0">{record.weight}</TableCell>
-                        <TableCell className="bg-purple-600 text-white pl-2 pr-0">{record.notes}</TableCell>
+                        <TableCell className="bg-violet-400 pl-2 pr-0">
+                            <EditButton id={record.id} action={actions.editBodyWeight} value='weight' defaultVal={record.weight}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.weight}
+                                </div>
+                            </EditButton>
+                        </TableCell>
+                        <TableCell className="bg-purple-600 text-white pl-2 pr-0">
+                            <EditButton id={record.id} action={actions.editNotes} value='training' defaultVal={record.notes}>
+                                <div className="flex hover:scale-125 duration-100 justify-center">
+                                    {record.notes}
+                                </div>
+                            </EditButton>
+                        </TableCell>
                         <TableCell>
                             <DeleteDataButton id={record.id} action={deleteRecord} />
                         </TableCell>
@@ -137,6 +167,28 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
                         <input type="hidden" name="id" value={id} />
                         <Label htmlFor={value} className="">Change Value:</Label>
                         <Input type="text" name={value} defaultValue={defaultVal} className="border-[1px]" />
+                        <button type="submit" className="text-center text-white bg-black w-3/4 ml-auto py-2 my-2 hover:rounded-lg duration-150">Submit</button>
+                    </form>
+                </DialogDescription>
+                </DialogHeader>
+            </DialogContent>
+        </Dialog>
+    )
+}
+
+const ToggleButton = ({ id, action, children, value, defaultVal }:any) => {
+    return (
+        <Dialog>
+            <DialogTrigger className="w-full">
+                {children}
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                <DialogTitle>Are you sure you want to toggle record for {id}?</DialogTitle>
+                <DialogDescription>
+                    <form action={action} className="mt-4">
+                        <input type="hidden" name="id" value={id} />
+                        <p>current value: {value}</p>
                         <button type="submit" className="text-center text-white bg-black w-3/4 ml-auto py-2 my-2 hover:rounded-lg duration-150">Submit</button>
                     </form>
                 </DialogDescription>
