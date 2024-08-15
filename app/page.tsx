@@ -68,96 +68,34 @@ export default async function Home() {
 //   !!! NEED TO CONVERT DATE STRING TO A NUMBER VALUE TO CALCULATE WEIGHT LOSS RATE !!!
 //   done
   const calculateWeightLossRate = () => {
-    const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    const monthMap = [
+      { name: 'Jan', value: 1 }, { name: 'Feb', value: 2 }, { name: 'Mar', value: 3 },
+      { name: 'Apr', value: 4 }, { name: 'May', value: 5 }, { name: 'Jun', value: 6 },
+      { name: 'Jul', value: 7 }, { name: 'Aug', value: 8 }, { name: 'Sep', value: 9 },
+      { name: 'Oct', value: 10 }, { name: 'Nov', value: 11 }, { name: 'Dec', value: 12 }
+    ];
+
     // formats start date string to a number value
     let startDate = dailyLogs[0].date.toDateString()
     let startDateMonth = startDate.slice(4, 7)
-    switch(startDateMonth) {
-      case 'Jan':
-        startDate = startDate.replace('Jan', '01')
-        break
-      case 'Feb':
-        startDate = startDate.replace('Feb', '02')
-        break
-      case 'Mar':
-        startDate = startDate.replace('Mar', '03')
-        break
-      case 'Apr':
-        startDate = startDate.replace('Apr', '04')
-        break
-      case 'May':
-        startDate = startDate.replace('May', '05')
-        break
-      case 'Jun':
-        startDate = startDate.replace('Jun', '06')
-        break
-      case 'Jul':
-        startDate = startDate.replace('Jul', '07')
-        break
-      case 'Aug':
-        startDate = startDate.replace('Aug', '08')
-        break
-      case 'Sep':
-        startDate = startDate.replace('Sep', '09')
-        break
-      case 'Oct':
-        startDate = startDate.replace('Oct', '10')
-        break
-      case 'Nov':
-        startDate = startDate.replace('Nov', '11')
-        break
-      case 'Dec':
-        startDate = startDate.replace('Dec', '12')
-        break
+    for(let i = 0; i < monthMap.length; i++) {
+      if(startDateMonth === monthMap[i].name) {
+        startDate = startDate.replace(startDateMonth, monthMap[i].value.toString())
+      }
     }
     startDate = startDate.slice(4, 15)
-    let startDateArray = startDate.split(' ')
+    console.log('Start Date: ' + startDate)
 
     // formats end date string to a number value
     let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
     let endDateMonth = endDate.slice(4, 7)
-    switch(endDateMonth) {
-      case 'Jan':
-        endDate = endDate.replace('Jan', '01')
-        break
-      case 'Feb':
-        endDate = endDate.replace('Feb', '02')
-        break
-      case 'Mar':
-        endDate = endDate.replace('Mar', '03')
-        break
-      case 'Apr':
-        endDate = endDate.replace('Apr', '04')
-        break
-      case 'May':
-        endDate = endDate.replace('May', '05')
-        break
-      case 'Jun':
-        endDate = endDate.replace('Jun', '06')
-        break
-      case 'Jul':
-        endDate = endDate.replace('Jul', '07')
-        break
-      case 'Aug':
-        endDate = endDate.replace('Aug', '08')
-        break
-      case 'Sep':
-        endDate = endDate.replace('Sep', '09')
-        break
-      case 'Oct':
-        endDate = endDate.replace('Oct', '10')
-        break
-      case 'Nov':
-        endDate = endDate.replace('Nov', '11')
-        break
-      case 'Dec':
-        endDate = endDate.replace('Dec', '12')
-        break
+    for(let i = 0; i < monthMap.length; i++) {
+      if(endDateMonth === monthMap[i].name) {
+        endDate = endDate.replace(endDateMonth, monthMap[i].value.toString())
+      }
     }
     endDate = endDate.slice(4, 15)
-    let endDateArray = endDate.split(' ')
     
-    console.log('Start Date: ' + startDate)
     console.log('End Date: ' + endDate)
 
     const startWeight = dailyLogs[0].weight
