@@ -2,14 +2,11 @@
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { GraphCarousel } from "@/components/custom/Carousel";
 import { AddGoal } from "@/components/custom/AddGoal";
 import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
-import { getUserPreferences } from "@/lib/db";
-import { useEffect, useState } from 'react';
 
 export default async function Home() {
 
@@ -95,27 +92,19 @@ export default async function Home() {
       }
     }
     endDate = endDate.slice(4, 15)
-    
-    console.log('End Date: ' + endDate)
 
     const startWeight = dailyLogs[0].weight
     const endWeight = dailyLogs[dailyLogs.length - 1].weight
 
-    let startDateDate = new Date(startDate)
-    let startTime = startDateDate.getTime()
-    let endDateDate = new Date(endDate)
-    let endTime = endDateDate.getTime()
+    const startTime = new Date(startDate).getTime()
+    const endTime = new Date(endDate).getTime()
+
     let timeDifference = endTime - startTime
-    let daysDifference = timeDifference / (1000 * 3600 * 24)
-    let weeksDifference = daysDifference / 7
-    console.log('Days: ' + daysDifference)
-    console.log('Weeks: ' + weeksDifference)
+    timeDifference = timeDifference / (1000 * 3600 * 24) / 7
 
     const weightLoss = startWeight - endWeight
-    const weightLossRate = weightLoss / weeksDifference
+    const weightLossRate = weightLoss / timeDifference
     const weightLossRateToFixed = weightLossRate.toFixed(2)
-
-    console.log('Rate: ' + weightLossRate)
 
     return weightLossRateToFixed
   }
