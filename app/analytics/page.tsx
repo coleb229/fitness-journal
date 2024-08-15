@@ -29,7 +29,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col p-24">
       <GraphCollapsible title="Weight Progress">
-        <WeightLineGraph data={dailyLogs} key='weight' />
+        <WeightLineGraph data={dailyLogs} key='weight' variant='analytics' />
       </GraphCollapsible>
       <GraphCollapsible title="Fat Intake">
         <FatLineGraph data={dailyLogs} key='weight' />

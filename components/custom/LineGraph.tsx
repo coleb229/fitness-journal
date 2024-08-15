@@ -1,10 +1,12 @@
 'use client'
 import { ResponsiveLine } from '@nivo/line'
 
-export const WeightLineGraph = ({ data, goal, rate }:any) => {
+export const WeightLineGraph = ({ data, goal, variant }:any) => {
 
     const formattedData = transformWeightData(data);
-    const goalWeight = goal.target;
+    if(variant !== 'analytics') {
+        const goalWeight = goal.target;
+    }
 
     return (
         <ResponsiveLine
@@ -13,7 +15,7 @@ export const WeightLineGraph = ({ data, goal, rate }:any) => {
             xScale={{ type: 'point' }}
             yScale={{
                 type: 'linear',
-                min: goal,
+                min: variant === 'analytics' ? 'auto' : goal,
                 max: 'auto',
                 stacked: true,
                 reverse: false
