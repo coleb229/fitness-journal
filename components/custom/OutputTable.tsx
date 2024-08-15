@@ -38,7 +38,7 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
     return (
         <Table>
             <TableCaption>
-                <PaginationControls />
+                <PaginationControls data={fullData} />
             </TableCaption>
             <TableHeader>
                 <TableRow className="text-md bg-slate-600 hover:bg-slate-600">
@@ -198,17 +198,20 @@ const ToggleButton = ({ id, action, children, value, defaultVal }:any) => {
     )
 }
 
-const PaginationControls = ({}) => {
+const PaginationControls = ({ data }:any) => {
 
     const searchParams = useSearchParams()
 
     const page = searchParams.get('page') ?? '1'
     const per_page = searchParams.get('per_page') ?? '10'
+    const start = 1
+    const end = data.length / Number(per_page)
+    
     return (
         <Pagination>
             <PaginationContent>
                 <PaginationItem>
-                <PaginationPrevious href={`/journals/diet/?page=${Number(page) - 1}&per_page=${per_page}`} />
+                    {Number(page) <= start ? null : <PaginationPrevious href={`/journals/diet/?page=${Number(page) - 1}&per_page=${per_page}`} />}
                 </PaginationItem>
                 <PaginationItem>
                 <PaginationLink href="/journals/diet/#">
@@ -219,7 +222,7 @@ const PaginationControls = ({}) => {
                 <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
-                <PaginationNext href={`/journals/diet/?page=${Number(page) + 1}&per_page=${per_page}`} />
+                    {Number(page) > end ? null : <PaginationNext href={`/journals/diet/?page=${Number(page) + 1}&per_page=${per_page}`} />}
                 </PaginationItem>
             </PaginationContent>
         </Pagination>
