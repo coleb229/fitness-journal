@@ -42,8 +42,6 @@ export default async function Home({
     }
   })
 
-  console.log(dailyLogs.length)
-
   // !!!PAGINATION!!!
   const page = searchParams['page'] ?? '1'
   const per_page = searchParams['per_page'] ?? '10'

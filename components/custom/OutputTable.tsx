@@ -32,7 +32,7 @@ import { deleteRecord } from "@/lib/db";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useSearchParams } from "next/navigation";
-
+import { ImPencil2 } from "react-icons/im";
 
 export const OutputTable = ({ data, targets, actions, fullData }:any) => {
     return (
@@ -121,7 +121,7 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                         <TableCell className='bg-cyan-400 pl-2 pr-0'>
                             <EditButton id={record.id} action={actions.editTraining} value='training' defaultVal={record.training}>
                                 <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.training}
+                                    {record.training !== '' ? record.training : <ImPencil2 />}
                                 </div>
                             </EditButton>
                         </TableCell>
@@ -139,7 +139,7 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                         <TableCell className="bg-purple-600 text-white pl-2 pr-0">
                             <EditButton id={record.id} action={actions.editNotes} value='training' defaultVal={record.notes}>
                                 <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.notes}
+                                    {record.notes !== '' ? record.notes : <ImPencil2 />}
                                 </div>
                             </EditButton>
                         </TableCell>
@@ -214,12 +214,12 @@ const PaginationControls = ({ data }:any) => {
                     {Number(page) <= start ? null : <PaginationPrevious href={`/journals/diet/?page=${Number(page) - 1}&per_page=${per_page}`} />}
                 </PaginationItem>
                 <PaginationItem>
-                <PaginationLink href="/journals/diet/#">
-                    {page}
-                </PaginationLink>
+                    <PaginationLink href="/journals/diet/#">
+                        {page}
+                    </PaginationLink>
                 </PaginationItem>
                 <PaginationItem>
-                <PaginationEllipsis />
+                    <PaginationEllipsis />
                 </PaginationItem>
                 <PaginationItem>
                     {Number(page) > end ? null : <PaginationNext href={`/journals/diet/?page=${Number(page) + 1}&per_page=${per_page}`} />}

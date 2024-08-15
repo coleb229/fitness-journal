@@ -81,7 +81,6 @@ export default async function Home() {
       }
     }
     startDate = startDate.slice(4, 15)
-    console.log('Start Date: ' + startDate)
 
     // formats end date string to a number value
     let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
