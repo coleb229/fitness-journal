@@ -33,8 +33,42 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useSearchParams } from "next/navigation";
 import { ImPencil2 } from "react-icons/im";
+import { useOptimistic } from "react";
+
+type DailyLog = {
+    id: number,
+    date: string,
+    calories: number,
+    fat: number,
+    protein: number,
+    carbs: number,
+    abs: boolean,
+    cardio: boolean,
+    training: string,
+    tFat: number,
+    tProtein: number,
+    tCarbs: number,
+    tCalories: number,
+    weight: number,
+    notes: string
+}
+
+type DailyLogProps = {
+    dailyLog: DailyLog[]
+}
 
 export const OutputTable = ({ data, targets, actions, fullData }:any) => {
+
+    const [ optimisticKcal, setOptimisticKcal ] = useOptimistic(data.calories)
+    const [ optimisticFat, setOptimisticFat ] = useOptimistic(data.fat)
+    const [ optimisticProtein, setOptimisticProtein ] = useOptimistic(data.protein)
+    const [ optimisticCarbs, setOptimisticCarbs ] = useOptimistic(data.carbs)
+    const [ optimisticAbs, setOptimisticAbs ] = useOptimistic(data.abs)
+    const [ optimisticCardio, setOptimisticCardio ] = useOptimistic(data.cardio)
+    const [ optimisticTraining, setOptimisticTraining ] = useOptimistic(data.training)
+    const [ optimisticWeight, setOptimisticWeight ] = useOptimistic(data.weight)
+    const [ optimisticNotes, setOptimisticNotes ] = useOptimistic(data.notes)
+
     return (
         <Table>
             <TableCaption>
