@@ -7,6 +7,7 @@ import { AddGoal } from "@/components/custom/AddGoal";
 import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home() {
 
@@ -79,7 +80,7 @@ export default async function Home() {
     // formats end date string to a number value
     let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
     let endDateMonth = endDate.slice(4, 7)
-    
+
     for(let i = 0; i < monthMap.length; i++) {
       if(startDateMonth === monthMap[i].name) {
         startDate = startDate.replace(startDateMonth, monthMap[i].value.toString())
@@ -121,7 +122,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-semibold mb-10">Dashboard</h1>
+      <PageHeader title="Dashboard" description="Take a glimpse at your overall fitness progress" url='/' />
       <div className="w-full grid grid-cols-2">
         <div>
           <GraphCarousel data={dailyLogs} goal={weightGoal} />

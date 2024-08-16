@@ -6,6 +6,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { tester } from "@/app/data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home({
   searchParams,
@@ -180,6 +181,7 @@ export default async function Home({
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <PageHeader title="Diet Journal" description="Track your daily nutrition intake" url='/journals/diet' />
       <FormDrawer preferences={preferences} />
       <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} />
     </main>
