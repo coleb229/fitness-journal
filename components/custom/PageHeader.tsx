@@ -34,7 +34,7 @@ const Trail = ({ url }:any) => {
             <BreadcrumbLink href={`/${crumbs.slice(0, index + 1).join('/')}`}>
               {crumb}
             </BreadcrumbLink>
-            <BreadcrumbSeparator />
+            <BreadcrumbSeparator/>
           </BreadcrumbItem>
         ))}
         <BreadcrumbPage>
