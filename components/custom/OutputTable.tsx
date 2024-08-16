@@ -33,7 +33,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { redirect, useSearchParams } from "next/navigation";
 import { ImPencil2 } from "react-icons/im";
-import { useOptimistic } from "react";
+import { useEffect, useOptimistic } from "react";
 import { useState } from "react";
 import prisma from "@/lib/prisma";
 
@@ -63,45 +63,29 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
 
     const [entries, setEntries] = useState(data)
 
-    const [optimisticEntries, updateOptimisticEntries] = useOptimistic(entries, (state, newEntry:DailyLog) => {
-        return state.map((entry: { id: any; }) => {
-          if (entry.id === newEntry.id) {
-            return newEntry;
-          }
-          return entry;
-        });
-    });
+    const [optimisticEntries, updateOptimisticEntries] = useOptimistic(
+        entries,
+        setEntries
+    )
 
-    const handleAbSwitch = async (formData:any) => {
-        const entry = optimisticEntries.find((entry: { id: any; }) => entry.id === formData.get('id'));
-        if (!entry) return;
+    const handleAbSwitch = (formData:any) => {
+        const index = optimisticEntries.findIndex((entry: any) => entry.id === formData.get('id'));
+        if (index === -1) return;  // Early exit if no matching entry is found.
     
-        const updatedTodo = { ...entry, abs: !entry.abs };
-    
-        // Optimistically update the UI
-        updateOptimisticEntries(updatedTodo);
-    
+        const updatedEntries = [...optimisticEntries];
+        updatedEntries[index] = {
+            ...updatedEntries[index],
+            abs: !updatedEntries[index].abs,
+        };
+
+        updateOptimisticEntries(updatedEntries);
+
         try {
-            const log = await prisma.dailyLog.findUnique({
-                where: {
-                  id: formData.get('id')
-                }
-              })
-              await prisma.dailyLog.update({
-                where: {
-                  id: formData.get('id')
-                },
-                data: {
-                  abs: log?.abs === true ? false : true
-                }
-              })
-              redirect('/journals/diet')
+            actions.toggleAbs(formData)
         } catch (error) {
-          // If the request fails, revert the UI
-          updateOptimisticEntries(entry);
-          console.error('Failed to update task:', error);
+            console.error(error)
         }
-      };
+    }
 
     return (
         <Table>
@@ -139,83 +123,90 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data.map((record:any) => (
-                    record.date = new Date(record.date),
-                    record.date = record.date.toDateString(),
-                    <TableRow key={record.id}>
-                        <TableCell className="bg-slate-600 text-white pl-2 pr-0">{record.date.toString()}</TableCell>
-                        <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editCalories} value='calories' defaultVal={record.calories}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editFat} value='fat' defaultVal={record.fat}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editProtein} value='protein' defaultVal={record.protein}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="bg-lime-400 pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editCarbs} value='carbs' defaultVal={record.carbs}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                            <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs} optimisticAction={handleAbSwitch}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.abs ? 'yes' : 'no'}
-                                </div>
-                            </ToggleButton>
-                        </TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                            <ToggleButton id={record.id} action={actions.toggleCardio} value={record.cardio ? 'yes' : 'no'} defaultVal={record.cardio}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.cardio ? 'yes' : 'no'}
-                                </div>
-                            </ToggleButton>
-                        </TableCell>
-                        <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                            <EditButton id={record.id} action={actions.editTraining} value='training' defaultVal={record.training}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.training !== '' ? record.training : <ImPencil2 />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="bg-red-400 pl-2 pr-0">{record.tFat}</TableCell>
-                        <TableCell className="bg-red-400 pl-2 pr-0">{record.tProtein}</TableCell>
-                        <TableCell className="bg-red-400 pl-2 pr-0">{record.tCarbs}</TableCell>
-                        <TableCell className="bg-red-400 pl-2 pr-0">{record.tCalories}</TableCell>
-                        <TableCell className="bg-violet-400 pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editBodyWeight} value='weight' defaultVal={record.weight}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.weight}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="bg-purple-600 text-white pl-2 pr-0">
-                            <EditButton id={record.id} action={actions.editNotes} value='training' defaultVal={record.notes}>
-                                <div className="flex hover:scale-125 duration-100 justify-center">
-                                    {record.notes !== '' ? record.notes : <ImPencil2 />}
-                                </div>
-                            </EditButton>
-                        </TableCell>
-                        <TableCell className="hover:text-white hover:bg-black hover:rounded-r-xl duration-150">
-                            <DeleteDataButton id={record.id} action={deleteRecord} />
-                        </TableCell>
+                {//optimisticEntries && optimisticEntries.length > 0 ? (
+                    data.map((record:any) => (
+                        record.date = new Date(record.date),
+                        record.date = record.date.toDateString(),
+                        <TableRow key={record.id}>
+                            <TableCell className="bg-slate-600 text-white pl-2 pr-0">{record.date.toString()}</TableCell>
+                            <TableCell className="bg-lime-400 pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editCalories} value='calories' defaultVal={record.calories}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="bg-lime-400 pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editFat} value='fat' defaultVal={record.fat}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="bg-lime-400 pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editProtein} value='protein' defaultVal={record.protein}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="bg-lime-400 pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editCarbs} value='carbs' defaultVal={record.carbs}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                                <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs} optimisticAction={handleAbSwitch}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.abs ? 'yes' : 'no'}
+                                    </div>
+                                </ToggleButton>
+                            </TableCell>
+                            <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                                <ToggleButton id={record.id} action={actions.toggleCardio} value={record.cardio ? 'yes' : 'no'} defaultVal={record.cardio}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.cardio ? 'yes' : 'no'}
+                                    </div>
+                                </ToggleButton>
+                            </TableCell>
+                            <TableCell className='bg-cyan-400 pl-2 pr-0'>
+                                <EditButton id={record.id} action={actions.editTraining} value='training' defaultVal={record.training}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.training !== '' ? record.training : <ImPencil2 />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="bg-red-400 pl-2 pr-0">{record.tFat}</TableCell>
+                            <TableCell className="bg-red-400 pl-2 pr-0">{record.tProtein}</TableCell>
+                            <TableCell className="bg-red-400 pl-2 pr-0">{record.tCarbs}</TableCell>
+                            <TableCell className="bg-red-400 pl-2 pr-0">{record.tCalories}</TableCell>
+                            <TableCell className="bg-violet-400 pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editBodyWeight} value='weight' defaultVal={record.weight}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.weight}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="bg-purple-600 text-white pl-2 pr-0">
+                                <EditButton id={record.id} action={actions.editNotes} value='training' defaultVal={record.notes}>
+                                    <div className="flex hover:scale-125 duration-100 justify-center">
+                                        {record.notes !== '' ? record.notes : <ImPencil2 />}
+                                    </div>
+                                </EditButton>
+                            </TableCell>
+                            <TableCell className="hover:text-white hover:bg-black hover:rounded-r-xl duration-150">
+                                <DeleteDataButton id={record.id} action={deleteRecord} />
+                            </TableCell>
+                        </TableRow>
+                    ))
+                /*) : (
+                    <TableRow>
+                        <TableCell colSpan={14} className="text-center">No data available</TableCell>
                     </TableRow>
-                ))}
+                )*/
+                }
             </TableBody>
         </Table>
     )
@@ -230,21 +221,21 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
             <DialogContent>
                 <DialogHeader>
                 <DialogTitle>Edit Data</DialogTitle>
-                <DialogDescription>
+                <>
                     <form action={action} className="mt-4">
                         <input type="hidden" name="id" value={id} />
                         <Label htmlFor={value} className="">Change Value:</Label>
                         <Input type="text" name={value} defaultValue={defaultVal} className="border-[1px]" />
                         <button type="submit" className="text-center text-white bg-black w-3/4 ml-auto py-2 my-2 hover:rounded-lg duration-150">Submit</button>
                     </form>
-                </DialogDescription>
+                </>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
     )
 }
 
-const ToggleButton = ({ id, action, children, value, defaultVal, optimisticAction }:any) => {
+const ToggleButton = ({ id, action, children, value, defaultVal }:any) => {
     return (
         <Dialog>
             <DialogTrigger className="w-full">
@@ -253,13 +244,13 @@ const ToggleButton = ({ id, action, children, value, defaultVal, optimisticActio
             <DialogContent>
                 <DialogHeader>
                 <DialogTitle>Are you sure you want to toggle record for {id}?</DialogTitle>
-                <DialogDescription>
+                <>
                     <form action={action} className="mt-4">
                         <input type="hidden" name="id" value={id} />
                         <p>current value: {value}</p>
                         <button type="submit" className="text-center text-white bg-black w-3/4 ml-auto py-2 my-2 hover:rounded-lg duration-150">Submit</button>
                     </form>
-                </DialogDescription>
+                </>
                 </DialogHeader>
             </DialogContent>
         </Dialog>
