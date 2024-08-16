@@ -31,9 +31,11 @@ import { DeleteDataButton } from "./DeleteDataButton";
 import { deleteRecord } from "@/lib/db";
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { ImPencil2 } from "react-icons/im";
 import { useOptimistic } from "react";
+import { useState } from "react";
+import prisma from "@/lib/prisma";
 
 type DailyLog = {
     id: number,
@@ -59,15 +61,47 @@ type DailyLogProps = {
 
 export const OutputTable = ({ data, targets, actions, fullData }:any) => {
 
-    const [ optimisticKcal, setOptimisticKcal ] = useOptimistic(data.calories)
-    const [ optimisticFat, setOptimisticFat ] = useOptimistic(data.fat)
-    const [ optimisticProtein, setOptimisticProtein ] = useOptimistic(data.protein)
-    const [ optimisticCarbs, setOptimisticCarbs ] = useOptimistic(data.carbs)
-    const [ optimisticAbs, setOptimisticAbs ] = useOptimistic(data.abs)
-    const [ optimisticCardio, setOptimisticCardio ] = useOptimistic(data.cardio)
-    const [ optimisticTraining, setOptimisticTraining ] = useOptimistic(data.training)
-    const [ optimisticWeight, setOptimisticWeight ] = useOptimistic(data.weight)
-    const [ optimisticNotes, setOptimisticNotes ] = useOptimistic(data.notes)
+    const [entries, setEntries] = useState(data)
+
+    const [optimisticEntries, updateOptimisticEntries] = useOptimistic(entries, (state, newEntry:DailyLog) => {
+        return state.map((entry: { id: any; }) => {
+          if (entry.id === newEntry.id) {
+            return newEntry;
+          }
+          return entry;
+        });
+    });
+
+    const handleAbSwitch = async (formData:any) => {
+        const entry = optimisticEntries.find((entry: { id: any; }) => entry.id === formData.get('id'));
+        if (!entry) return;
+    
+        const updatedTodo = { ...entry, abs: !entry.abs };
+    
+        // Optimistically update the UI
+        updateOptimisticEntries(updatedTodo);
+    
+        try {
+            const log = await prisma.dailyLog.findUnique({
+                where: {
+                  id: formData.get('id')
+                }
+              })
+              await prisma.dailyLog.update({
+                where: {
+                  id: formData.get('id')
+                },
+                data: {
+                  abs: log?.abs === true ? false : true
+                }
+              })
+              redirect('/journals/diet')
+        } catch (error) {
+          // If the request fails, revert the UI
+          updateOptimisticEntries(entry);
+          console.error('Failed to update task:', error);
+        }
+      };
 
     return (
         <Table>
@@ -139,7 +173,7 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                             </EditButton>
                         </TableCell>
                         <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                            <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs}>
+                            <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs} optimisticAction={handleAbSwitch}>
                                 <div className="flex hover:scale-125 duration-100 justify-center">
                                     {record.abs ? 'yes' : 'no'}
                                 </div>
@@ -210,7 +244,7 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
     )
 }
 
-const ToggleButton = ({ id, action, children, value, defaultVal }:any) => {
+const ToggleButton = ({ id, action, children, value, defaultVal, optimisticAction }:any) => {
     return (
         <Dialog>
             <DialogTrigger className="w-full">
