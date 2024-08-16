@@ -75,21 +75,19 @@ export default async function Home() {
     // formats start date string to a number value
     let startDate = dailyLogs[0].date.toDateString()
     let startDateMonth = startDate.slice(4, 7)
-    for(let i = 0; i < monthMap.length; i++) {
-      if(startDateMonth === monthMap[i].name) {
-        startDate = startDate.replace(startDateMonth, monthMap[i].value.toString())
-      }
-    }
-    startDate = startDate.slice(4, 15)
-
+    
     // formats end date string to a number value
     let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
     let endDateMonth = endDate.slice(4, 7)
     for(let i = 0; i < monthMap.length; i++) {
+      if(startDateMonth === monthMap[i].name) {
+        startDate = startDate.replace(startDateMonth, monthMap[i].value.toString())
+      }
       if(endDateMonth === monthMap[i].name) {
         endDate = endDate.replace(endDateMonth, monthMap[i].value.toString())
       }
     }
+    startDate = startDate.slice(4, 15)
     endDate = endDate.slice(4, 15)
 
     const startWeight = dailyLogs[0].weight
