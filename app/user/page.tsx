@@ -8,6 +8,7 @@ import { updateTargetFat, updateTargetProtein, updateTargetCarbs, updateTargetCa
 import { UserStats } from "@/components/custom/UserStats";
 import { TooltipComponent } from "@/components/custom/Tooltip";
 import { tester } from "../data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home() {
 
@@ -39,6 +40,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <PageHeader title="Profile" description='Set your goals and preferences here' url='/user' />
       <div className="absolute top-20 left-20 bg-white rounded-lg w-[400px]">
         <UserStats data={{dietData, trainingData}} preference={preferences?.goal} />
       </div>

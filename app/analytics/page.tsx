@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { WeightLineGraph, FatLineGraph, ProteinLineGraph, CarbsLineGraph } from "@/components/custom/LineGraph";
 import { GraphCollapsible } from "@/components/custom/GraphCollapsible";
 import { tester } from "@/app/data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home() {
 
@@ -28,6 +29,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col p-24">
+      <PageHeader title="Analytics" description='View your progress over time' url='/analytics' />
       <GraphCollapsible title="Weight Progress">
         <WeightLineGraph data={dailyLogs} key='weight' variant='analytics' />
       </GraphCollapsible>

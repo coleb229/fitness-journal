@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { WorkoutGuide } from "@/components/custom/WorkoutGuide";
 import { workouts } from "../../data/workoutGuide.data";
 import { tester } from "@/app/data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home() {
 
@@ -20,6 +21,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col p-24">
+      <PageHeader title="Workout Guides" description='Find a workout guide for your target muscle group' url='/tool/workout-guides' />
       {sections.map((section) => (
         <div key={section} className="py-10">
           <h1 className="text-4xl font-bold mb-4 border-b-2 border-black italic">{section.toUpperCase()}</h1>

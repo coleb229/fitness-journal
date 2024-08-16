@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { TrainingTable } from "@/components/custom/TrainingTable";
 import prisma from "@/lib/prisma";
 import { tester } from "@/app/data/tester";
+import { PageHeader } from "@/components/custom/PageHeader";
 
 export default async function Home() {
 
@@ -62,6 +63,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <PageHeader title='Training Journal' description='Log your training sessions here.' url='/journals/training' />
       <div className="grid grid-cols-3 gap-6">
         <TrainingTable exercise='benchPress' session={user} data={benchPressData} title='Bench Press' />
         <TrainingTable exercise='overheadPress' session={user} data={overheadPressData} title='Overhead Press' />
