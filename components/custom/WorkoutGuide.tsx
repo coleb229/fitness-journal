@@ -18,6 +18,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Image, { StaticImageData } from "next/image"
+/*
 import benchPress from "@/public/images/workouts/benchPress.jpg"
 import chestFly from "@/public/images/workouts/chestFly.jpg"
 import chestPress from "@/public/images/workouts/chestPress.jpg"
@@ -40,11 +41,9 @@ import shoulderFly from "@/public/images/workouts/shoulderFly.jpg"
 import sidePlank from "@/public/images/workouts/sidePlank.jpg"
 import squat from "@/public/images/workouts/squat.jpg"
 import tricepExtension from "@/public/images/workouts/tricepExtension.jpg"
+*/
 
-const fuck = 'me'
-
-export const WorkoutGuide = ({ data }:any) => {
-
+/*
   const picMap: { [key:string]: StaticImageData } = {
     benchPress: benchPress,
     chestFly: chestFly,
@@ -69,9 +68,8 @@ export const WorkoutGuide = ({ data }:any) => {
     squat: squat,
     tricepExtension: tricepExtension
   }
-
-
-
+*/
+export const WorkoutGuide = ({ data }:any) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger className="hover:shadow-xl">
@@ -81,7 +79,7 @@ export const WorkoutGuide = ({ data }:any) => {
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            <Image src={picMap[data.name]} alt={data.title} width={200} height={200} /> {/* Only works locally */}
+            <Image src={`workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally */}
             <ol>
               {data.instructions.map((instruction:any, index:number) => (
                 <li key={index}>{instruction}</li>
