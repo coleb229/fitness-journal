@@ -234,7 +234,7 @@ export default async function Home({
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center px-24 py-10">
       <PageHeader title="Diet Journal" description="Track your daily nutrition intake" url='/journals/diet' />
       <FormDrawer preferences={preferences} />
       <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} userPreferences={userPreferenceData} />

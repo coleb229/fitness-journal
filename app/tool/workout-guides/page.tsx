@@ -20,7 +20,7 @@ export default async function Home() {
   const sections = ['chest', 'back', 'legs', 'delts', 'biceps', 'triceps', 'abs']
 
   return (
-    <main className="flex min-h-screen flex-col p-24">
+    <main className="flex min-h-screen flex-col justify-center items-center px-24 py-10">
       <PageHeader title="Workout Guides" description='Find a workout guide for your target muscle group' url='/tool/workout-guides' />
       {sections.map((section) => (
         <div key={section} className="py-10">

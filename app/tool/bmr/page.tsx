@@ -17,7 +17,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex flex-col items-center justify-center px-24 py-10">
       <PageHeader title="BMR Calculator" description='Find your BMR using this tool' url='/tool/bmr' />
       <BmrCalculator />
     </main>

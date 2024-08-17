@@ -39,9 +39,9 @@ export default async function Home() {
   })
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex flex-col items-center justify-center px-24 py-10">
       <PageHeader title="Profile" description='Set your goals and preferences here' url='/user' />
-      <div className="absolute top-20 left-20 bg-white rounded-lg w-[400px]">
+      <div className="absolute top-60 left-20 bg-white rounded-lg w-[400px]">
         <UserStats data={{dietData, trainingData}} preference={preferences?.goal} />
       </div>
       <h1>Profile</h1>

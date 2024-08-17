@@ -121,7 +121,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center px-24 py-4">
       <PageHeader title="Dashboard" description="Take a glimpse at your overall fitness progress" url='/' />
       <div className="w-full grid grid-cols-2">
         <div>

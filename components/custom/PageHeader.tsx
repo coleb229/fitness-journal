@@ -12,7 +12,7 @@ export const PageHeader = ({ title, description, url }:any) => {
   return (
     <>
       <Trail url={url} />
-      <header className="flex flex-col items-center justify-center w-screen pb-20">
+      <header className="flex flex-col items-center top-10 w-screen py-14 bg-slate-800 text-white mb-10">
         <div>
           <h1 className="text-4xl font-bold">{title}</h1>
           <p className="text-lg text-center">{description}</p>
@@ -27,7 +27,7 @@ const Trail = ({ url }:any) => {
 
   return (
     <Breadcrumb className="fixed top-14 left-5">
-      <BreadcrumbList>
+      <BreadcrumbList className="text-white">
         {crumbs.map((crumb:any, index:number) => (
           crumb === crumbs[crumbs.length - 1] ? null :
           <BreadcrumbItem key={index}>
@@ -37,7 +37,7 @@ const Trail = ({ url }:any) => {
             <BreadcrumbSeparator/>
           </BreadcrumbItem>
         ))}
-        <BreadcrumbPage>
+        <BreadcrumbPage className="text-white">
           {crumbs[crumbs.length - 1]}
         </BreadcrumbPage>
       </BreadcrumbList>

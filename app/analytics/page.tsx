@@ -28,7 +28,7 @@ export default async function Home() {
   })
 
   return (
-    <main className="flex min-h-screen flex-col p-24">
+    <main className="flex flex-col px-24 py-10">
       <PageHeader title="Analytics" description='View your progress over time' url='/analytics' />
       <GraphCollapsible title="Weight Progress">
         <WeightLineGraph data={dailyLogs} key='weight' variant='analytics' />
