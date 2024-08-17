@@ -59,7 +59,7 @@ type DailyLogProps = {
     dailyLog: DailyLog[]
 }
 
-export const OutputTable = ({ data, targets, actions, fullData }:any) => {
+export const OutputTable = ({ data, targets, actions, fullData, userPreferences }:any) => {
 
     const [entries, setEntries] = useState(data)
 
@@ -104,19 +104,27 @@ export const OutputTable = ({ data, targets, actions, fullData }:any) => {
                     <TableHead className="text-white pl-2 pr-0">Training</TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Fat
-                        <p className="text-sm font-normal text-center text-red-500">{targets.tFat}</p>
+                        <EditButton id={userPreferences.id} action={actions.editTargetFat} value='targetFat' defaultVal={userPreferences.tFat}>
+                            <p className="text-sm font-normal text-center text-red-500">{targets.tFat}</p>
+                        </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Protein
-                        <p className="text-sm font-normal text-center text-red-500">{targets.tProtein}</p>
+                        <EditButton id={userPreferences.id} action={actions.editTargetProtein} value='targetProtein' defaultVal={userPreferences.tProtein}>
+                            <p className="text-sm font-normal text-center text-red-500">{targets.tProtein}</p>
+                        </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Carbs
-                        <p className="text-sm font-normal text-center text-red-500">{targets.tCarbs}</p>
+                        <EditButton id={userPreferences.id} action={actions.editTargetCarbs} value='targetCarbs' defaultVal={userPreferences.tCarbs}>
+                            <p className="text-sm font-normal text-center text-red-500">{targets.tCarbs}</p>
+                        </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Kcal
-                        <p className="text-sm font-normal text-center text-red-500">{targets.tCalories}</p>
+                        <EditButton id={userPreferences.id} action={actions.editTargetCalories} value='targetCalories' defaultVal={userPreferences.tCalories}>
+                            <p className="text-sm font-normal text-center text-red-500">{targets.tCalories}</p>
+                        </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">Body Weight</TableHead>
                     <TableHead className="text-white pl-2 pr-0">Notes</TableHead>

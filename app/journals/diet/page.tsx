@@ -43,6 +43,12 @@ export default async function Home({
     }
   })
 
+  const userPreferenceData = await prisma.userPreferences.findUnique({
+    where: {
+      user: user as string
+    }
+  })
+
   // !!!PAGINATION!!!
   const page = searchParams['page'] ?? '1'
   const per_page = searchParams['per_page'] ?? '10'
@@ -177,13 +183,61 @@ export default async function Home({
       })
       redirect('/journals/diet')
     },
+    editTargetCalories: async (formData:any) => {
+      'use server'
+      await prisma.userPreferences.update({
+        where: {
+          user: user as string
+        },
+        data: {
+          tCalories: parseInt(formData.get('targetCalories'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editTargetFat: async (formData:any) => {
+      'use server'
+      await prisma.userPreferences.update({
+        where: {
+          user: user as string
+        },
+        data: {
+          tFat: parseInt(formData.get('targetFat'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editTargetProtein: async (formData:any) => {
+      'use server'
+      await prisma.userPreferences.update({
+        where: {
+          user: user as string
+        },
+        data: {
+          tProtein: parseInt(formData.get('targetProtein'))
+        }
+      })
+      redirect('/journals/diet')
+    },
+    editTargetCarbs: async (formData:any) => {
+      'use server'
+      await prisma.userPreferences.update({
+        where: {
+          user: user as string
+        },
+        data: {
+          tCarbs: parseInt(formData.get('targetCarbs'))
+        }
+      })
+      redirect('/journals/diet')
+    }
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <PageHeader title="Diet Journal" description="Track your daily nutrition intake" url='/journals/diet' />
       <FormDrawer preferences={preferences} />
-      <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} />
+      <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} userPreferences={userPreferenceData} />
     </main>
   );
 }
