@@ -102,7 +102,7 @@ const WorkoutGuideCard = ({ data }:any) => {
         <CardDescription>Targets the {data.target}</CardDescription>
       </CardHeader>
       <CardContent className="flex justify-center items-center">
-        <Image src={`/images/workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} />
+        <Image src={`/images/${data.name}.jpg`} alt={data.title} width={200} height={200} />
       </CardContent>
     </Card>
   )
