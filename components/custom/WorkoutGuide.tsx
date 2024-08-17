@@ -30,7 +30,7 @@ export const WorkoutGuide = ({ data }:any) => {
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            <Image src={`/images/workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally */}
+            <Image src={`/images/workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} unoptimized /> {/* Only works locally */}
             <ol>
               {data.instructions.map((instruction:any, index:number) => (
                 <li key={index}>{instruction}</li>
