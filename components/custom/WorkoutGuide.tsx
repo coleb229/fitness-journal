@@ -41,6 +41,8 @@ import sidePlank from "@/public/images/workouts/sidePlank.jpg"
 import squat from "@/public/images/workouts/squat.jpg"
 import tricepExtension from "@/public/images/workouts/tricepExtension.jpg"
 
+const fuck = 'me'
+
 export const WorkoutGuide = ({ data }:any) => {
 
   const picMap: { [key:string]: StaticImageData } = {
