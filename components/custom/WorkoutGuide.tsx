@@ -18,32 +18,30 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Image, { StaticImageData } from "next/image"
-/*
-import benchPress from "@/public/images/workouts/benchPress.jpg"
-import chestFly from "@/public/images/workouts/chestFly.jpg"
-import chestPress from "@/public/images/workouts/chestPress.jpg"
-import crunch from "@/public/images/workouts/crunch.jpg"
-import curl from "@/public/images/workouts/curl.jpg"
-import deadlift from "@/public/images/workouts/deadlift.jpg"
-import dip from "@/public/images/workouts/dips.jpg"
-import latPulldown from "@/public/images/workouts/latPulldown.jpg"
-import legCurl from "@/public/images/workouts/legCurl.jpg"
-import legExtension from "@/public/images/workouts/legExtension.jpg"
-import legPress from "@/public/images/workouts/legPress.jpg"
-import legRaise from "@/public/images/workouts/legRaise.jpg"
-import overheadPress from "@/public/images/workouts/overheadPress.jpg"
-import plank from "@/public/images/workouts/plank.jpg"
-import preacherCurl from "@/public/images/workouts/preacherCurl.jpg"
-import pullup from "@/public/images/workouts/pullup.jpg"
-import russianTwist from "@/public/images/workouts/russianTwist.jpg"
-import seatedRow from "@/public/images/workouts/seatedRow.jpg"
-import shoulderFly from "@/public/images/workouts/shoulderFly.jpg"
-import sidePlank from "@/public/images/workouts/sidePlank.jpg"
-import squat from "@/public/images/workouts/squat.jpg"
-import tricepExtension from "@/public/images/workouts/tricepExtension.jpg"
-*/
 
-/*
+import benchPress from "@/public/images/benchPress.jpg"
+import chestFly from "@/public/images/chestFly.jpg"
+import chestPress from "@/public/images/chestPress.jpg"
+import crunch from "@/public/images/crunch.jpg"
+import curl from "@/public/images/curl.jpg"
+import deadlift from "@/public/images/deadlift.jpg"
+import dip from "@/public/images/dips.jpg"
+import latPulldown from "@/public/images/latPulldown.jpg"
+import legCurl from "@/public/images/legCurl.jpg"
+import legExtension from "@/public/images/legExtension.jpg"
+import legPress from "@/public/images/legPress.jpg"
+import legRaise from "@/public/images/legRaise.jpg"
+import overheadPress from "@/public/images/overheadPress.jpg"
+import plank from "@/public/images/plank.jpg"
+import preacherCurl from "@/public/images/preacherCurl.jpg"
+import pullup from "@/public/images/pullup.jpg"
+import russianTwist from "@/public/images/russianTwist.jpg"
+import seatedRow from "@/public/images/seatedRow.jpg"
+import shoulderFly from "@/public/images/shoulderFly.jpg"
+import sidePlank from "@/public/images/sidePlank.jpg"
+import squat from "@/public/images/squat.jpg"
+import tricepExtension from "@/public/images/tricepExtension.jpg"
+
   const picMap: { [key:string]: StaticImageData } = {
     benchPress: benchPress,
     chestFly: chestFly,
@@ -68,7 +66,7 @@ import tricepExtension from "@/public/images/workouts/tricepExtension.jpg"
     squat: squat,
     tricepExtension: tricepExtension
   }
-*/
+
 export const WorkoutGuide = ({ data }:any) => {
   return (
     <AlertDialog>
@@ -79,7 +77,7 @@ export const WorkoutGuide = ({ data }:any) => {
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            <img src={`workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
+            <Image src={picMap[data.name]} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
             <ol>
               {data.instructions.map((instruction:any, index:number) => (
                 <li key={index}>{instruction}</li>
