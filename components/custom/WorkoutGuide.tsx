@@ -79,7 +79,7 @@ export const WorkoutGuide = ({ data }:any) => {
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            <Image src={`workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally */}
+            <img src={`workouts/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
             <ol>
               {data.instructions.map((instruction:any, index:number) => (
                 <li key={index}>{instruction}</li>
