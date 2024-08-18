@@ -83,12 +83,9 @@ export const MacrosCombinedGraph = ({ data }:any) => {
     const formattedProteinData = transformProteinData(data);
     const formattedCarbData = transformCarbData(data);
 
-    const combinedData = [...formattedFatData, ...formattedProteinData, ...formattedCarbData];
-    console.log(combinedData);
-
     return (
         <ResponsiveLine
-            data={combinedData}
+            data={[...formattedFatData, ...formattedProteinData, ...formattedCarbData]}
             margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
             xScale={{ type: 'point' }}
             yScale={{
