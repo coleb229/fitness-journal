@@ -49,9 +49,9 @@ const Trail = ({ url }:any) => {
   const crumbs = url.split('/').filter((crumb:any) => crumb)
 
   return (
-    <Breadcrumb className="fixed top-14 left-5">
+    <Breadcrumb className="fixed top-14 left-5 z-50">
       {scrollY > 200 ? (
-        <BreadcrumbList className="text-black">
+        <BreadcrumbList className="text-black bg-[#f2f2f2] px-4 py-2">
         {crumbs.map((crumb:any, index:number) => (
           crumb === crumbs[crumbs.length - 1] ? null :
           <BreadcrumbItem key={index}>

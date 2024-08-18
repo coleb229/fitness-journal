@@ -1,5 +1,3 @@
-import { title } from "process";
-
 export const workouts = [
   {
     id: 1,
@@ -7,10 +5,11 @@ export const workouts = [
     name: "benchPress",
     description: "This is a beginner workout guide",
     instructions: [
-      "Lay on the bench",
-      "Lift the barbell",
-      "Lower the barbell to your chest",
-      "Push the barbell back up"
+      "Rack the amount of weight you want to lift (lighter weight for muscle size, heavier weight for muscle strength)",
+      "Lay on the bench with your eyes in line with the bar, gripping the bar shoulder width apart",
+      "Hoist the barbell off the rack, and bring it down to your chest",
+      "Push the barbell back up, fully extending your arms",
+      "Repeat this up/down motion, keeping the motion straight and steady for your desired reps"
     ],
     target: "chest",
   },
@@ -22,7 +21,9 @@ export const workouts = [
     instructions: [
       "Stand with feet shoulder width apart",
       "Bend at the knees",
-      "Lift the barbell"
+      "Lift the barbell, keeping your back straight and arms extended",
+      "Lower the barbell back to the ground",
+      "Repeat this up/down motion, keeping the motion straight and steady for your desired reps"
     ],
     target: "back",
   },
@@ -32,9 +33,10 @@ export const workouts = [
     name: "squat",
     description: "This is a beginner workout guide",
     instructions: [
-      "Stand with feet shoulder width apart",
-      "Bend at the knees",
-      "Lift the barbell"
+      "Stand with feet shoulder width apart, keeping feet flat on the ground, and back straight",
+      "Bend at the knees bringing your butt close to the ground",
+      "Extend your legs back to the starting position",
+      "Repeat this up/down motion, keeping the motion straight and steady for your desired reps"
     ],
     target: "legs",
   },
@@ -45,7 +47,10 @@ export const workouts = [
     description: "This is a beginner workout guide",
     instructions: [
       "Stand with feet shoulder width apart",
-      "Lift the barbell above your head"
+      "Hoist the barbell and rest it on your chest",
+      "Push the barbell straight above your head, keeping your back straight",
+      "Lower the barbell back to your chest",
+      "Repeat this up/down motion, keeping the motion straight and steady for your desired reps"
     ],
     target: "delts",
   },
@@ -55,19 +60,30 @@ export const workouts = [
     name: "pullup",
     description: "This is a beginner workout guide",
     instructions: [
-      "Hang from the bar",
-      "Pull yourself up"
+      "Hang from the bar, hands around shoulder width apart.  The grip can vary depending on the muscle group you want to target",
+      "Pull yourself up until your chin is above the bar",
+      "Lower yourself all the way back down to stretch the muscles fully",
+      "Repeat this up/down motion, keeping the motion straight and steady for your desired reps"
     ],
     target: "back",
   },
+  // chatGPT generated from here
   {
     id: 6,
     title: "Curl",
     name: "curl",
     description: "This is a beginner workout guide",
     instructions: [
-      "Stand with feet shoulder width apart",
-      "Lift the barbell"
+      "Choose your equipment (dumbbells, barbell, resistance bands, or cable machine)",
+      "Stand with feet shoulder-width apart, knees slightly bent, core engaged, and shoulders back",
+      "Grip the weight with palms facing forward, arms fully extended but not locked",
+      "Slowly curl the weight toward your shoulders by bending your elbows",
+      "Squeeze your biceps at the top of the movement",
+      "Slowly lower the weight back to the starting position",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you lift, inhale as you lower",
+      "Keep your form strict, avoiding body movement or momentum",
+      "Cool down with light bicep stretching after your sets",
     ],
     target: "biceps",
   },
@@ -77,9 +93,16 @@ export const workouts = [
     name: "dips",
     description: "This is a beginner workout guide",
     instructions: [
-      "Hang from the bar",
-      "Lower yourself down",
-      "Push yourself back up"
+      "Choose your equipment (parallel bars, dip station, or sturdy bench)",
+      "Position yourself with arms extended, hands shoulder-width apart, and legs straight or bent at the knees",
+      "Engage your core and keep your chest upright",
+      "Lower your body by bending your elbows until your upper arms are parallel to the ground",
+      "Keep your elbows close to your body throughout the movement",
+      "Push through your palms to return to the starting position, extending your arms fully",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you push up, inhale as you lower down",
+      "Maintain proper form by avoiding swinging or flaring your elbows",
+      "Cool down with light tricep and shoulder stretches after your sets",
     ],
     target: "triceps",
   },
@@ -89,8 +112,16 @@ export const workouts = [
     name: "legPress",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the leg press machine",
-      "Push the weight up"
+      "Choose your equipment (leg press machine or sled)",
+      "Position yourself with your back flat against the seat and feet shoulder-width apart on the platform",
+      "Adjust the seat so that your knees are bent at about a 90-degree angle",
+      "Engage your core and keep your feet flat on the platform",
+      "Push through your heels to extend your legs, straightening them without locking your knees",
+      "Slowly lower the platform back to the starting position, bending your knees to a 90-degree angle",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you press the weight up, inhale as you lower it down",
+      "Maintain control throughout the movement, avoiding bouncing or using momentum",
+      "Cool down with light leg and lower back stretches after your sets"
     ],
     target: "legs",
   },
@@ -100,8 +131,17 @@ export const workouts = [
     name: "legCurl",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the leg curl machine",
-      "Curl the weight up"
+      "Choose your equipment (leg curl machine, seated or lying)",
+      "Position yourself with the back of your legs against the pad, and the pad just above your ankles",
+      "Adjust the machine so your knees are aligned with the machine’s axis",
+      "Engage your core and hold the handles or sides of the machine for stability",
+      "Curl your legs by bending your knees, pulling the pad toward your glutes",
+      "Squeeze your hamstrings at the top of the movement",
+      "Slowly lower the weight back to the starting position, extending your legs fully",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you curl the weight, inhale as you lower it",
+      "Maintain control to avoid using momentum, keeping the movement smooth",
+      "Cool down with light hamstring and lower back stretches after your sets"
     ],
     target: "legs",
   },
@@ -111,8 +151,17 @@ export const workouts = [
     name: "legExtension",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the leg extension machine",
-      "Extend your legs"
+      "Choose your equipment (leg extension machine)",
+      "Position yourself with your back flat against the seat and the pad resting on the front of your ankles",
+      "Adjust the machine so your knees are aligned with the machine’s axis",
+      "Engage your core and grip the handles or sides of the machine for stability",
+      "Extend your legs by straightening your knees, lifting the weight upward",
+      "Squeeze your quadriceps at the top of the movement",
+      "Slowly lower the weight back to the starting position, bending your knees",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you extend your legs, inhale as you lower them",
+      "Maintain control, avoiding jerky movements or locking your knees",
+      "Cool down with light quadriceps and hip stretches after your sets"
     ],
     target: "legs",
   },
@@ -122,8 +171,17 @@ export const workouts = [
     name: "latPulldown",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the lat pulldown machine",
-      "Pull the bar down"
+      "Choose your equipment (lat pulldown machine with a wide bar or handle)",
+      "Position yourself seated with feet flat on the ground, knees secured under the pad",
+      "Grip the bar with hands slightly wider than shoulder-width, palms facing forward (pronated grip)",
+      "Engage your core and lean back slightly at the hips, keeping your chest up",
+      "Pull the bar down towards your upper chest, driving your elbows down and back",
+      "Squeeze your shoulder blades together at the bottom of the movement",
+      "Slowly allow the bar to rise back to the starting position, fully extending your arms",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you pull the bar down, inhale as you let it rise",
+      "Maintain control, avoiding swinging or using momentum",
+      "Cool down with light back and shoulder stretches after your sets"
     ],
     target: "back",
   },
@@ -133,8 +191,17 @@ export const workouts = [
     name: "seatedRow",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the row machine",
-      "Pull the weight towards you"
+      "Choose your equipment (seated row machine or cable row with a V-handle)",
+      "Position yourself seated with feet flat on the footrests, knees slightly bent",
+      "Grip the handle with both hands, keeping your back straight and chest up",
+      "Engage your core and sit upright, ensuring your shoulders are back",
+      "Pull the handle towards your torso, driving your elbows straight back",
+      "Squeeze your shoulder blades together at the end of the movement",
+      "Slowly extend your arms back to the starting position, allowing the weight to return",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you pull the handle, inhale as you extend your arms",
+      "Maintain control, avoiding leaning forward or using momentum",
+      "Cool down with light back and shoulder stretches after your sets"
     ],
     target: "back",
   },
@@ -144,8 +211,16 @@ export const workouts = [
     name: "chestPress",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the chest press machine",
-      "Push the weight away from you"
+      "Choose your equipment (chest press machine, barbell, or dumbbells)",
+      "Position yourself on the bench with your back flat, feet flat on the ground, and hands gripping the handles or barbell slightly wider than shoulder-width apart",
+      "Engage your core and ensure your shoulders are pressed firmly against the bench",
+      "Push the weight straight up, extending your arms fully but without locking your elbows",
+      "Squeeze your chest muscles at the top of the movement",
+      "Slowly lower the weight back to the starting position, bringing it just above your chest",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you press the weight up, inhale as you lower it",
+      "Maintain control, avoiding bouncing the weight off your chest or using momentum",
+      "Cool down with light chest and shoulder stretches after your sets"
     ],
     target: "chest",
   },
@@ -155,8 +230,17 @@ export const workouts = [
     name: "shoulderFly",
     description: "This is a beginner workout guide",
     instructions: [
-      "Grab the dumbbells",
-      "Extend your arms to a flying pose"
+      "Choose your equipment (dumbbells or cable machine)",
+      "Stand or sit with a straight back, feet shoulder-width apart",
+      "Hold the weights with arms slightly bent at the elbows, palms facing in",
+      "Engage your core and slightly lean forward if standing",
+      "Raise the weights to the side, keeping a slight bend in your elbows, until your arms are parallel to the floor",
+      "Squeeze your shoulder muscles at the top of the movement",
+      "Slowly lower the weights back to the starting position",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you lift the weights, inhale as you lower them",
+      "Maintain control throughout the movement, avoiding swinging or using momentum",
+      "Cool down with light shoulder and upper back stretches after your sets"
     ],
     target: "delts",
   },
@@ -166,8 +250,17 @@ export const workouts = [
     name: "tricepExtension",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the tricep extension machine",
-      "Extend your arms"
+      "Choose your equipment (dumbbell, barbell, cable machine, or resistance band)",
+      "Stand or sit with a straight back, feet shoulder-width apart",
+      "Grip the weight or handle with both hands and extend your arms overhead, keeping your elbows close to your head",
+      "Engage your core and keep your elbows stationary throughout the exercise",
+      "Slowly lower the weight behind your head by bending your elbows",
+      "Pause briefly when your forearms move beyond parallel to the floor",
+      "Extend your arms back to the starting position, squeezing your triceps at the top",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you extend your arms, inhale as you lower the weight",
+      "Maintain control throughout the movement, ensuring your elbows do not flare out",
+      "Cool down with light tricep stretches after your sets"
     ],
     target: "triceps",
   },
@@ -177,8 +270,17 @@ export const workouts = [
     name: "preacherCurl",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the preacher curl machine",
-      "Curl the weight up"
+      "Choose your equipment (preacher curl bench with a barbell, dumbbells, or an E-Z curl bar)",
+      "Sit on the preacher bench and adjust the seat so your upper arms rest comfortably on the padding",
+      "Grip the bar with hands about shoulder-width apart, palms facing upward",
+      "Engage your core and keep your shoulders relaxed",
+      "Curl the bar towards your chin while keeping your upper arms stationary on the pad",
+      "Squeeze your biceps at the top of the movement",
+      "Slowly lower the bar back to the starting position, fully extending your arms",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you curl the bar, inhale as you lower it",
+      "Maintain control throughout the movement, focusing on isolating the biceps",
+      "Cool down with light bicep stretches after your sets"
     ],
     target: "biceps",
   },
@@ -188,8 +290,17 @@ export const workouts = [
     name: "legRaise",
     description: "This is a beginner workout guide",
     instructions: [
-      "Hang from the bar",
-      "Raise your legs"
+      "Choose your equipment (flat bench, hanging leg raise station, or parallel bars)",
+      "Position yourself lying on the bench, hanging from the bar, or supported by the parallel bars",
+      "Engage your core and keep your legs together",
+      "If lying down, place your hands under your glutes for support. If hanging, grip the bar firmly",
+      "Slowly raise your legs to a 90-degree angle while keeping them straight",
+      "Pause briefly at the top of the movement",
+      "Slowly lower your legs back to the starting position, controlling the movement throughout",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you lift your legs, inhale as you lower them",
+      "Keep your movements controlled and avoid using momentum",
+      "Cool down with light stretches focusing on the abdominal and hip areas after your sets"
     ],
     target: "abs",
   },
@@ -199,8 +310,17 @@ export const workouts = [
     name: "crunch",
     description: "This is a beginner workout guide",
     instructions: [
-      "Lay on the floor",
-      "Raise your upper body"
+      "Choose a comfortable surface or use a mat for support",
+      "Lie on your back with your knees bent and feet flat on the floor, hip-width apart",
+      "Place your hands behind your head, keeping your elbows wide open",
+      "Engage your core by pulling your belly button towards your spine",
+      "Slowly lift your upper body towards your knees, curling your shoulders off the floor",
+      "Squeeze your abdominals at the top of the movement",
+      "Slowly lower yourself back down to the starting position",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you lift your shoulders off the floor, inhale as you lower back down",
+      "Keep your neck relaxed and avoid pulling on your head with your hands",
+      "Cool down with light stretches focusing on the abdominal area after your sets"
     ],
     target: "abs",
   },
@@ -210,8 +330,16 @@ export const workouts = [
     name: "russianTwist",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the floor",
-      "Twist your torso"
+      "Choose a comfortable surface or use a mat for support",
+      "Sit on the floor with your knees bent and feet flat, leaning back slightly to engage your core",
+      "Hold a weight with both hands in front of your chest, or clasp your hands together if not using weight",
+      "Lift your feet slightly off the ground to balance on your sit bones, or keep them flat for a less intense version",
+      "Twist your torso to the right, bringing the weight or your hands towards the floor beside your hip",
+      "Rotate back to center, then twist to the left, completing one repetition",
+      "Repeat for 8-12 repetitions per set, counting a twist to both sides as one rep",
+      "Exhale as you twist, inhale as you return to center",
+      "Keep your movements controlled and avoid using momentum",
+      "Cool down with light stretches focusing on the abdominal and lower back areas after your sets"
     ],
     target: "abs",
   },
@@ -221,8 +349,16 @@ export const workouts = [
     name: "plank",
     description: "This is a beginner workout guide",
     instructions: [
-      "Lay on the floor",
-      "Hold yourself up"
+      "Choose a comfortable surface or use a mat for support",
+      "Start in a prone position on the floor, then prop yourself up on your elbows and toes",
+      "Keep your elbows directly under your shoulders, and your body in a straight line from head to heels",
+      "Engage your core, glutes, and thighs to maintain stability",
+      "Keep your neck neutral by gazing at a spot on the floor a few inches in front of your hands",
+      "Hold the position without letting your hips sag or lift",
+      "Aim to maintain the plank for 20-60 seconds per set, gradually increasing the duration as you get stronger",
+      "Breathe steadily throughout the exercise, focusing on deep breaths",
+      "Keep your movements controlled and steady",
+      "Cool down with gentle stretching for the back, abs, and shoulders after your sets"
     ],
     target: "abs",
   },
@@ -232,8 +368,17 @@ export const workouts = [
     name: "sidePlank",
     description: "This is a beginner workout guide",
     instructions: [
-      "Lay on the floor",
-      "Hold yourself up"
+      "Choose a comfortable surface or use a mat for support",
+      "Start by lying on your side with your legs straight and stacked on top of each other",
+      "Prop yourself up on your elbow, which should be directly under your shoulder",
+      "Engage your core and lift your hips off the ground, forming a straight line from your head to your feet",
+      "Keep your free hand on your hip or extend it towards the ceiling",
+      "Hold the position without letting your hips sag or lift too high",
+      "Aim to maintain the side plank for 20-60 seconds per set, or longer as you build endurance",
+      "Breathe steadily throughout the exercise, focusing on deep, controlled breaths",
+      "Keep your movements controlled and steady to maintain balance",
+      "Switch sides and repeat the exercise to ensure balanced strength and muscle development",
+      "Cool down with gentle stretching for the obliques, back, and shoulders after your sets"
     ],
     target: "abs",
   },
@@ -243,8 +388,16 @@ export const workouts = [
     name: "chestFly",
     description: "This is a beginner workout guide",
     instructions: [
-      "Sit on the chest fly machine",
-      "Extend your arms"
+      "Choose your equipment (dumbbells or cable machine)",
+      "Lie flat on a bench with your feet firmly planted on the ground",
+      "Start with the weights directly above your chest, palms facing each other, and a slight bend in your elbows",
+      "Engage your core and keep your back flat against the bench",
+      "Slowly lower the weights to the sides in a wide arc until you feel a stretch in your chest",
+      "Squeeze your chest muscles to bring the weights back up along the same path",
+      "Repeat for 8-12 repetitions per set",
+      "Exhale as you bring the weights together, inhale as you lower them",
+      "Keep your movements controlled to avoid strain on your shoulders",
+      "Cool down with light chest stretches after your sets"
     ],
     target: "chest",
   },

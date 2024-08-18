@@ -77,10 +77,10 @@ export const WorkoutGuide = ({ data }:any) => {
         <AlertDialogHeader>
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
-            <Image src={`/images/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
-            <ol>
+            <Image className="mx-auto" src={`/images/${data.name}.jpg`} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
+            <ol className="list-decimal">
               {data.instructions.map((instruction:any, index:number) => (
-                <li key={index}>{instruction}</li>
+                <li key={index} className="my-2 mx-4">{instruction}</li>
               ))}
             </ol>
           </AlertDialogDescription>
