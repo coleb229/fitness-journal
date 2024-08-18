@@ -8,6 +8,7 @@ import { ListGoals } from "@/components/custom/ListGoals";
 import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
+import { dailyLogExampleData, goalExampleData, trainingExampleData } from "./data/exampleData";
 
 export default async function Home() {
 
@@ -40,6 +41,30 @@ export default async function Home() {
     }
   })
 
+  // catch if there are no daily logs -> returns a notification only currently
+  if(dailyLogs.length === 0) {
+    return (
+      <main className="flex min-h-screen flex-col items-center px-24 py-4">
+        <PageHeader title="Dashboard" description="Take a glimpse at your overall fitness progress" url='/' />
+        <div className="w-full grid grid-cols-2">
+          <div>
+            <GraphCarousel data={dailyLogExampleData} goal={195} />
+          </div>
+          <div className="px-20 h-[400px] overflow-auto">
+            <div className="flex items-center justify-center border-b-2 mb-2">
+              <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
+              <AddGoal dailyLogs={dailyLogs} training={trainingExampleData} />
+            </div>
+            <ListGoals goals={goalExampleData} dailyLogs={dailyLogExampleData} training={trainingExampleData} rate={1 + '(ish)'} />
+          </div>
+        </div>
+        <div className="flex flex-col items-center justify-center absolute bottom-0 right-0 p-10 z-50">
+          <Notification key={1} message={"You need to add dailyLog data before personal data will be displayed on this page.  For now you are provided example data."} />
+        </div>
+      </main>
+    )
+  }
+
   const goals = await prisma.goal.findMany({
     where: {
       user: session?.user?.email as string
@@ -65,6 +90,7 @@ export default async function Home() {
 
 //   !!! NEED TO CONVERT DATE STRING TO A NUMBER VALUE TO CALCULATE WEIGHT LOSS RATE !!!
 //   done
+
   const calculateWeightLossRate = () => {
     const monthMap = [
       { name: 'Jan', value: 1 }, { name: 'Feb', value: 2 }, { name: 'Mar', value: 3 },
