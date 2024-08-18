@@ -23,12 +23,12 @@ const Goal = ({ goal, dailyLogs, training, rate }:any) => {
     let header = ''
     let weightLossRate = ''
 
-    const bench = training.filter((t:any) => t.exercise === 'benchPress')
-    const overheadPress = training.filter((t:any) => t.exercise === 'overheadPress')
-    const deadlift = training.filter((t:any) => t.exercise === 'deadlift')
-    const pullup = training.filter((t:any) => t.exercise === 'pullup')
-    const squat = training.filter((t:any) => t.exercise === 'squat')
-    const curl = training.filter((t:any) => t.exercise === 'curl')
+    const bench = training.filter((t:any) => t.exercise === 'benchPress' && t.tenByThree === true)
+    const overheadPress = training.filter((t:any) => t.exercise === 'overheadPress' && t.tenByThree === true)
+    const deadlift = training.filter((t:any) => t.exercise === 'deadlift' && t.tenByThree === true)
+    const pullup = training.filter((t:any) => t.exercise === 'pullup' && t.tenByThree === true)
+    const squat = training.filter((t:any) => t.exercise === 'squat' && t.tenByThree === true)
+    const curl = training.filter((t:any) => t.exercise === 'curl' && t.tenByThree === true)
 
     switch(goal.goal) {
       case 'lose':
