@@ -58,7 +58,7 @@ export default async function Home() {
             <ListGoals goals={goalExampleData} dailyLogs={dailyLogExampleData} training={trainingExampleData} rate={1 + '(ish)'} />
           </div>
         </div>
-        <div className="flex flex-col items-center justify-center absolute bottom-0 right-0 p-10 z-50">
+        <div className="flex flex-col items-center justify-center fixed bottom-0 right-0 p-10 z-50">
           <Notification key={1} message={"You need to add dailyLog data before personal data will be displayed on this page.  For now you are provided example data."} />
         </div>
       </main>
