@@ -78,7 +78,7 @@ export const WorkoutGuide = ({ data }:any) => {
           <AlertDialogTitle>{data.title}</AlertDialogTitle>
           <AlertDialogDescription>
             <Image className="mx-auto" src={`/gifs/${data.name}.gif`} alt={data.title} width={200} height={200} /> {/* Only works locally, vercel hates static images */}
-            <ol className="list-decimal">
+            <ol className="list-decimal max-h-[200px] overflow-y-auto">
               {data.instructions.map((instruction:any, index:number) => (
                 <li key={index} className="my-2 mx-4">{instruction}</li>
               ))}
