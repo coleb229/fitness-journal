@@ -14,7 +14,7 @@ export const PageHeader = ({ title, description, url }:any) => {
   return (
     <>
       <Trail url={url} />
-      <header className="flex flex-col items-center top-10 w-screen py-14 bg-slate-800 text-white mb-10">
+      <header className="flex flex-col items-center w-screen py-14 bg-slate-800 text-white mb-10">
         <div>
           <h1 className="text-4xl font-bold">{title}</h1>
           <p className="text-lg text-center">{description}</p>
