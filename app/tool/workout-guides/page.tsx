@@ -1,7 +1,6 @@
 'use server'
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { WorkoutGuide } from "@/components/custom/WorkoutGuide";
 import { workouts } from "../../data/workoutGuide.data";
 import { tester } from "@/app/data/tester";

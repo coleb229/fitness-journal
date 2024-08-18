@@ -5,7 +5,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
-import { WeightLineGraph, FatLineGraph, ProteinLineGraph, CarbsLineGraph } from "./LineGraph"
+import { WeightLineGraph, MacrosCombinedGraph } from "./LineGraph"
 
 export const GraphCarousel = ({ data, goal, rate }:any) => {
     if(data.length === 0) {
@@ -24,13 +24,7 @@ export const GraphCarousel = ({ data, goal, rate }:any) => {
                     <WeightLineGraph data={data} goal={goal} key='weight' />
                 </CarouselItem>
                 <CarouselItem>
-                    <FatLineGraph data={data} key='fat' />
-                </CarouselItem>
-                <CarouselItem>
-                    <ProteinLineGraph data={data} key='protein' />
-                </CarouselItem>
-                <CarouselItem>
-                    <CarbsLineGraph data={data} key='carbs' />
+                    <MacrosCombinedGraph data={data} key='macros' />
                 </CarouselItem>
             </CarouselContent>
             <CarouselPrevious />
