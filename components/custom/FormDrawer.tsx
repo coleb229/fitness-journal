@@ -25,6 +25,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { toast } from "@/components/ui/use-toast"
+import { redirect } from "next/navigation"
 
 export const FormDrawer = ({ preferences }:any) => {
     return (
@@ -47,8 +49,23 @@ export const FormDrawer = ({ preferences }:any) => {
 }
 
 const Form = ({ preferences }:any) => {
+    const clientAction = async (formData:FormData) => {
+        const result = await createRecord(formData)
+        if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+    }
     return (
-        <form action={createRecord} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px]">
+        <form action={clientAction} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px]">
             <div className="grid grid-cols-1 lg:col-span-4 mx-auto lg:py-10">
                 <Label>Date</Label>
                 <DatePicker name='date' />

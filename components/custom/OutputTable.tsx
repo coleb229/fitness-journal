@@ -11,7 +11,6 @@ import {
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -33,9 +32,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { redirect, useSearchParams } from "next/navigation";
 import { ImPencil2 } from "react-icons/im";
-import { useEffect, useOptimistic } from "react";
+import { useOptimistic } from "react";
 import { useState } from "react";
-import prisma from "@/lib/prisma";
+import { toast, useToast } from "@/components/ui/use-toast"
 
 type DailyLog = {
     id: number,
@@ -87,6 +86,204 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
         }
     }
 
+    const clientActions = {
+        editCalories: async (formData: FormData) => {
+          const result = await actions.editCalories(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editFat: async (formData: FormData) => {
+          const result = await actions.editFat(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editProtein: async (formData: FormData) => {
+          const result = await actions.editProtein(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editCarbs: async (formData: FormData) => {
+          const result = await actions.editCarbs(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        toggleAbs: async (formData: FormData) => {
+          const result = await actions.toggleAbs(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        toggleCardio: async (formData: FormData) => {
+          const result = await actions.toggleCardio(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editTraining: async (formData: FormData) => {
+          const result = await actions.editTraining(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editBodyWeight: async (formData: FormData) => {
+          const result = await actions.editBodyWeight(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editNotes: async (formData: FormData) => {
+          const result = await actions.editNotes(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editTargetFat: async (formData: FormData) => {
+          const result = await actions.editTargetFat(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editTargetProtein: async (formData: FormData) => {
+          const result = await actions.editTargetProtein(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editTargetCarbs: async (formData: FormData) => {
+          const result = await actions.editTargetCarbs(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        },
+        editTargetCalories: async (formData: FormData) => {
+          const result = await actions.editTargetCalories(formData)
+          if(result?.error) {
+            toast({
+                title: 'Error',
+                description: 'Something went wrong',
+            })
+          } else {
+            toast({
+                title: 'Success',
+                description: 'Data updated successfully',
+            })
+            redirect('/journals/diet')
+          }
+        }
+    }
+
     return (
         <Table>
             <TableCaption>
@@ -104,25 +301,25 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                     <TableHead className="text-white pl-2 pr-0">Training</TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Fat
-                        <EditButton id={userPreferences.id} action={actions.editTargetFat} value='targetFat' defaultVal={userPreferences.tFat}>
+                        <EditButton id={userPreferences.id} action={clientActions.editTargetFat} value='targetFat' defaultVal={userPreferences.tFat}>
                             <p className="text-sm font-normal text-center text-red-500">{targets.tFat}</p>
                         </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Protein
-                        <EditButton id={userPreferences.id} action={actions.editTargetProtein} value='targetProtein' defaultVal={userPreferences.tProtein}>
+                        <EditButton id={userPreferences.id} action={clientActions.editTargetProtein} value='targetProtein' defaultVal={userPreferences.tProtein}>
                             <p className="text-sm font-normal text-center text-red-500">{targets.tProtein}</p>
                         </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Carbs
-                        <EditButton id={userPreferences.id} action={actions.editTargetCarbs} value='targetCarbs' defaultVal={userPreferences.tCarbs}>
+                        <EditButton id={userPreferences.id} action={clientActions.editTargetCarbs} value='targetCarbs' defaultVal={userPreferences.tCarbs}>
                             <p className="text-sm font-normal text-center text-red-500">{targets.tCarbs}</p>
                         </EditButton>
                     </TableHead>
                     <TableHead className="text-white pl-2 pr-0">
                         Target Kcal
-                        <EditButton id={userPreferences.id} action={actions.editTargetCalories} value='targetCalories' defaultVal={userPreferences.tCalories}>
+                        <EditButton id={userPreferences.id} action={clientActions.editTargetCalories} value='targetCalories' defaultVal={userPreferences.tCalories}>
                             <p className="text-sm font-normal text-center text-red-500">{targets.tCalories}</p>
                         </EditButton>
                     </TableHead>
@@ -138,49 +335,49 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                         <TableRow key={record.id}>
                             <TableCell className="bg-slate-600 text-white pl-2 pr-0">{record.date.toString()}</TableCell>
                             <TableCell className="bg-lime-400 pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editCalories} value='calories' defaultVal={record.calories}>
+                                <EditButton id={record.id} action={clientActions.editCalories} value='calories' defaultVal={record.calories}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.calories + ' '}{record.calories >= record.tCalories ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
                                     </div>
                                 </EditButton>
                             </TableCell>
                             <TableCell className="bg-lime-400 pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editFat} value='fat' defaultVal={record.fat}>
+                                <EditButton id={record.id} action={clientActions.editFat} value='fat' defaultVal={record.fat}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.fat + ' '}{record.fat >= record.tFat ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
                                     </div>
                                 </EditButton>
                             </TableCell>
                             <TableCell className="bg-lime-400 pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editProtein} value='protein' defaultVal={record.protein}>
+                                <EditButton id={record.id} action={clientActions.editProtein} value='protein' defaultVal={record.protein}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.protein + ' '}{record.protein >= record.tProtein ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
                                     </div>
                                 </EditButton>
                             </TableCell>
                             <TableCell className="bg-lime-400 pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editCarbs} value='carbs' defaultVal={record.carbs}>
+                                <EditButton id={record.id} action={clientActions.editCarbs} value='carbs' defaultVal={record.carbs}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.carbs + ' '}{record.carbs >= record.tCarbs ? <FaLongArrowAltUp /> : <FaLongArrowAltDown />}
                                     </div>
                                 </EditButton>
                             </TableCell>
                             <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                                <ToggleButton id={record.id} action={actions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs} optimisticAction={handleAbSwitch}>
+                                <ToggleButton id={record.id} action={clientActions.toggleAbs} value={record.abs ? 'yes' : 'no'} defaultVal={record.abs} optimisticAction={handleAbSwitch}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.abs ? 'yes' : 'no'}
                                     </div>
                                 </ToggleButton>
                             </TableCell>
                             <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                                <ToggleButton id={record.id} action={actions.toggleCardio} value={record.cardio ? 'yes' : 'no'} defaultVal={record.cardio}>
+                                <ToggleButton id={record.id} action={clientActions.toggleCardio} value={record.cardio ? 'yes' : 'no'} defaultVal={record.cardio}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.cardio ? 'yes' : 'no'}
                                     </div>
                                 </ToggleButton>
                             </TableCell>
                             <TableCell className='bg-cyan-400 pl-2 pr-0'>
-                                <EditButton id={record.id} action={actions.editTraining} value='training' defaultVal={record.training}>
+                                <EditButton id={record.id} action={clientActions.editTraining} value='training' defaultVal={record.training}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.training !== '' ? record.training : <ImPencil2 />}
                                     </div>
@@ -191,14 +388,14 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                             <TableCell className="bg-red-400 pl-2 pr-0">{record.tCarbs}</TableCell>
                             <TableCell className="bg-red-400 pl-2 pr-0">{record.tCalories}</TableCell>
                             <TableCell className="bg-violet-400 pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editBodyWeight} value='weight' defaultVal={record.weight}>
+                                <EditButton id={record.id} action={clientActions.editBodyWeight} value='weight' defaultVal={record.weight}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.weight}
                                     </div>
                                 </EditButton>
                             </TableCell>
                             <TableCell className="bg-purple-600 text-white pl-2 pr-0">
-                                <EditButton id={record.id} action={actions.editNotes} value='training' defaultVal={record.notes}>
+                                <EditButton id={record.id} action={clientActions.editNotes} value='training' defaultVal={record.notes}>
                                     <div className="flex hover:scale-125 duration-100 justify-center">
                                         {record.notes !== '' ? record.notes : <ImPencil2 />}
                                     </div>
@@ -221,6 +418,8 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
 }
 
 const EditButton = ({ id, action, children, value, defaultVal }:any) => {
+    const { toast } = useToast()
+
     return (
         <Dialog>
             <DialogTrigger className="w-full">
@@ -230,7 +429,20 @@ const EditButton = ({ id, action, children, value, defaultVal }:any) => {
                 <DialogHeader>
                 <DialogTitle>Edit Data</DialogTitle>
                 <>
-                    <form action={action} className="mt-4">
+                    <form action={async (formData: FormData) => {
+                        const result = await action(formData)
+                        if (result) {
+                            toast({
+                                title: 'Success',
+                                description: 'Data updated successfully',
+                            })
+                        } else {
+                            toast({
+                                title: 'Error',
+                                description: 'Data failed to update',
+                            })
+                        }
+                    }} className="mt-4">
                         <input type="hidden" name="id" value={id} />
                         <Label htmlFor={value} className="">Change Value:</Label>
                         <Input type="text" name={value} defaultValue={defaultVal} className="border-[1px]" />

@@ -7,6 +7,8 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { tester } from "@/app/data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
+import { toast } from "@/components/ui/use-toast";
+import { revalidatePath } from "next/cache";
 
 export default async function Home({
   searchParams,
@@ -67,121 +69,167 @@ export default async function Home({
   const actions = {
     editCalories: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          calories: parseInt(formData.get('calories'))
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            calories: parseInt(formData.get('calories'))
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editFat: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          fat: parseInt(formData.get('fat'))
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            fat: parseInt(formData.get('fat'))
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editProtein: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          protein: parseInt(formData.get('protein'))
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            protein: parseInt(formData.get('protein'))
+          }
+        })
+      } catch (error) {
+        console.log(error)
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editCarbs: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          carbs: parseInt(formData.get('carbs'))
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            carbs: parseInt(formData.get('carbs'))
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     toggleAbs: async (formData:any) => {
       'use server'
-      const log = await prisma.dailyLog.findUnique({
-        where: {
-          id: formData.get('id')
+      try {
+        const log = await prisma.dailyLog.findUnique({
+          where: {
+            id: formData.get('id')
+          }
+        })
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            abs: log?.abs === true ? false : true
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          abs: log?.abs === true ? false : true
-        }
-      })
-      redirect('/journals/diet')
+      }
     },
     toggleCardio: async (formData:any) => {
       'use server'
-      const log = await prisma.dailyLog.findUnique({
-        where: {
-          id: formData.get('id')
+      try {
+        const log = await prisma.dailyLog.findUnique({
+          where: {
+            id: formData.get('id')
+          }
+        })
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            cardio: log?.cardio === true ? false : true
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          cardio: log?.cardio === true ? false : true
-        }
-      })
-      redirect('/journals/diet')
+      }
     },
     editTraining: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          training: formData.get('training')
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            training: formData.get('training')
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editBodyWeight: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          weight: parseFloat(formData.get('weight'))
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            weight: parseFloat(formData.get('weight'))
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editNotes: async (formData:any) => {
       'use server'
-      await prisma.dailyLog.update({
-        where: {
-          id: formData.get('id')
-        },
-        data: {
-          notes: formData.get('notes')
+      try {
+        await prisma.dailyLog.update({
+          where: {
+            id: formData.get('id')
+          },
+          data: {
+            notes: formData.get('notes')
+          }
+        })
+      } catch (error) {
+        return {
+          error: 'Something went wrong'
         }
-      })
-      redirect('/journals/diet')
+      }
     },
     editTargetCalories: async (formData:any) => {
       'use server'
@@ -193,7 +241,6 @@ export default async function Home({
           tCalories: parseInt(formData.get('targetCalories'))
         }
       })
-      redirect('/journals/diet')
     },
     editTargetFat: async (formData:any) => {
       'use server'
@@ -205,7 +252,6 @@ export default async function Home({
           tFat: parseInt(formData.get('targetFat'))
         }
       })
-      redirect('/journals/diet')
     },
     editTargetProtein: async (formData:any) => {
       'use server'
@@ -217,7 +263,6 @@ export default async function Home({
           tProtein: parseInt(formData.get('targetProtein'))
         }
       })
-      redirect('/journals/diet')
     },
     editTargetCarbs: async (formData:any) => {
       'use server'
@@ -229,7 +274,6 @@ export default async function Home({
           tCarbs: parseInt(formData.get('targetCarbs'))
         }
       })
-      redirect('/journals/diet')
     }
   }
 

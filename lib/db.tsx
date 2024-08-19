@@ -49,13 +49,10 @@ export const createRecord = async (formData: any) => {
             },
         });
 
-        // Revalidate the path to ensure the cache is updated
-        revalidatePath('/journals/diet');
-
-        return { message: 'Record created successfully.', record };
     } catch (error) {
-        console.error('Error creating record:', error);
-        return { message: 'Error creating record.' };
+        return { 
+            error: 'Something went wrong'
+        }
     }
 };
 
