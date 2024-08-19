@@ -72,19 +72,19 @@ const BreadcrumbPage = React.forwardRef<
 ))
 BreadcrumbPage.displayName = "BreadcrumbPage"
 
-const BreadcrumbSeparator = ({
+const BreadcrumbSeparator = ({ //CHANGED THIS FROM LI TO P DUE TO HYDRATION WARNINGS
   children,
   className,
   ...props
-}: React.ComponentProps<"li">) => (
-  <li
+}: React.ComponentProps<"p">) => (
+  <p
     role="presentation"
     aria-hidden="true"
     className={cn("[&>svg]:size-3.5", className)}
     {...props}
   >
     {children ?? <ChevronRight />}
-  </li>
+  </p>
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
 

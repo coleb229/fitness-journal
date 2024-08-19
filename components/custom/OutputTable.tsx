@@ -99,7 +99,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editFat: async (formData: FormData) => {
@@ -114,7 +114,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editProtein: async (formData: FormData) => {
@@ -129,7 +129,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editCarbs: async (formData: FormData) => {
@@ -144,7 +144,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         toggleAbs: async (formData: FormData) => {
@@ -159,7 +159,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         toggleCardio: async (formData: FormData) => {
@@ -174,7 +174,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editTraining: async (formData: FormData) => {
@@ -189,7 +189,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editBodyWeight: async (formData: FormData) => {
@@ -204,7 +204,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editNotes: async (formData: FormData) => {
@@ -219,7 +219,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editTargetFat: async (formData: FormData) => {
@@ -234,7 +234,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editTargetProtein: async (formData: FormData) => {
@@ -249,7 +249,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editTargetCarbs: async (formData: FormData) => {
@@ -264,7 +264,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         },
         editTargetCalories: async (formData: FormData) => {
@@ -279,7 +279,7 @@ export const OutputTable = ({ data, targets, actions, fullData, userPreferences 
                 title: 'Success',
                 description: 'Data updated successfully',
             })
-            redirect('/journals/diet')
+            setTimeout(redirect('/journals/diet'), 200)
           }
         }
     }
