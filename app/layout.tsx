@@ -5,6 +5,8 @@ import { Navbar } from "@/components/custom/Navbar";
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { Toaster } from "@/components/ui/toaster"
+import LoadingSkeleton from "@/components/custom/LoadingSkeleton"
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +25,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar user={session?.user?.name} />
-        {children}
-        <Toaster />
+        <Suspense fallback={<LoadingSkeleton />}>
+          <Navbar user={session?.user?.name} />
+          {children}
+          <Toaster />
+        </Suspense>
       </body>
     </html>
   );
