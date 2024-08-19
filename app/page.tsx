@@ -80,13 +80,25 @@ export default async function Home() {
     }
   })
 
-  const goal = await prisma.goal.findMany({
+  const loseGoal = await prisma.goal.findMany({
     where: {
       user: session?.user?.email as string,
       goal: 'lose'
     }
   })
-  const weightGoal = goal[0]?.target
+  const gainGoal = await prisma.goal.findMany({
+    where: {
+      user: session?.user?.email as string,
+      goal: 'gain'
+    }
+  })
+  let weightGoal
+  if(loseGoal.length > 0) {
+    weightGoal = loseGoal[0].target
+  }
+  if(gainGoal.length > 0) {
+    weightGoal = gainGoal[0].target
+  }
 
 //   !!! NEED TO CONVERT DATE STRING TO A NUMBER VALUE TO CALCULATE WEIGHT LOSS RATE !!!
 //   done
@@ -151,7 +163,7 @@ export default async function Home() {
       <PageHeader title="Dashboard" description="Take a glimpse at your overall fitness progress" url='/' />
       <div className="w-full grid grid-cols-2">
         <div>
-          <GraphCarousel data={dailyLogs} goal={weightGoal} />
+          {weightGoal ? <GraphCarousel data={dailyLogs} goal={weightGoal} /> : 'Add a weight goal to see your progress graphed'}
         </div>
         <div className="px-20 h-[400px] overflow-auto">
           <div className="flex items-center justify-center border-b-2 mb-2">
