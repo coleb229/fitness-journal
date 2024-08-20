@@ -9,6 +9,13 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+  } from "@/components/ui/select"  
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -32,7 +39,7 @@ export const FormDrawer = ({ preferences }:any) => {
     return (
         <Drawer>
             <DrawerTrigger className="bg-white text-xl border-4 px-12 py-6 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200">Add Record</DrawerTrigger>
-            <DrawerContent>
+            <DrawerContent className="px-10">
                 <DrawerHeader>
                 <DrawerTitle>Add a new record to the table</DrawerTitle>
                 <DrawerDescription>You can set your preferences for target macros/calories from the user profile page</DrawerDescription>
@@ -65,7 +72,7 @@ const Form = ({ preferences }:any) => {
           }
     }
     return (
-        <form action={clientAction} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px]">
+        <form action={clientAction} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px] px-20">
             <div className="grid grid-cols-1 lg:col-span-4 mx-auto lg:py-10">
                 <Label>Date</Label>
                 <DatePicker name='date' />
@@ -88,7 +95,7 @@ const Form = ({ preferences }:any) => {
             </div>
             <div>
                 <Label>Training</Label>
-                <Input name='training' />
+                <Selector values={['Push', 'Pull', 'Legs', 'Rest', 'Skip']} name='training' />
             </div>
             <div className="grid grid-cols-1 mx-auto">
                 <Label>Abs</Label>
@@ -160,5 +167,22 @@ const DatePicker = ({name}:any) => {
           </PopoverContent>
           <input type="hidden" name={name} value={date ? date.toISOString() : ''} />
         </Popover>
+    )
+}
+
+const Selector = ({ values, name }:any) => {
+    return (
+        <Select name={name}>
+            <SelectTrigger className="w-full">
+                <SelectValue placeholder="Training" />
+            </SelectTrigger>
+            <SelectContent>
+                {values.map((value:any) => (
+                    <SelectItem key={value} value={value.toLowerCase()} onChange={value}>
+                        {value}
+                    </SelectItem>
+                ))}
+            </SelectContent>
+        </Select>
     )
 }
