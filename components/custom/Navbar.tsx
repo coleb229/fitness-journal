@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import Link from "next/link"
+import { navigationRoutes } from "@/app/data/navigationRoutes"
 
 export const Navbar = ({ user }:any) => {
   return (
@@ -46,31 +47,33 @@ const NavMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Analytics</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/analytics" name="Data Visualization" />
+            {navigationRoutes.map((route:any) => (
+              route.section === 'analytics' ? <NavMenuLink key={route.title} href={route.route} name={route.title} /> : null
+            ))}
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Tools</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/tool/bmr" name="BMR Calculator" />
-            <NavMenuLink href="/tool/macros" name="Macros Calculator" />
-            <NavMenuLink href="/tool/workout-guides" name="Workout Guides" />
-            <NavMenuLink href="/tool/workout-planner" name="Workout Planner" />
+            {navigationRoutes.map((route:any) => (
+              route.section === 'tool' ? <NavMenuLink key={route.title} href={route.route} name={route.title} /> : null
+            ))}
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Journals</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/journals/diet" name="Diet Journal" />
-            <NavMenuLink href="/journals/training" name="Training Journal" />
-            <NavMenuLink href="/journals/measurements" name="Measurements Journal" />
+            {navigationRoutes.map((route:any) => (
+              route.section === 'journals' ? <NavMenuLink key={route.title} href={route.route} name={route.title} /> : null
+            ))}
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Knowledge</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
-            <NavMenuLink href="/knowledge/diet-tips" name="Diet Tips" />
-            <NavMenuLink href="/knowledge/training-tips" name="Training Journal" />
+            {navigationRoutes.map((route:any) => (
+              route.section === 'knowledge' ? <NavMenuLink key={route.title} href={route.route} name={route.title} /> : null
+            ))}
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>

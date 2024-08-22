@@ -9,6 +9,7 @@ import { Notification } from "@/components/custom/Notification";
 import { tester } from "./data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
 import { dailyLogExampleData, goalExampleData, trainingExampleData } from "./data/exampleData";
+import { FastTravel } from "@/components/custom/FastTravel";
 
 export default async function Home() {
 
@@ -58,6 +59,7 @@ export default async function Home() {
             <ListGoals goals={goalExampleData} dailyLogs={dailyLogExampleData} training={trainingExampleData} rate={1 + '(ish)'} />
           </div>
         </div>
+        <FastTravel />
         <div className="flex flex-col items-center justify-center fixed bottom-0 right-0 p-10 z-50">
           <Notification key={1} message={"You need to add dailyLog data before personal data will be displayed on this page.  For now you are provided example data."} />
         </div>
