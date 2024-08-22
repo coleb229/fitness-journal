@@ -6,6 +6,8 @@ import { TrainingTable } from "@/components/custom/TrainingTable";
 import prisma from "@/lib/prisma";
 import { tester } from "@/app/data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
+import { PageInfo } from "@/components/custom/PageInfo";
+import { trainingJournalPageProps } from "@/app/data/pageProps";
 
 export default async function Home() {
 
@@ -64,7 +66,8 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center px-24 py-10">
       <PageHeader title='Training Journal' description='Log your training sessions here.' url='/journals/training' />
-      <div className="grid grid-cols-3 gap-6">
+      <PageInfo props={trainingJournalPageProps} />
+      <div className="grid grid-cols-3 gap-6 pt-6">
         <TrainingTable exercise='benchPress' session={user} data={benchPressData} title='Bench Press' />
         <TrainingTable exercise='overheadPress' session={user} data={overheadPressData} title='Overhead Press' />
         <TrainingTable exercise='deadlift' session={user} data={deadliftData} title='Deadlift' />

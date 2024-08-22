@@ -17,17 +17,17 @@ export const Navbar = ({ user }:any) => {
     <div className="flex justify-between items-center bg-slate-100 px-10 fixed top-0 w-screen shadow-md z-50">
       <NavMenu />
       <UserDropdown user={user} />
-      <Link href='/' className="text-xl hover:scale-110 duration-100">Home</Link>
+      <Link href='/' className="text-md 2xl:text-xl hover:scale-110 duration-100">Dashboard</Link>
     </div> 
   )
 }
 
 const UserDropdown = ({ user }:any) => {
   return (
-    <div className="flex">
-      <h1 className="text-lg">Hello {user === undefined ? 'Tester' : user} </h1>
+    <div className="flex items-center">
+      <h1 className="text-sm 2xl:text-lg font-semibold">Hello {user === undefined ? 'Tester' : user} </h1>
       <DropdownMenu>
-        <DropdownMenuTrigger><b className="text-xl ml-2">↴</b></DropdownMenuTrigger>
+        <DropdownMenuTrigger><b className="text-sm 2xl:text-xl ml-2">↴</b></DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -44,13 +44,13 @@ const NavMenu = () => {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Analytics</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Analytics</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/analytics" name="Data Visualization" />
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Tools</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Tools</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/tool/bmr" name="BMR Calculator" />
             <NavMenuLink href="/tool/macros" name="Macros Calculator" />
@@ -59,7 +59,7 @@ const NavMenu = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Journals</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Journals</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/journals/diet" name="Diet Journal" />
             <NavMenuLink href="/journals/training" name="Training Journal" />
@@ -67,7 +67,7 @@ const NavMenu = () => {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-lg bg-slate-100">Knowledge</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-sm 2xl:text-lg bg-slate-100">Knowledge</NavigationMenuTrigger>
           <NavigationMenuContent className="min-w-[400px]">
             <NavMenuLink href="/knowledge/diet-tips" name="Diet Tips" />
             <NavMenuLink href="/knowledge/training-tips" name="Training Journal" />

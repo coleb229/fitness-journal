@@ -9,6 +9,8 @@ import { tester } from "@/app/data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
 import { toast } from "@/components/ui/use-toast";
 import { revalidatePath } from "next/cache";
+import { PageInfo } from "@/components/custom/PageInfo";
+import { dietJournalPageProps } from "@/app/data/pageProps";
 
 export default async function Home({
   searchParams,
@@ -280,6 +282,7 @@ export default async function Home({
   return (
     <main className="flex min-h-screen flex-col items-center px-24 py-10">
       <PageHeader title="Diet Journal" description="Track your daily nutrition intake" url='/journals/diet' />
+      <PageInfo props={dietJournalPageProps} />
       <FormDrawer preferences={preferences} />
       <OutputTable data={entries} targets={preferences} actions={actions} fullData={dailyLogs} userPreferences={userPreferenceData} />
     </main>

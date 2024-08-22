@@ -38,7 +38,7 @@ import { redirect } from "next/navigation"
 export const FormDrawer = ({ preferences }:any) => {
     return (
         <Drawer>
-            <DrawerTrigger className="bg-white text-xl border-4 px-12 py-6 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200">Add Record</DrawerTrigger>
+            <DrawerTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Record</DrawerTrigger>
             <DrawerContent className="px-10">
                 <DrawerHeader>
                 <DrawerTitle>Add a new record to the table</DrawerTitle>

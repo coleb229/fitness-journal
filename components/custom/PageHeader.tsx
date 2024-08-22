@@ -14,10 +14,10 @@ export const PageHeader = ({ title, description, url }:any) => {
   return (
     <>
       <Trail url={url} />
-      <header className="flex flex-col items-center w-screen py-14 bg-slate-800 text-white mb-10">
+      <header className="flex flex-col items-center w-screen py-10 2xl:py-14 bg-slate-800 text-white mb-10">
         <div>
-          <h1 className="text-4xl font-bold">{title}</h1>
-          <p className="text-lg text-center">{description}</p>
+          <h1 className="text-2xl 2xl:text-4xl font-bold">{title}</h1>
+          <p className="text-sm 2xl:text-lg text-center">{description}</p>
         </div>
       </header>
     </>
@@ -50,7 +50,7 @@ const Trail = ({ url }:any) => {
 
   return (
     <Breadcrumb className="fixed top-14 left-5 z-50">
-      {scrollY > 200 ? (
+      {scrollY > 150 ? (
         <BreadcrumbList className="text-black bg-[#f2f2f2] px-4 py-2">
         {crumbs.map((crumb:any, index:number) => (
           crumb === crumbs[crumbs.length - 1] ? null :
