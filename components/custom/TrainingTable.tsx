@@ -28,6 +28,8 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { DeleteDataButton } from "./DeleteDataButton"
 
+let push = 'let me push this ish'
+
 export const TrainingTable = ({ session, data }:any) => {
   return (
     <Card className="shadow-2xl">
