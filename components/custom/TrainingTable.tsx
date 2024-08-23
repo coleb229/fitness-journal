@@ -28,11 +28,11 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { DeleteDataButton } from "./DeleteDataButton"
 
-export const TrainingTable = ({ session, exercise, data, title }:any) => {
+export const TrainingTable = ({ session, data }:any) => {
   return (
     <Card className="shadow-2xl">
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle>{data[0].exercise.toUpperCase()}</CardTitle>
       </CardHeader>
       <CardContent>
         <Table>
@@ -86,7 +86,7 @@ export const TrainingTable = ({ session, exercise, data, title }:any) => {
           <DialogTrigger className="font-bold ml-auto mr-4 my-4 text-xl px-4 py-2 border hover:bg-black hover:rounded-lg hover:text-white hover:scale-125 duration-200">+</DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle className="mb-4">{title}</DialogTitle>
+              <DialogTitle className="mb-4">{data.exercise}</DialogTitle>
               <DialogDescription>
                 <form action={createTrainingRow} className="flex">
                   <div>
@@ -96,7 +96,7 @@ export const TrainingTable = ({ session, exercise, data, title }:any) => {
                       <Button type="submit">Submit</Button>
                     </div>
                   </div>
-                  <input type="text" hidden value={exercise} id="exercise" name="exercise" />
+                  <input type="text" hidden value={data.exercise} id="exercise" name="exercise" />
                   <input type="text" hidden defaultValue={session} name="user" />
                 </form>
               </DialogDescription>

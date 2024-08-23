@@ -360,3 +360,28 @@ export const addGoal = async (formData: any) => {
         return { message: 'Error creating record.' };
     }
 }
+
+export const newTrainingTable = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const exercise = formData.get('exercise');
+        const weight = parseInt(formData.get('weight'));
+
+        const record = await prisma.training.create({
+            data: {
+                exercise,
+                weight,
+                user: email as string,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record created successfully.', record };
+    } catch (error) {
+        console.error('Error creating record:', error);
+        return { message: 'Error creating record.' };
+    }
+}
