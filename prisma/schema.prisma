@@ -52,8 +52,6 @@ model Training {
   sevenByFive Boolean @default(false)
   fiveBySeven Boolean @default(false)
   user        String
-
-  @@unique([exercise, user, weight])
 }
 
 model Goal {
