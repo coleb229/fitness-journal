@@ -385,3 +385,24 @@ export const newTrainingTable = async (formData: any) => {
         return { message: 'Error creating record.' };
     }
 }
+
+export const deleteFullTrainingTable = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const record = await prisma.training.deleteMany({
+            where: {
+                user: email as string,
+                exercise: formData.get('exercise'),
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journal/training');
+
+        return { message: 'Record deleted successfully.', record };
+    } catch (error) {
+        console.error('Error deleting record:', error);
+        return { message: 'Error deleting record.' };
+    }
+}

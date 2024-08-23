@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
-import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySeven, deleteTrainingRow } from "@/lib/db"
+import { createTrainingRow, toggleTenByThree, toggleSevenByFive, toggleFiveBySeven, deleteTrainingRow, deleteFullTrainingTable } from "@/lib/db"
 import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { DeleteDataButton } from "./DeleteDataButton"
@@ -32,7 +32,10 @@ export const TrainingTable = ({ session, data }:any) => {
   return (
     <Card className="shadow-2xl">
       <CardHeader>
-        <CardTitle>{data[0].exercise.toUpperCase()}</CardTitle>
+        <div className="flex justify-between">
+          <CardTitle>{data[0].exercise.toUpperCase()}</CardTitle>
+          <DeleteTableButton exercise={data[0].exercise} />
+        </div>
       </CardHeader>
       <CardContent>
         <Table>
@@ -105,5 +108,25 @@ export const TrainingTable = ({ session, data }:any) => {
         </Dialog>
       </CardContent>
     </Card>
+  )
+}
+
+const DeleteTableButton = ({ exercise }:any) => {
+  return (
+    <Dialog>
+      <DialogTrigger className="text-red-500 font-semibold">x</DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your training data for this exercise.
+            <form action={deleteFullTrainingTable}>
+              <input type="text" hidden value={exercise} name="exercise" />
+              <button type="submit" className="flex mx-auto my-2 p-4 border-2 hover:bg-black hover:text-white hover:rounded-lg duration-150">Delete</button>
+            </form>
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
   )
 }
