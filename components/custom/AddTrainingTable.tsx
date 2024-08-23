@@ -16,6 +16,7 @@ import {
 import { Label } from "../ui/label"
 import { Input } from "../ui/input"
 import { newTrainingTable } from "@/lib/db"
+import React from "react"
 
 const exercises = ['benchPress', 'deadlift', 'squat', 'Overhead Press', 'pullUp', 'curl', 'dips', 'legPress', 'legCurl', 'legExtension', 'latPulldown', 'seatedRow', 'chestPress', 'shoulderFly', 'tricepExtension', 'preacherCurl', 'legRaise', 'crunch', 'russianTwist', 'plank', 'sidePlank', 'chestFly']
 

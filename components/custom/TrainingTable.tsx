@@ -28,8 +28,6 @@ import { IoCheckmarkOutline } from "react-icons/io5";
 import { RxCross1 } from "react-icons/rx";
 import { DeleteDataButton } from "./DeleteDataButton"
 
-let push = 'let me push this ish'
-
 export const TrainingTable = ({ session, data }:any) => {
   return (
     <Card className="shadow-2xl">
@@ -101,7 +99,7 @@ export const TrainingTable = ({ session, data }:any) => {
                       <Button type="submit">Submit</Button>
                     </div>
                   </div>
-                  <input type="text" hidden value={data.exercise} id="exercise" name="exercise" />
+                  <input type="text" hidden value={data[0].exercise} id="exercise" name="exercise" />
                   <input type="text" hidden defaultValue={session} name="user" />
                 </form>
               </DialogDescription>
