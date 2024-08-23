@@ -75,10 +75,10 @@ export default async function Home() {
   //need to add a way to swap between different exercises and store them in user preferences
 
   return (
-    <main className="flex min-h-screen flex-col items-center px-24 py-10">
+    <main className="flex min-h-screen flex-col items-center px-6 2xl:px-24 py-10">
       <PageHeader title='Training Journal' description='Log your training sessions here.' url='/journals/training' />
       <PageInfo props={trainingJournalPageProps} />
-      <div className="grid grid-cols-3 gap-6 pt-6">
+      <div className="grid grid-cols-3 gap-4 pt-6">
         {benchPressData.length > 0 && <TrainingTable data={benchPressData} session={session} />}
         {deadliftData.length > 0 && <TrainingTable data={deadliftData} session={session} />}
         {squatData.length > 0 && <TrainingTable data={squatData} session={session} />}
