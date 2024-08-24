@@ -39,7 +39,7 @@ export const FormDrawer = ({ preferences }:any) => {
     return (
         <Drawer>
             <DrawerTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Record</DrawerTrigger>
-            <DrawerContent className="px-10">
+            <DrawerContent className="px-10 text-sm 2xl:text-md">
                 <DrawerHeader>
                 <DrawerTitle>Add a new record to the table</DrawerTitle>
                 <DrawerDescription>You can set your preferences for target macros/calories from the user profile page</DrawerDescription>
@@ -73,7 +73,7 @@ const Form = ({ preferences }:any) => {
     }
     return (
         <form action={clientAction} className="grid grid-cols-1 lg:grid-cols-4 gap-2 bg-[#f2f2f2] p-[1px] px-20">
-            <div className="grid grid-cols-1 lg:col-span-4 mx-auto lg:py-10">
+            <div className="grid grid-cols-1 lg:col-span-4 mx-auto py-2 2xl:py-10">
                 <Label>Date</Label>
                 <DatePicker name='date' />
             </div>
