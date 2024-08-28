@@ -78,9 +78,7 @@ export default async function Home({
             calories: parseInt(formData.get('calories'))
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -98,9 +96,7 @@ export default async function Home({
             fat: parseInt(formData.get('fat'))
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -118,9 +114,7 @@ export default async function Home({
             protein: parseInt(formData.get('protein'))
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         console.log(error)
         return {
@@ -139,9 +133,7 @@ export default async function Home({
             carbs: parseInt(formData.get('carbs'))
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -164,9 +156,7 @@ export default async function Home({
             abs: log?.abs === true ? false : true
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -189,9 +179,7 @@ export default async function Home({
             cardio: log?.cardio === true ? false : true
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -209,9 +197,7 @@ export default async function Home({
             training: formData.get('training')
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -229,9 +215,7 @@ export default async function Home({
             weight: parseFloat(formData.get('weight'))
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -249,9 +233,7 @@ export default async function Home({
             notes: formData.get('notes')
           }
         })
-        setTimeout(() => {
-          revalidatePath('/journals/diet')
-        }, 1000)
+        revalidatePath('/journals/diet')
       } catch (error) {
         return {
           error: 'Something went wrong'
