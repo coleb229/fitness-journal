@@ -48,6 +48,9 @@ export const createRecord = async (formData: any) => {
                 user: email as string,
             },
         });
+        setTimeout(() => {
+            revalidatePath('/journals/diet')
+        }, 1000);
 
     } catch (error) {
         return { 

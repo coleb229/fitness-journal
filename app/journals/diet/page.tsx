@@ -4,10 +4,8 @@ import { FormDrawer } from "@/components/custom/FormDrawer";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { redirect } from "next/navigation";
 import { tester } from "@/app/data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
-import { toast } from "@/components/ui/use-toast";
 import { revalidatePath } from "next/cache";
 import { PageInfo } from "@/components/custom/PageInfo";
 import { dietJournalPageProps } from "@/app/data/pageProps";
@@ -80,6 +78,9 @@ export default async function Home({
             calories: parseInt(formData.get('calories'))
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -97,6 +98,9 @@ export default async function Home({
             fat: parseInt(formData.get('fat'))
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -114,6 +118,9 @@ export default async function Home({
             protein: parseInt(formData.get('protein'))
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         console.log(error)
         return {
@@ -132,6 +139,9 @@ export default async function Home({
             carbs: parseInt(formData.get('carbs'))
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -154,6 +164,9 @@ export default async function Home({
             abs: log?.abs === true ? false : true
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -176,6 +189,9 @@ export default async function Home({
             cardio: log?.cardio === true ? false : true
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -193,6 +209,9 @@ export default async function Home({
             training: formData.get('training')
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -210,6 +229,9 @@ export default async function Home({
             weight: parseFloat(formData.get('weight'))
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -227,6 +249,9 @@ export default async function Home({
             notes: formData.get('notes')
           }
         })
+        setTimeout(() => {
+          revalidatePath('/journals/diet')
+        }, 1000)
       } catch (error) {
         return {
           error: 'Something went wrong'
@@ -243,6 +268,9 @@ export default async function Home({
           tCalories: parseInt(formData.get('targetCalories'))
         }
       })
+      setTimeout(() => {
+        revalidatePath('/journals/diet')
+      }, 1000)
     },
     editTargetFat: async (formData:any) => {
       'use server'
@@ -265,6 +293,9 @@ export default async function Home({
           tProtein: parseInt(formData.get('targetProtein'))
         }
       })
+      setTimeout(() => {
+        revalidatePath('/journals/diet')
+      }, 1000)
     },
     editTargetCarbs: async (formData:any) => {
       'use server'
@@ -276,6 +307,9 @@ export default async function Home({
           tCarbs: parseInt(formData.get('targetCarbs'))
         }
       })
+      setTimeout(() => {
+        revalidatePath('/journals/diet')
+      }, 1000)
     }
   }
 
