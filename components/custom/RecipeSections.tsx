@@ -49,23 +49,31 @@ export const NutritionSection = ({ data }:any) => {
       <h2 className="text-2xl font-bold">Nutrition Info</h2>
       <Separator />
       <div className="grid grid-cols-1 gap-4 p-6">
-        <div className="text-center">
-          <h3 className="text-xl font-bold">Calories</h3>
-          <p>{data.calories}</p>
+        <div className="w-full flex justify-around">
+          <div className="text-center">
+            <h3 className="text-xl font-bold">Calories</h3>
+            <p>{data.calories}</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-xl font-bold">Serving Size</h3>
+            <p>{data.serving} oz</p>
+          </div>
         </div>
-        <div className="w-full">
-          <h3 className="text-xl font-bold">Macronutrients</h3>
-          <Separator />
-          <div className="flex justify-around items-center">
-            <div>
-              <p className="p-2">Fat: {data.fat}</p>
+        <div className="w-full flex justify-center">
+          <div className="w-1/2 my-10">
+            <h3 className="text-xl font-bold">Macronutrients</h3>
+            <Separator />
+            <div className="flex justify-around items-center">
+              <div>
+                <p className="p-2">Fat: {data.fat}</p>
+              </div>
+              <Separator orientation="vertical" className="h-8" />
+              <div>
+                <p className="p-2">Protein: {data.protein}</p>
+              </div>
+              <Separator orientation="vertical" className="h-8" />
+              <p className="p-2">Carbs: {data.carbs}</p>
             </div>
-            <Separator orientation="vertical" className="h-8" />
-            <div>
-              <p className="p-2">Protein: {data.protein}</p>
-            </div>
-            <Separator orientation="vertical" className="h-8" />
-            <p className="p-2">Carbs: {data.carbs}</p>
           </div>
         </div>
       </div>
