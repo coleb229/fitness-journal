@@ -45,22 +45,22 @@ export const RecipeBuilder = () => {
   return (
     <Dialog>
       <DialogTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Recipe +</DialogTrigger>
-      <DialogContent className="text-sm 2xl:text-md max-w-screen p-0">
+      <DialogContent className="text-sm 2xl:text-md max-w-screen p-0 h-screen">
         <DialogHeader>
           <hr className="h-10" />
           <PreviewWindow data={recipe} />
         </DialogHeader>
-        <form action={addRecipe}>
-          <Label>Recipe Name</Label>
+        <form action={addRecipe} className="bg-slate-800 px-10 py-2">
+          <Label className='text-white'>Recipe Name</Label>
           <Input
             placeholder="Recipe name"
             value={name}
             name="name"
             onChange={(e) => setName(e.target.value)}
           />
-          <div className="grid grid-cols-3 gap-2">
-            <div>
-              <Label>Recipe Description</Label>
+          <div className="grid grid-cols-3 gap-2 pt-4">
+            <div className="">
+              <Label className='text-white'>Recipe Description</Label>
               <Textarea
                 placeholder="Recipe description"
                 value={description}
@@ -69,7 +69,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label>Recipe Ingredients</Label>
+              <Label className='text-white'>Recipe Ingredients</Label>
               <Textarea
                 placeholder="Recipe ingredients"
                 value={ingredients}
@@ -78,7 +78,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label>Recipe Instructions</Label>
+              <Label className='text-white'>Recipe Instructions</Label>
               <Textarea
                 placeholder="Recipe instructions"
                 value={instructions}
@@ -87,9 +87,9 @@ export const RecipeBuilder = () => {
               />
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4 mt-4">
             <div>
-              <Label>Calories</Label>
+              <Label className='text-white'>Calories</Label>
               <Input
                 type="number"
                 value={calories}
@@ -98,7 +98,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label>Fat</Label>
+              <Label className='text-white'>Fat</Label>
               <Input
                 type="number"
                 value={fat}
@@ -107,7 +107,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label>Protein</Label>
+              <Label className='text-white'>Protein</Label>
               <Input
                 type="number"
                 value={protein}
@@ -116,7 +116,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label>Carbs</Label>
+              <Label className='text-white'>Carbs</Label>
               <Input
                 type="number"
                 value={carbs}
@@ -125,7 +125,7 @@ export const RecipeBuilder = () => {
               />
             </div>
           </div>
-          <Label>Serving Size</Label>
+          <Label className='text-white'>Serving Size</Label>
           <Input
             type="number"
             value={serving}
@@ -141,7 +141,7 @@ export const RecipeBuilder = () => {
 
 const PreviewWindow = ({ data }:any) => {
   return (
-    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[300px] 2xl:max-h-[400px] overflow-y-auto">
+    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[300px] xl:max-h-[450px] 2xl:max-h-[450px] min-[2000px]:max-h-[800px] overflow-y-auto">
       <PageHeader title={data.name} description="Check out how your recipe will look" url='/journals/recipes/######' />
       <PreviewRecipeInfoTabs data={data} />
       <DescriptionSection data={data} />
