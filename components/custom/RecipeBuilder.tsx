@@ -12,6 +12,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "../ui/label"
 import { useState } from "react"
 import { addRecipe } from "@/lib/db"
+import { DescriptionSection, FooterSection, NutritionSection, PreviewRecipeInfoTabs, RecipeInfoTabs } from "./RecipeSections"
+import Page from "@/app/gallery/progress/page"
+import { PageHeader } from "./PageHeader"
 
 export const RecipeBuilder = () => {
   const [name, setName] = useState('')
@@ -23,6 +26,17 @@ export const RecipeBuilder = () => {
   const [protein, setProtein] = useState(0)
   const [carbs, setCarbs] = useState(0)
   const [serving, setServing] = useState(0)
+  const recipe = {
+    name: name,
+    description: description,
+    ingredients: ingredients,
+    instructions: instructions,
+    calories: calories,
+    fat: fat,
+    protein: protein,
+    carbs: carbs,
+    serving: serving
+  }
 
   const handleSubmit = () => {
     console.log(name, description, ingredients, instructions)
@@ -31,10 +45,10 @@ export const RecipeBuilder = () => {
   return (
     <Dialog>
       <DialogTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Recipe +</DialogTrigger>
-      <DialogContent className="px-10 text-sm 2xl:text-md max-w-screen">
+      <DialogContent className="text-sm 2xl:text-md max-w-screen p-0">
         <DialogHeader>
-          <DialogTitle>Add a new recipe</DialogTitle>
-          <PreviewWindow name={name} description={description} ingredients={ingredients} instructions={instructions} />
+          <hr className="h-10" />
+          <PreviewWindow data={recipe} />
         </DialogHeader>
         <form action={addRecipe}>
           <Label>Recipe Name</Label>
@@ -125,23 +139,13 @@ export const RecipeBuilder = () => {
   )
 }
 
-const PreviewWindow = ({ name, description, ingredients, instructions }:any) => {
+const PreviewWindow = ({ data }:any) => {
   return (
-    <div className="bg-slate-100 p-4 rounded-xl shadow-xl">
-      <h1 className="text-2xl font-bold">{name}</h1>
-      <p>{description}</p>
-      <h2 className="text-lg font-semibold">Ingredients</h2>
-      <ul className="list-disc px-10">
-        {ingredients.split('\n').map((ingredient:any, index:any) => (
-          <li key={index}>{ingredient}</li>
-        ))} 
-      </ul>
-      <h2 className="text-lg font-semibold">Instructions</h2>
-      <ol className="list-decimal px-10">
-        {instructions.split('\n').map((instruction:any, index:any) => (
-          <li key={index}>{instruction}</li>
-        ))}
-      </ol>
+    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[300px] 2xl:max-h-[400px] overflow-y-auto">
+      <PageHeader title={data.name} description="Check out how your recipe will look" url='/journals/recipes/######' />
+      <PreviewRecipeInfoTabs data={data} />
+      <DescriptionSection data={data} />
+      <FooterSection data={data} />
     </div>
   )
 }
