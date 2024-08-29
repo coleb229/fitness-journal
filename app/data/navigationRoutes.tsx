@@ -19,21 +19,24 @@ export const navigationRoutes = [
     route: '/tool/bmr', 
     section: 'tool'
   },
-  {
+  /*{
     title: 'Macros Calculator',
     route: '/tool/macros',
     section: 'tool'
   },
+  */
   {
     title: 'Workout Guides',
     route: '/tool/workout-guides',
     section: 'tool'
   },
+  /*
   {
     title: 'Workout Planner',
     route: '/tool/workout-planner',
     section: 'tool'
   },
+  */
   {
     title: 'Diet Journal',
     route: '/journals/diet',
@@ -44,9 +47,16 @@ export const navigationRoutes = [
     route: '/journals/training',
     section: 'journals'
   },
+  /*
   {
     title: 'Measurements Journal',
     route: '/journals/measurements',
+    section: 'journals'
+  },
+  */
+  {
+    title: 'Recipe Journal',
+    route: '/journals/recipes',
     section: 'journals'
   },
   {
@@ -54,9 +64,11 @@ export const navigationRoutes = [
     route: '/knowledge/diet-tips',
     section: 'knowledge'
   },
+  /*
   {
     title: 'Training Tips',
     route: '/knowledge/training-tips',
     section: 'knowledge'
   },
+  */
 ]

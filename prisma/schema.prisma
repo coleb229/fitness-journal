@@ -62,3 +62,19 @@ model Goal {
 
   @@unique([user, goal])
 }
+
+model Recipe {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  description  String
+  ingredients  String[]
+  instructions String[]
+  calories     Int
+  fat          Int
+  protein      Int
+  carbs        Int
+  serving      Int
+  user         String
+
+  @@unique([name, user])
+}

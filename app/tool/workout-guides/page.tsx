@@ -1,10 +1,10 @@
 'use server'
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { WorkoutGuide } from "@/components/custom/WorkoutGuide";
-import { workouts } from "../../data/workoutGuide.data";
 import { tester } from "@/app/data/tester";
 import { PageHeader } from "@/components/custom/PageHeader";
+import { WorkoutGuide } from "@/components/custom/WorkoutGuide";
+import { workouts } from "../../data/workoutGuide.data";
 
 export default async function Home() {
 

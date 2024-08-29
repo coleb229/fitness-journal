@@ -407,3 +407,52 @@ export const deleteFullTrainingTable = async (formData: any) => {
         return { message: 'Error deleting record.' };
     }
 }
+
+export const fetchRecipes = async () => {
+    try {
+        const recipes = await prisma.recipe.findMany();
+        return recipes;
+    } catch (error) {
+        console.error('Error fetching recipes:', error);
+        return { message: 'Error fetching recipes.' };
+    }
+}
+
+export const addRecipe = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const name = formData.get('name');
+        const description = formData.get('description');
+        const ingredients = formData.get('ingredients').split('\n');
+        const instructions = formData.get('instructions').split('\n');
+        const calories = parseInt(formData.get('calories'));
+        const fat = parseInt(formData.get('fat'));
+        const protein = parseInt(formData.get('protein'));
+        const carbs = parseInt(formData.get('carbs'));
+        const serving = parseInt(formData.get('serving'));
+        const record = await prisma.recipe.create({
+            data: {
+                name,
+                description,
+                ingredients,
+                instructions,
+                calories,
+                fat,
+                protein,
+                carbs,
+                serving,
+
+                user: email as string,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journals/recipes');
+
+        return { message: 'Record created successfully.', record };
+    } catch (error) {
+        console.error('Error creating record:', error);
+        return { message: 'Error creating record.' };
+    }
+}
