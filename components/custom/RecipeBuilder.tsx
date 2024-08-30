@@ -50,17 +50,17 @@ export const RecipeBuilder = () => {
           <hr className="h-10" />
           <PreviewWindow data={recipe} />
         </DialogHeader>
-        <form action={addRecipe} className="bg-slate-800 px-10 py-2">
-          <Label className='text-white'>Recipe Name</Label>
+        <form action={addRecipe} className="bg-slate-800 px-10 py-2 max-h-[250px] 2xl:max-h-[400px] overflow-y-auto">
+          <Label className='text-white text-xs 2xl:text-lg'>Recipe Name</Label>
           <Input
             placeholder="Recipe name"
             value={name}
             name="name"
             onChange={(e) => setName(e.target.value)}
           />
-          <div className="grid grid-cols-3 gap-2 pt-4">
+          <div className="grid grid-cols-3 gap-2 2xl:pt-4">
             <div className="">
-              <Label className='text-white'>Recipe Description</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Recipe Description</Label>
               <Textarea
                 placeholder="Recipe description"
                 value={description}
@@ -69,7 +69,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label className='text-white'>Recipe Ingredients</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Recipe Ingredients</Label>
               <Textarea
                 placeholder="Recipe ingredients"
                 value={ingredients}
@@ -78,7 +78,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label className='text-white'>Recipe Instructions</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Recipe Instructions</Label>
               <Textarea
                 placeholder="Recipe instructions"
                 value={instructions}
@@ -87,9 +87,9 @@ export const RecipeBuilder = () => {
               />
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-4 gap-4 2xl:mt-4">
             <div>
-              <Label className='text-white'>Calories</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Calories</Label>
               <Input
                 type="number"
                 value={calories}
@@ -98,7 +98,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label className='text-white'>Fat</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Fat</Label>
               <Input
                 type="number"
                 value={fat}
@@ -107,7 +107,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label className='text-white'>Protein</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Protein</Label>
               <Input
                 type="number"
                 value={protein}
@@ -116,7 +116,7 @@ export const RecipeBuilder = () => {
               />
             </div>
             <div>
-              <Label className='text-white'>Carbs</Label>
+              <Label className='text-white text-xs 2xl:text-lg'>Carbs</Label>
               <Input
                 type="number"
                 value={carbs}
@@ -125,7 +125,7 @@ export const RecipeBuilder = () => {
               />
             </div>
           </div>
-          <Label className='text-white'>Serving Size</Label>
+          <Label className='text-white text-xs 2xl:text-lg'>Serving Size</Label>
           <Input
             type="number"
             value={serving}
@@ -141,7 +141,7 @@ export const RecipeBuilder = () => {
 
 const PreviewWindow = ({ data }:any) => {
   return (
-    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[300px] xl:max-h-[450px] 2xl:max-h-[450px] min-[2000px]:max-h-[800px] overflow-y-auto">
+    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[250px] 2xl:max-h-[450px] min-[2000px]:max-h-[800px] overflow-y-auto">
       <PageHeader title={data.name} description="Check out how your recipe will look" url='/journals/recipes/######' />
       <PreviewRecipeInfoTabs data={data} />
       <DescriptionSection data={data} />
