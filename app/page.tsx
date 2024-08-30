@@ -148,8 +148,53 @@ export default async function Home() {
 
     return weightLossRateToFixed
   }
-
   const weightLossRate = calculateWeightLossRate()
+
+  const calculateWeightGainRate = () => {
+    const monthMap = [
+      { name: 'Jan', value: 1 }, { name: 'Feb', value: 2 }, { name: 'Mar', value: 3 },
+      { name: 'Apr', value: 4 }, { name: 'May', value: 5 }, { name: 'Jun', value: 6 },
+      { name: 'Jul', value: 7 }, { name: 'Aug', value: 8 }, { name: 'Sep', value: 9 },
+      { name: 'Oct', value: 10 }, { name: 'Nov', value: 11 }, { name: 'Dec', value: 12 }
+    ];
+
+    // formats start date string to a number value
+    let startDate = dailyLogs[0].date.toDateString()
+    let startDateMonth = startDate.slice(4, 7)
+    
+    // formats end date string to a number value
+    let endDate = dailyLogs[dailyLogs.length - 1].date.toDateString()
+    let endDateMonth = endDate.slice(4, 7)
+
+    for(let i = 0; i < monthMap.length; i++) {
+      if(startDateMonth === monthMap[i].name) {
+        startDate = startDate.replace(startDateMonth, monthMap[i].value.toString())
+      }
+      if(endDateMonth === monthMap[i].name) {
+        endDate = endDate.replace(endDateMonth, monthMap[i].value.toString())
+      }
+    }
+
+    startDate = startDate.slice(4, 15)
+    endDate = endDate.slice(4, 15)
+
+    const startWeight = dailyLogs[0].weight
+    const endWeight = dailyLogs[dailyLogs.length - 1].weight
+
+    const startTime = new Date(startDate).getTime()
+    const endTime = new Date(endDate).getTime()
+
+    let timeDifference = endTime - startTime
+    timeDifference = timeDifference / (1000 * 3600 * 24) / 7
+
+    const weightLoss = endWeight - startWeight
+    const weightGainRate = weightLoss / timeDifference
+    const weightGainRateToFixed = weightGainRate.toFixed(2)
+
+    return weightGainRateToFixed
+  }
+  const weightGainRate = calculateWeightGainRate()
+  console.log(weightGainRate)
 
   const notifications = []
 
@@ -172,7 +217,7 @@ export default async function Home() {
             <h1 className="pr-4 text-xl font-semibold">Add a Goal -{'>'}</h1>
             {dailyLogs.length === 0 && training.length === 0 ? <p className="text-red-500">You need to add a daily log and a training log before you can add a goal</p> : <AddGoal dailyLogs={dailyLogs} training={training} />}
           </div>
-          <ListGoals goals={goals} dailyLogs={dailyLogs} training={training} rate={weightLossRate} />
+          <ListGoals goals={goals} dailyLogs={dailyLogs} training={training} lossRate={weightLossRate} gainRate={weightGainRate} />
         </div>
       </div>
       <div className="flex flex-col items-center justify-center absolute bottom-0 right-0 p-10 z-50">

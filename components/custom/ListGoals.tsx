@@ -2,19 +2,19 @@ import { Progress } from "@/components/ui/progress"
 import { DeleteDataButton } from "./DeleteDataButton"
 import { deleteGoal } from "@/lib/db"
 
-export const ListGoals = ({ goals, dailyLogs, training, rate }:any) => {
+export const ListGoals = ({ goals, dailyLogs, training, lossRate, gainRate }:any) => {
   return (
     <div>
       <ul>
         {goals.map((goal:any) => (
-          <Goal key={goal.id} goal={goal} dailyLogs={dailyLogs} training={training} rate={rate} />
+          <Goal key={goal.id} goal={goal} dailyLogs={dailyLogs} training={training} lossRate={lossRate} gainRate={gainRate} />
         ))}
       </ul>
     </div>
   )
 }
 
-const Goal = ({ goal, dailyLogs, training, rate }:any) => {
+const Goal = ({ goal, dailyLogs, training, lossRate, gainRate }:any) => {
 
     let start = dailyLogs[0].weight
     let end = dailyLogs[dailyLogs.length - 1].weight
@@ -90,6 +90,7 @@ const Goal = ({ goal, dailyLogs, training, rate }:any) => {
     }
 
     let percentage = (progress / target) * 100
+    console.log(gainRate, lossRate)
 
   return (
     <li className="w-full border rounded shadow-lg bg-white px-6 my-2">
@@ -97,7 +98,8 @@ const Goal = ({ goal, dailyLogs, training, rate }:any) => {
         <p className="p-2 font-semibold text-cyan-500 italic">
           {header}
         </p>
-        {goal.goal === 'lose' && rate !== '' ? <p className="p-2 font-semibold text-red-500 italic">{rate} lbs/week</p> : null}
+        {goal.goal === 'lose' && lossRate !== '' ? <p className="p-2 font-semibold text-red-500 italic">{lossRate} lbs/week</p> : null}
+        {goal.goal === 'gain' && gainRate !== '' ? <p className="p-2 font-semibold text-red-500 italic">{gainRate} lbs/week</p> : null}
         <DeleteDataButton id={goal.id} action={deleteGoal} />
       </div>
       <p className="text-right">{percentage.toFixed(2) + '%'}</p>
