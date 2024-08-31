@@ -25,12 +25,16 @@ export default async function Page({ params } : { params: { recipe: string } }) 
   return (
     <main className="flex min-h-screen flex-col items-center px-24 py-10">
       <PageHeader title={recipe?.name} description={`Author: ${recipe?.user}`} url={`/journals/recipes/${recipe?.id}`} />
-      {recipe?.image ? (
-        <Image src={recipe?.image} alt={recipe?.name} width={400} height={400} />
-      ) : (
-        user === recipe?.user && <RecipeImageUpload id={recipe?.id} />
-      )}
-      <RecipeInfoTabs data={recipe} />
+      <div className="flex justify-between items-center">
+        {recipe?.image ? (
+          <div className="bg-slate-600 p-2 rounded-lg shadow-xl m-6">
+            <Image src={recipe?.image} alt={recipe?.name} width={400} height={400} />
+          </div>
+        ) : (
+          user === recipe?.user && <RecipeImageUpload id={recipe?.id} />
+        )}
+        <RecipeInfoTabs data={recipe} />
+      </div>
       <DescriptionSection data={recipe} />
       <FooterSection data={recipe} />
     </main>

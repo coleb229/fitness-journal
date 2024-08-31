@@ -22,7 +22,6 @@ export default async function Page() {
   return (
     <main className="flex min-h-screen flex-col items-center px-24 py-10">
       <PageHeader title="Recipes" description='Find a recipe for your next meal' url='/journals/recipes' />
-      <p>in progress</p>
       <div className="flex items-center gap-4 w-full">
         <RecipeSearch data={recipes} />
         <RecipeBuilder />

@@ -139,7 +139,7 @@ export const RecipeImageUpload = ({ id }:any) => {
 
   return (
     <Dialog>
-      <DialogTrigger>Add Image</DialogTrigger>
+      <DialogTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 mx-20 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Image</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Upload an Image for this recipe</DialogTitle>
