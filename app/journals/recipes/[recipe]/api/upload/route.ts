@@ -1,6 +1,7 @@
 import { createPresignedPost } from '@aws-sdk/s3-presigned-post'
 import { S3Client } from '@aws-sdk/client-s3'
 import { v4 as uuidv4 } from 'uuid'
+import prisma from '@/lib/prisma'
 
 export async function POST(request: Request) {
   const { filename, contentType, id } = await request.json()
@@ -19,6 +20,15 @@ export async function POST(request: Request) {
         'Content-Type': contentType,
       },
       Expires: 600, // Seconds before the presigned post expires. 3600 by default.
+    })
+
+    await prisma.recipe.update({
+      where: {
+        id: id
+      },
+      data: {
+        image: url + fields.key
+      }
     })
 
     return Response.json({ url, fields })
