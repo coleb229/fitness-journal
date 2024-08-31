@@ -50,6 +50,15 @@ export const RecipeBuilder = () => {
           <PreviewWindow data={recipe} />
         </DialogHeader>
         <form action={addRecipe} className="bg-slate-800 px-10 py-6 overflow-y-auto">
+          <input hidden value={name} name="name" />
+          <input hidden value={description} name="description" />
+          <input hidden value={ingredients} name="ingredients" />
+          <input hidden value={instructions} name="instructions" />
+          <input hidden value={calories} name="calories" />
+          <input hidden value={fat} name="fat" />
+          <input hidden value={protein} name="protein" />
+          <input hidden value={carbs} name="carbs" />
+          <input hidden value={serving} name="serving" />
           {
             page === 1 ? (
               <>
@@ -57,7 +66,6 @@ export const RecipeBuilder = () => {
                 <Input
                   placeholder="Recipe name"
                   value={name}
-                  name="name"
                   onChange={(e) => setName(e.target.value)}
                 />
                 <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
@@ -73,7 +81,6 @@ export const RecipeBuilder = () => {
                     <Textarea
                       placeholder="Recipe description"
                       value={description}
-                      name="description"
                       onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>
@@ -82,7 +89,6 @@ export const RecipeBuilder = () => {
                     <Textarea
                       placeholder="Recipe ingredients"
                       value={ingredients}
-                      name="ingredients"
                       onChange={(e) => setIngredients(e.target.value)}
                     />
                   </div>
@@ -91,7 +97,6 @@ export const RecipeBuilder = () => {
                     <Textarea
                       placeholder="Recipe instructions"
                       value={instructions}
-                      name="instructions"
                       onChange={(e) => setInstructions(e.target.value)}
                     />
                   </div>
@@ -109,7 +114,6 @@ export const RecipeBuilder = () => {
                     <Input
                       type="number"
                       value={calories}
-                      name="calories"
                       onChange={(e) => setCalories(parseInt(e.target.value))}
                     />
                   </div>
@@ -118,7 +122,6 @@ export const RecipeBuilder = () => {
                     <Input
                       type="number"
                       value={fat}
-                      name="fat"
                       onChange={(e) => setFat(parseInt(e.target.value))}
                     />
                   </div>
@@ -127,7 +130,6 @@ export const RecipeBuilder = () => {
                     <Input
                       type="number"
                       value={protein}
-                      name="protein"
                       onChange={(e) => setProtein(parseInt(e.target.value))}
                     />
                   </div>
@@ -136,7 +138,6 @@ export const RecipeBuilder = () => {
                     <Input
                       type="number"
                       value={carbs}
-                      name="carbs"
                       onChange={(e) => setCarbs(parseInt(e.target.value))}
                     />
                   </div>
@@ -152,7 +153,6 @@ export const RecipeBuilder = () => {
                 <Input
                   type="number"
                   value={serving}
-                  name="serving"
                   onChange={(e) => setServing(parseInt(e.target.value))}
                 />
                 <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
