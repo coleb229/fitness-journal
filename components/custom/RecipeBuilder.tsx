@@ -12,8 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "../ui/label"
 import { useState } from "react"
 import { addRecipe } from "@/lib/db"
-import { DescriptionSection, FooterSection, NutritionSection, PreviewRecipeInfoTabs, RecipeInfoTabs } from "./RecipeSections"
-import Page from "@/app/gallery/progress/page"
+import { DescriptionSection, FooterSection, PreviewRecipeInfoTabs } from "./RecipeSections"
 import { PageHeader } from "./PageHeader"
 
 export const RecipeBuilder = () => {
@@ -38,9 +37,9 @@ export const RecipeBuilder = () => {
     serving: serving
   }
 
-  const handleSubmit = () => {
-    console.log(name, description, ingredients, instructions)
-  }
+  //page state for modal form
+  const [page, setPage] = useState(1)
+  const lastPage = 4
 
   return (
     <Dialog>
@@ -50,89 +49,116 @@ export const RecipeBuilder = () => {
           <hr className="h-10" />
           <PreviewWindow data={recipe} />
         </DialogHeader>
-        <form action={addRecipe} className="bg-slate-800 px-10 py-2 max-h-[250px] 2xl:max-h-[400px] overflow-y-auto">
-          <Label className='text-white text-xs 2xl:text-lg'>Recipe Name</Label>
-          <Input
-            placeholder="Recipe name"
-            value={name}
-            name="name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <div className="grid grid-cols-3 gap-2 2xl:pt-4">
-            <div className="">
-              <Label className='text-white text-xs 2xl:text-lg'>Recipe Description</Label>
-              <Textarea
-                placeholder="Recipe description"
-                value={description}
-                name="description"
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Recipe Ingredients</Label>
-              <Textarea
-                placeholder="Recipe ingredients"
-                value={ingredients}
-                name="ingredients"
-                onChange={(e) => setIngredients(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Recipe Instructions</Label>
-              <Textarea
-                placeholder="Recipe instructions"
-                value={instructions}
-                name="instructions"
-                onChange={(e) => setInstructions(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-4 gap-4 2xl:mt-4">
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Calories</Label>
-              <Input
-                type="number"
-                value={calories}
-                name="calories"
-                onChange={(e) => setCalories(parseInt(e.target.value))}
-              />
-            </div>
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Fat</Label>
-              <Input
-                type="number"
-                value={fat}
-                name="fat"
-                onChange={(e) => setFat(parseInt(e.target.value))}
-              />
-            </div>
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Protein</Label>
-              <Input
-                type="number"
-                value={protein}
-                name="protein"
-                onChange={(e) => setProtein(parseInt(e.target.value))}
-              />
-            </div>
-            <div>
-              <Label className='text-white text-xs 2xl:text-lg'>Carbs</Label>
-              <Input
-                type="number"
-                value={carbs}
-                name="carbs"
-                onChange={(e) => setCarbs(parseInt(e.target.value))}
-              />
-            </div>
-          </div>
-          <Label className='text-white text-xs 2xl:text-lg'>Serving Size</Label>
-          <Input
-            type="number"
-            value={serving}
-            name="serving"
-            onChange={(e) => setServing(parseInt(e.target.value))}
-          />
-          <button type="submit" className="bg-slate-400 text-white w-full my-4 px-6 py-2 2xl:px-10 2xl:py-4 hover:rounded-2xl hover:text-black duration-200 shadow-xl">Submit</button>
+        <form action={addRecipe} className="bg-slate-800 px-10 py-6 overflow-y-auto">
+          {
+            page === 1 ? (
+              <>
+                <Label className='text-white text-xs 2xl:text-lg'>Recipe Name</Label>
+                <Input
+                  placeholder="Recipe name"
+                  value={name}
+                  name="name"
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
+              </>
+            ) : null
+          }
+          {
+            page === 2 ? (
+              <>     
+                <div className="grid grid-cols-3 gap-2">
+                  <div className="">
+                    <Label className='text-white text-xs 2xl:text-lg'>Recipe Description</Label>
+                    <Textarea
+                      placeholder="Recipe description"
+                      value={description}
+                      name="description"
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Recipe Ingredients</Label>
+                    <Textarea
+                      placeholder="Recipe ingredients"
+                      value={ingredients}
+                      name="ingredients"
+                      onChange={(e) => setIngredients(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Recipe Instructions</Label>
+                    <Textarea
+                      placeholder="Recipe instructions"
+                      value={instructions}
+                      name="instructions"
+                      onChange={(e) => setInstructions(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
+              </>
+            ) : null
+          }
+          {
+            page === 3 ? (
+              <>
+                <div className="grid grid-cols-4 gap-4">
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Calories</Label>
+                    <Input
+                      type="number"
+                      value={calories}
+                      name="calories"
+                      onChange={(e) => setCalories(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Fat</Label>
+                    <Input
+                      type="number"
+                      value={fat}
+                      name="fat"
+                      onChange={(e) => setFat(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Protein</Label>
+                    <Input
+                      type="number"
+                      value={protein}
+                      name="protein"
+                      onChange={(e) => setProtein(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <Label className='text-white text-xs 2xl:text-lg'>Carbs</Label>
+                    <Input
+                      type="number"
+                      value={carbs}
+                      name="carbs"
+                      onChange={(e) => setCarbs(parseInt(e.target.value))}
+                    />
+                  </div>
+                </div>
+                <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
+              </>
+            ) : null
+          }
+          {
+            page === 4 ? (
+              <>
+                <Label className='text-white text-xs 2xl:text-lg'>Serving Size</Label>
+                <Input
+                  type="number"
+                  value={serving}
+                  name="serving"
+                  onChange={(e) => setServing(parseInt(e.target.value))}
+                />
+                <ModalControls page={page} setPage={setPage} lastPage={lastPage} />
+              </>
+            ) : null
+          }
         </form>
       </DialogContent>
     </Dialog>
@@ -141,11 +167,20 @@ export const RecipeBuilder = () => {
 
 const PreviewWindow = ({ data }:any) => {
   return (
-    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[250px] 2xl:max-h-[450px] min-[2000px]:max-h-[800px] overflow-y-auto">
+    <div className="bg-slate-100 rounded-xl shadow-xl max-h-[300px] 2xl:max-h-[600px] min-[2000px]:max-h-[1000px] overflow-y-auto">
       <PageHeader title={data.name} description="Check out how your recipe will look" url='/journals/recipes/######' />
       <PreviewRecipeInfoTabs data={data} />
       <DescriptionSection data={data} />
       <FooterSection data={data} />
+    </div>
+  )
+}
+
+const ModalControls = ({ page, setPage, lastPage }:any) => {
+  return (
+    <div className="flex justify-between pt-6">
+      {page === 1 ? <div className="w-1/2" /> : <button onClick={() => setPage(page - 1)} className="bg-slate-400 text-white w-1/2 my-4 px-6 py-2 2xl:px-10 2xl:py-4 hover:rounded-2xl hover:text-black duration-200 shadow-xl">Previous</button>}
+      {page === lastPage ? <button type="submit" className="bg-slate-400 text-white w-1/2 my-4 px-6 py-2 2xl:px-10 2xl:py-4 hover:rounded-2xl hover:text-black duration-200 shadow-xl">Submit</button> : <button onClick={() => setPage(page + 1)} className="bg-slate-400 text-white w-1/2 my-4 px-6 py-2 2xl:px-10 2xl:py-4 hover:rounded-2xl hover:text-black duration-200 shadow-xl">Next</button>}
     </div>
   )
 }
