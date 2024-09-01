@@ -424,8 +424,8 @@ export const addRecipe = async (formData: any) => {
         const email = session?.user?.email;
         const name = formData.get('name');
         const description = formData.get('description');
-        const ingredients = formData.get('ingredients').split('\n');
-        const instructions = formData.get('instructions').split('\n');
+        const ingredients = formData.get('ingredients').split(',');
+        const instructions = formData.get('instructions').split(',');
         const calories = parseInt(formData.get('calories'));
         const fat = parseInt(formData.get('fat'));
         const protein = parseInt(formData.get('protein'));

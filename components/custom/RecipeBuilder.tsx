@@ -52,8 +52,8 @@ export const RecipeBuilder = () => {
         <form action={addRecipe} className="bg-slate-800 px-10 py-6 overflow-y-auto">
           <input hidden value={name} name="name" />
           <input hidden value={description} name="description" />
-          <input hidden value={ingredients} name="ingredients" />
-          <input hidden value={instructions} name="instructions" />
+          <input hidden value={ingredients.split('\n')} name="ingredients" />
+          <input hidden value={instructions.split('\n')} name="instructions" />
           <input hidden value={calories} name="calories" />
           <input hidden value={fat} name="fat" />
           <input hidden value={protein} name="protein" />
@@ -61,6 +61,7 @@ export const RecipeBuilder = () => {
           <input hidden value={serving} name="serving" />
           {
             page === 1 ? (
+              console.log(ingredients),
               <>
                 <Label className='text-white text-xs 2xl:text-lg'>Recipe Name</Label>
                 <Input
@@ -74,6 +75,7 @@ export const RecipeBuilder = () => {
           }
           {
             page === 2 ? (
+              console.log(ingredients),
               <>     
                 <div className="grid grid-cols-3 gap-2">
                   <div className="">
@@ -107,6 +109,7 @@ export const RecipeBuilder = () => {
           }
           {
             page === 3 ? (
+              console.log(ingredients),
               <>
                 <div className="grid grid-cols-4 gap-4">
                   <div>
@@ -148,6 +151,7 @@ export const RecipeBuilder = () => {
           }
           {
             page === 4 ? (
+              console.log(ingredients),
               <>
                 <Label className='text-white text-xs 2xl:text-lg'>Serving Size</Label>
                 <Input
