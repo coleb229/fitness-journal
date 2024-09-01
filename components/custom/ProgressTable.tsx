@@ -24,9 +24,9 @@ export const ProgressTable = ({ data, images }:any) => {
                       key={image.id}
                       src={image.url}
                       alt={image.filename}
-                      width={200}
-                      height={200}
-                      className="max-w-[200px] max-h-[200px] overflow-hidden"
+                      width={400}
+                      height={400}
+                      className="max-w-[200px] max-h-[200px] 2xl:max-w-[400px] 2xl:max-h-[400px] overflow-hidden"
                     />
               ))
               ) : (
