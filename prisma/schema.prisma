@@ -79,3 +79,23 @@ model Recipe {
 
   @@unique([name, user])
 }
+
+model ProgressEntry {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  date      DateTime @default(now())
+  weight    Float
+  images    Image[]
+  user      String
+
+  @@unique([date, user])
+}
+
+model Image {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  url       String
+  filename  String
+  contentType String
+  progressEntryId String @map("progressEntryId") @db.ObjectId
+
+  ProgressEntry ProgressEntry @relation(fields: [progressEntryId], references: [id])
+}

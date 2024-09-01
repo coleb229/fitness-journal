@@ -140,7 +140,7 @@ const Form = ({ preferences }:any) => {
     )
 }
 
-const DatePicker = ({name}:any) => {
+export const DatePicker = ({name}:any) => {
     const [date, setDate] = React.useState<Date>()
 
     return (

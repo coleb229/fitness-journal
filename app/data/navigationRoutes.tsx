@@ -60,6 +60,11 @@ export const navigationRoutes = [
     section: 'journals'
   },
   {
+    title: 'Progress Journal',
+    route: '/journals/progress',
+    section: 'journals'
+  },
+  {
     title: 'Diet Tips',
     route: '/knowledge/diet-tips',
     section: 'knowledge'

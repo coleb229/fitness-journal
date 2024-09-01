@@ -456,3 +456,27 @@ export const addRecipe = async (formData: any) => {
         return { message: 'Error creating record.' };
     }
 }
+
+export const addProgressRow = async (formData: any) => {
+    try {
+        const session = await getServerSession(authOptions);
+        const email = session?.user?.email;
+        const date = formData.get('date');
+        const weight = parseFloat(formData.get('weight'));
+        const record = await prisma.progressEntry.create({
+            data: {
+                date,
+                weight,
+                user: email as string,
+            },
+        });
+
+        // Revalidate the path to ensure the cache is updated
+        revalidatePath('/journals/progress');
+
+        return { message: 'Record created successfully.', record };
+    } catch (error) {
+        console.error('Error creating record:', error);
+        return { message: 'Error creating record.' };
+    }
+}
