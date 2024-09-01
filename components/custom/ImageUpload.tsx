@@ -225,7 +225,7 @@ export const ProgressImageUpload = ({ id }:any) => {
 
   return (
     <Dialog>
-      <DialogTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 mx-20 my-6 hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl">Add Image</DialogTrigger>
+      <DialogTrigger className="bg-white text-xl border-4 px-6 2xl:px-10 py-2 2xl:py-4 mx-20 my-auto hover:rounded-2xl hover:text-white hover:bg-black duration-200 shadow-xl w-full max-h-[70px]">Add Image</DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Upload an Image for this recipe</DialogTitle>

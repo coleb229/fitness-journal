@@ -10,7 +10,7 @@ import { ProgressImageUpload } from "./ImageUpload"
 
 export const ProgressTable = ({ data, images }:any) => {
   return (
-    <Accordion type="single" collapsible>
+    <Accordion type="single" collapsible className="bg-white shadow-xl px-6 rounded-lg">
       {data.map((item:any) => (
         item.date = new Date(item.date).toDateString(),
         <AccordionItem value={item.date} key={item.id}>
