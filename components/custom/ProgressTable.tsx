@@ -13,7 +13,7 @@ export const ProgressTable = ({ data, images }:any) => {
     <Accordion type="single" collapsible>
       {data.map((item:any) => (
         item.date = new Date(item.date).toDateString(),
-        <AccordionItem value={item.date}>
+        <AccordionItem value={item.date} key={item.id}>
           <AccordionTrigger>{`${item.date} - (Weight: ${item.weight}lbs)`}</AccordionTrigger>
           <AccordionContent>
             <div className="grid grid-cols-4 gap-4">
@@ -21,6 +21,7 @@ export const ProgressTable = ({ data, images }:any) => {
                 images[0].map((image:any) => (
                   image.progressEntryId === item.id &&
                     <Image
+                      key={image.id}
                       src={image.url}
                       alt={image.filename}
                       width={200}
