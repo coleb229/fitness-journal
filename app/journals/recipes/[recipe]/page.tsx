@@ -27,8 +27,8 @@ export default async function Page({ params } : { params: { recipe: string } }) 
       <PageHeader title={recipe?.name} description={`Author: ${recipe?.user}`} url={`/journals/recipes/${recipe?.id}`} />
       <div className="flex justify-between items-center">
         {recipe?.image ? (
-          <div className="bg-slate-600 p-2 rounded-lg shadow-xl m-6 max-w-[400px] max-h-[400px]">
-            <Image src={recipe?.image} alt={recipe?.name} width={400} height={400} />
+          <div className="bg-slate-600 p-2 rounded-lg shadow-xl m-6">
+            <Image src={recipe?.image} alt={recipe?.name} width={400} height={400} className="max-w-[400px] max-h-[400px] overflow-hidden" />
           </div>
         ) : (
           user === recipe?.user && <RecipeImageUpload id={recipe?.id} />
